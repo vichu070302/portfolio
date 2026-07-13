@@ -54,11 +54,11 @@ body {
     height: 70px;
 }
 
-.logo {
+/* .logo {
     font-size: 24px;
     font-weight: bold;
     color: var(--primary-color);
-}
+} */
 
 .nav-menu {
     display: flex;
