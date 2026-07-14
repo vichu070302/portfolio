@@ -1,17 +1,17 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Full Stack Developer & UI/UX Designer</title>
-    <link rel="stylesheet" href="mystyle.css">
+    <title> Python Full Stack Developer & UI/UX Designer</title>
+    <link rel="stylesheet" href="{% static 'mystyle.css' %}?v=20260713">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <!-- <div class="logo">Jakso.</div> -->
+            <a href="#home" class="logo">Vishnu<span>.</span></a>
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
@@ -23,51 +23,74 @@
             </ul>
             <div class="nav-buttons">
                 <button class="download-btn"><i class="fas fa-download"></i> Download CV</button>
-                <button class="theme-toggle" id="themeToggle">
-                    <i class="fas fa-moon"></i>
-                </button>
+                <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
             </div>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
         </div>
     </nav>
-
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <div class="glow-bg"></div>
         <div class="hero-container">
+            
             <div class="hero-content">
-                <h1 class="greeting">Hello, I'm</h1>
-                <h2 class="hero-title">JAKSO</h2>
-                <p class="hero-subtitle">Full Stack Developer</p>
-                <p class="hero-subtitle-2">& UI/UX Designer</p>
-                <p class="hero-description">I create modern, responsive and user-friendly web experiences that help brands grow and people get things done.</p>
+                <p class="greeting">Hello, I'm</p>
+                <h1 class="hero-title">VISHNU PRASAD</h1>
+                <div class="subtitle">UI/UX Designer</div>
+                <h1 class="hero-title-2">& Python Full Stack Developer </h1>
+                <p class="hero-description">I create modern, responsive and user-friendly web experiences that help brands grow and people get things done. Specializing in elegant design and robust backend solutions.</p>
+                
                 <div class="hero-buttons">
-                    <button class="btn btn-primary">View My Work</button>
-                    <button class="btn btn-secondary">Contact Me</button>
+                    <a href="#projects" style="text-decoration: none;">
+                    <button class="btn btn-primary" ><i class="fa-solid fa-arrow-right" ></i> View My Work</button>
+                    </a>
+                    <a href="#contact" style="text-decoration: none;">
+                    <button class="btn btn-secondary" ><i class="fa-regular fa-envelope"></i> Contact Me </button>
+                </a>
                 </div>
             </div>
+
             <div class="hero-image">
                 <div class="profile-circle">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" alt="Profile">
+                    <img src="{% static 'vblack-removebg-preview.png' %}" alt="Vishnu Prasad">
                 </div>
-                <div class="stats">
-                    <div class="stat">
-                        <div class="stat-number">2+</div>
-                        <div class="stat-label">Years Experience</div>
+
+                <!-- <div class="stats-card">
+                    <div class="stat-item">
+                        <div class="stat-icon icon-exp"><i class="fa-solid fa-briefcase"></i></div>
+                        <div class="stat-info">
+                            <h3>2+</h3>
+                            <p>Years Experience</p>
+                        </div>
                     </div>
-                    <div class="stat">
-                        <div class="stat-number">20+</div>
-                        <div class="stat-label">Projects Completed</div>
+                    <div class="stat-item">
+                        <div class="stat-icon icon-proj"><i class="fa-solid fa-code"></i></div>
+                        <div class="stat-info">
+                            <h3>20+</h3>
+                            <p>Projects Completed</p>
+                        </div>
                     </div>
-                    <div class="stat">
-                        <div class="stat-number">10+</div>
-                        <div class="stat-label">Happy Clients</div>
+                    <div class="stat-item">
+                        <div class="stat-icon icon-clients"><i class="fa-solid fa-users"></i></div>
+                        <div class="stat-info">
+                            <h3>10+</h3>
+                            <p>Happy Clients</p>
+                        </div>
                     </div>
-                </div>
+                </div> -->
+
+                <!-- <div class="badge-freelance">
+                    <i class="fas fa-circle"></i> Available for Freelance
+                </div> -->
+
+                <!-- <div class="decorative-arrow">
+                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 50L50 10" stroke="#52dc3d" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M30 10L50 10L50 30" stroke="#52dc3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div> -->
             </div>
+
         </div>
     </section>
 
@@ -87,12 +110,12 @@
             </div>
             <div class="about-content">
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=500&fit=crop" alt="About">
+                    <img src="{% static 'lapfrnd.png' %}" alt="Profile Image">
                 </div>
                 <div class="about-text">
                     <h3>Crafting Digital Experiences That Inspire</h3>
-                    <p>I'm a Full Stack Developer and UI/UX Designer with a passion for building beautiful, functional, and user-centered websites and applications. I enjoy turning ideas into beautiful, functional and user-friendly digital products.</p>
-                    <button class="btn btn-outline">More About Me</button>
+                    <p>I'm a creative professional who brings ideas to life through design, motion, and digital strategy.With skills in UI/UX Design, Web Development, Graphic Designing, Video Editing, and Digital Marketing, I understand the full scope of visual communication. I focus on design that tells a story, engages audiences, and delivers results. From branding to videos and websites, I create impactful visuals that connect with people. This portfolio reflects my growth, creativity, and commitment to quality.</p>
+                    <!-- <button class="btn btn-outline">More About Me</button> -->
                 </div>
             </div>
         </div>
@@ -139,20 +162,10 @@
                     <div class="skill-header">
                         <i class="fas fa-database"></i>
                         <span class="skill-name">Django</span>
-                        <span class="skill-percent">80%</span>
+                        <span class="skill-percent">85%</span>
                     </div>
                     <div class="skill-bar">
-                        <div class="skill-progress" style="width: 80%"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <i class="fas fa-database"></i>
-                        <span class="skill-name">MySQL</span>
-                        <span class="skill-percent">80%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 80%"></div>
+                        <div class="skill-progress" style="width: 85%"></div>
                     </div>
                 </div>
                 <div class="skill-item">
@@ -175,6 +188,16 @@
                         <div class="skill-progress" style="width: 95%"></div>
                     </div>
                 </div>
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <i class="fas fa-paint-brush"></i>
+                        <span class="skill-name">Graphic Designing</span>
+                        <span class="skill-percent">85%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%"></div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -188,19 +211,35 @@
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Web Development</h3>
-                    <p>Building fast, responsive and modern websites with clean and efficient code.</p>
-                    <a href="#" class="read-more">Read More →</a>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
                         <i class="fas fa-palette"></i>
                     </div>
                     <h3>UI/UX Design</h3>
                     <p>Designing beautiful and user-friendly interfaces that deliver great experiences.</p>
-                    <a href="#" class="read-more">Read More →</a>
+                    <!-- <a href="#" class="read-more">Read More →</a> -->
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Building fast, responsive and modern websites with clean and efficient code.</p>
+                    <!-- <a href="#" class="read-more">Read More →</a> -->
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Graphic Design</h3>
+                    <p>Creating eye-catching visuals, branding assets, and layouts for digital and print.</p>
+                    <!-- <a href="#" class="read-more">Read More →</a> -->
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>Digital Marketing</h3>
+                    <p>Helping brands grow online with content strategy, social media, and campaign design.</p>
+                    <!-- <a href="#" class="read-more">Read More →</a> -->
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
@@ -208,7 +247,7 @@
                     </div>
                     <h3>Backend Development</h3>
                     <p>Develop secure and scalable backend systems and APIs using Django.</p>
-                    <a href="#" class="read-more">Read More →</a>
+                    <!-- <a href="#" class="read-more">Read More →</a> -->
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
@@ -216,7 +255,7 @@
                     </div>
                     <h3>Responsive Design</h3>
                     <p>Creating perfect responsive layouts that work on all devices and screen sizes.</p>
-                    <a href="#" class="read-more">Read More →</a>
+                    <!-- <a href="#" class="read-more">Read More →</a> -->
                 </div>
             </div>
         </div>
@@ -235,24 +274,25 @@
                         <img src="https://images.unsplash.com/photo-1600298881974-6be191ceeda1?w=400&h=300&fit=crop" alt="Woodland E-commerce">
                     </div>
                     <div class="project-info">
-                        <h3>Woodland E-commerce</h3>
-                        <p>Django, MySQL, Bootstrap, JS</p>
+                        <span class="project-badge">🏆 Featured</span>
+                        <h3>Jakso E-commerce</h3>
+                        <p>Django, Python, Bootstrap, JS</p>
                         <div class="project-links">
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                            <a href="https://jakso.pythonanywhere.com/" class="project-link"><i class="fas fa-external-link-alt"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1605531958596-461551926a35?w=400&h=300&fit=crop" alt="Cafe Mobile App UI">
+                        <img src="{% static 'cack app.png' %}" alt="Cake Mobile App UI">
                     </div>
                     <div class="project-info">
-                        <h3>Cafe Mobile App UI</h3>
+                        <span class="project-badge">UI/UX</span>
+                        <h3>Mobile App UI</h3>
                         <p>Figma, UI Design</p>
                         <div class="project-links">
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                            <a href="https://www.figma.com/proto/MT9XuwY7MBcPT8uFWWyE7u/Untitled?node-id=0-1&t=UPiipnOm4m94NlOV-1" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            
                         </div>
                     </div>
                 </div>
@@ -261,36 +301,37 @@
                         <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop" alt="Admin Dashboard">
                     </div>
                     <div class="project-info">
+                        <span class="project-badge">Backend</span>
                         <h3>Admin Dashboard</h3>
-                        <p>Django, Chart Js, MySQL</p>
+                        <p>Django,Python, </p>
                         <div class="project-links">
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                            <a href="https://vichu070302.github.io/competition/" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                           
                         </div>
                     </div>
                 </div>
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1512941691920-25bda36dc643?w=400&h=300&fit=crop" alt="Food Delivery App UI">
+                        <img src="{% static 'dg front.jpg' %}" alt="">
                     </div>
                     <div class="project-info">
-                        <h3>Food Delivery App UI</h3>
-                        <p>Figma, UI Design</p>
+                        <span class="project-badge">Design</span>
+                        <h3>Graphic Design</h3>
+                        <p>Photoshope, Illustrator</p>
                         <div class="project-links">
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                            <a href="https://www.behance.net/vishnuvichu74" class="project-link"><i class="fas fa-external-link-alt"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="view-all">
+            <!-- <div class="view-all">
                 <button class="btn btn-outline">View All Projects →</button>
-            </div>
+            </div> -->
         </div>
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="experience">
+    <!-- <section id="experience" class="experience">
         <div class="container">
             <div class="section-title">
                 <h2>EXPERIENCE</h2>
@@ -322,8 +363,8 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials">
+    Testimonials Section -->
+    <!-- <section id="testimonials" class="testimonials">
         <div class="container">
             <div class="section-title">
                 <h2>TESTIMONIALS</h2>
@@ -341,7 +382,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
@@ -355,14 +396,14 @@
                         <i class="fas fa-envelope"></i>
                         <div>
                             <p class="contact-label">Email</p>
-                            <a href="mailto:jakso@example.com">jakso@example.com</a>
+                            <a href="mailto:vichu0703@gmail.com">vichu0703@gmail.com</a>
                         </div>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-phone"></i>
                         <div>
                             <p class="contact-label">Phone</p>
-                            <a href="tel:+919876543210">+91 9876 543210</a>
+                            <a href="tel:+919876543210">+91 9778720176</a>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -383,7 +424,7 @@
                 <div class="contact-social">
                     <a href="#" class="social-btn"><i class="fab fa-github"></i></a>
                     <a href="#" class="social-btn"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="social-btn"><i class="fab fa-behance"></i></a>
+                    <a href="https://www.behance.net/vishnuvichu74" class="social-btn"><i class="fab fa-behance"></i></a>
                     <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
@@ -393,11 +434,11 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Jakso. All rights reserved.</p>
+            <p> 2024 Jakso. All rights reserved.</p>
             <p>Designed with <i class="fas fa-heart"></i> by Jakso</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="{% static 'script.js' %}"></script>
 </body>
 </html>
