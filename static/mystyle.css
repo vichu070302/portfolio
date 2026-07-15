@@ -900,6 +900,12 @@ body {
     transition: all 0.3s ease;
 }
 
+.project-card-link{
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
 .project-card:hover {
     border-color: var(--primary-color);
     transform: translateY(-12px);
