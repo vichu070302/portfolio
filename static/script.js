@@ -40,35 +40,36 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Theme Toggle
+// Theme Toggle (Moon / Sun Button)
 const themeToggle = document.getElementById('themeToggle');
 const htmlElement = document.documentElement;
 
-// Check for saved theme preference or default to dark
-const currentTheme = localStorage.getItem('theme') || 'dark';
-htmlElement.setAttribute('data-theme', currentTheme);
-updateThemeIcon(currentTheme);
+if (themeToggle) {
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    htmlElement.setAttribute('data-theme', currentTheme);
+    updateThemeIcon(currentTheme);
 
-themeToggle.addEventListener('click', () => {
-    const theme = htmlElement.getAttribute('data-theme');
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
-    htmlElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    updateThemeIcon(newTheme);
-});
-
-function updateThemeIcon(theme) {
-    const icon = themeToggle.querySelector('i');
-    if (theme === 'dark') {
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-    } else {
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-    }
+    themeToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        const theme = htmlElement.getAttribute('data-theme') || 'dark';
+        const newTheme = theme === 'dark' ? 'light' : 'dark';
+        htmlElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+    });
 }
 
-// Light theme disabled - keeping dark theme only
+function updateThemeIcon(theme) {
+    if (!themeToggle) return;
+    const icon = themeToggle.querySelector('i');
+    if (icon) {
+        if (theme === 'dark') {
+            icon.className = 'fas fa-moon';
+        } else {
+            icon.className = 'fas fa-sun';
+        }
+    }
+}
 
 // Enhanced Navbar background on scroll with blur effect
 const navbar = document.querySelector('.navbar');
