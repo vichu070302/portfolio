@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comprehensive UI/UX & 3D Showcase | Vishnu Prasad</title>
+    <title>UI/UX Design Showcase | Vishnu Prasad</title>
     <link rel="stylesheet" href="{% static 'mystyle.css' %}?v=20260727">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -24,67 +24,39 @@
         .back-home-btn { background: rgba(82, 220, 61, 0.12); border: 1px solid rgba(82, 220, 61, 0.4); color: #52dc3d; padding: 10px 22px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease; }
         .back-home-btn:hover { background: #52dc3d; color: #060b11; transform: translateX(-4px); box-shadow: 0 6px 20px rgba(82, 220, 61, 0.4); }
         
-        .gallery-hero { text-align: center; max-width: 900px; margin: 40px auto 35px auto; padding: 0 20px; position: relative; z-index: 1; }
+        .gallery-hero { text-align: center; max-width: 850px; margin: 50px auto 40px auto; padding: 0 20px; position: relative; z-index: 1; }
         .gallery-hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 20px; background: rgba(82, 220, 61, 0.12); border: 1px solid rgba(82, 220, 61, 0.3); color: #52dc3d; font-size: 13px; font-weight: 700; text-transform: uppercase; margin-bottom: 15px; }
-        .gallery-hero h1 { font-size: 40px; font-weight: 800; margin-bottom: 12px; line-height: 1.2; }
-        .gallery-hero h1 span { background: linear-gradient(135deg, #52dc3d, #38bdf8, #c4b5fd); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gallery-hero h1 { font-size: 42px; font-weight: 800; margin-bottom: 12px; line-height: 1.2; }
+        .gallery-hero h1 span { background: linear-gradient(135deg, #52dc3d, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .gallery-hero p { color: #9ca3af; font-size: 16px; line-height: 1.6; }
         
-        /* Main Showcase Container */
-        .showcase-container { max-width: 1320px; margin: 0 auto; padding: 0 25px; position: relative; z-index: 1; }
-        .showcase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 35px; margin-bottom: 50px; }
+        /* Centered Featured Showcase Card Container */
+        .showcase-container { max-width: 950px; margin: 0 auto; padding: 0 25px; position: relative; z-index: 1; }
         
-        .showcase-card { background: rgba(18, 24, 38, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease; }
+        .showcase-card { background: rgba(18, 24, 38, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease; margin-bottom: 40px; }
         .showcase-card:hover { border-color: rgba(82, 220, 61, 0.5); box-shadow: 0 20px 45px rgba(82, 220, 61, 0.22); }
         
         .card-top-bar { padding: 16px 24px; background: rgba(0, 0, 0, 0.35); border-bottom: 1px solid rgba(255, 255, 255, 0.06); display: flex; justify-content: space-between; align-items: center; }
-        .badge-figma { background: rgba(242, 78, 30, 0.15); color: #ff7262; border: 1px solid rgba(242, 78, 30, 0.3); padding: 4px 12px; border-radius: 15px; font-size: 12px; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
-        .badge-3d { background: rgba(155, 89, 182, 0.2); color: #c4b5fd; border: 1px solid rgba(155, 89, 182, 0.4); padding: 4px 12px; border-radius: 15px; font-size: 12px; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
+        .badge-figma { background: rgba(242, 78, 30, 0.15); color: #ff7262; border: 1px solid rgba(242, 78, 30, 0.3); padding: 4px 14px; border-radius: 15px; font-size: 13px; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
         .win-dots { display: flex; gap: 6px; }
         .win-dots span { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.2); }
         .win-dots span:nth-child(1) { background: #ff5f56; }
         .win-dots span:nth-child(2) { background: #ffbd2e; }
         .win-dots span:nth-child(3) { background: #27c93f; }
         
-        /* Single Viewport Height */
-        .card-media-viewport { position: relative; height: 460px; background: #060a12; overflow: hidden; border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
+        .card-media-viewport { position: relative; height: 520px; background: #060a12; overflow: hidden; border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
         .card-media-viewport iframe { width: 100%; height: 100%; border: none; display: block; }
         
-        .card-content { padding: 28px; display: flex; flex-direction: column; flex: 1; }
-        .card-title { font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 10px; }
-        .card-desc { font-size: 14px; color: #9ca3af; line-height: 1.6; margin-bottom: 22px; flex: 1; }
+        .card-content { padding: 32px; display: flex; flex-direction: column; }
+        .card-title { font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+        .card-desc { font-size: 15px; color: #9ca3af; line-height: 1.65; margin-bottom: 24px; }
         
-        .btn-dual-row { display: flex; gap: 12px; }
-        .btn-dual-row .action-btn-green { flex: 1; font-size: 13px; padding: 12px 14px; }
-
-        .action-btn-green { width: 100%; background: linear-gradient(135deg, #52dc3d, #27ae60); color: #060b11; border: none; padding: 14px 24px; border-radius: 30px; font-size: 14px; font-weight: 700; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 6px 20px rgba(82, 220, 61, 0.35); transition: all 0.3s ease; box-sizing: border-box; }
-        .action-btn-accent { background: linear-gradient(135deg, #9b59b6, #8e44ad); color: #fff; box-shadow: 0 6px 20px rgba(155, 89, 182, 0.35); }
+        .action-btn-green { width: 100%; background: linear-gradient(135deg, #52dc3d, #27ae60); color: #060b11; border: none; padding: 16px 28px; border-radius: 30px; font-size: 15px; font-weight: 700; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 6px 20px rgba(82, 220, 61, 0.35); transition: all 0.3s ease; box-sizing: border-box; }
         .action-btn-green:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(82, 220, 61, 0.5); background: linear-gradient(135deg, #27ae60, #52dc3d); }
-        .action-btn-accent:hover { box-shadow: 0 10px 28px rgba(155, 89, 182, 0.5); background: linear-gradient(135deg, #8e44ad, #9b59b6); }
-
-        /* Full Details Breakdown Section */
-        .details-breakdown-section { background: rgba(18, 24, 38, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px; padding: 35px; margin-top: 20px; }
-        .breakdown-header { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
-        .breakdown-header i { font-size: 26px; color: #52dc3d; }
-        .breakdown-header h2 { font-size: 24px; font-weight: 700; margin: 0; color: #fff; }
-        
-        .breakdown-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-        .breakdown-box { background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 16px; padding: 22px; }
-        .breakdown-box h3 { font-size: 18px; color: #52dc3d; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
-        .breakdown-box p { font-size: 14px; color: #9ca3af; line-height: 1.6; margin-bottom: 15px; }
-        
-        .tags-row { display: flex; flex-wrap: wrap; gap: 8px; }
-        .t-badge { padding: 5px 12px; border-radius: 16px; font-size: 12px; font-weight: 600; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); color: #fff; display: inline-flex; align-items: center; gap: 6px; }
-        .t-figma { border-color: rgba(242, 78, 30, 0.4); color: #ff7262; }
-        .t-spline { border-color: rgba(155, 89, 182, 0.4); color: #c4b5fd; }
-        .t-webgl { border-color: rgba(56, 189, 248, 0.4); color: #38bdf8; }
-        .t-green { border-color: rgba(82, 220, 61, 0.4); color: #52dc3d; }
 
         @media (max-width: 992px) {
-            .showcase-grid, .breakdown-grid { grid-template-columns: 1fr; }
-            .gallery-hero h1 { font-size: 30px; }
-            .card-media-viewport { height: 350px; }
-            .btn-dual-row { flex-direction: column; }
+            .gallery-hero h1 { font-size: 32px; }
+            .card-media-viewport { height: 380px; }
         }
     </style>
 </head>
@@ -106,104 +78,32 @@
 
         <!-- Gallery Hero -->
         <div class="gallery-hero">
-            <div class="gallery-hero-badge"><i class="fas fa-layer-group"></i> Comprehensive Project Showcase</div>
-            <h1>Full Figma Design & <span>3D Animation Showcase</span></h1>
-            <p>Explore the complete layout details, interactive Figma mobile app screens, and real-time WebGL 3D glass knot vortex model integrated into a unified scrollable experience.</p>
+            <div class="gallery-hero-badge"><i class="fas fa-layer-group"></i> Featured UI/UX Project</div>
+            <h1>Cake Mobile App <span>Figma UI Showcase</span></h1>
+            <p>Explore the complete mobile ordering user interface, component auto-layout design system, and interactive Figma prototype.</p>
         </div>
 
         <div class="showcase-container">
             
-            <!-- MAIN 2-COLUMN SHOWCASE GRID -->
-            <div class="showcase-grid">
-                
-                <!-- COLUMN 1: Full Figma UI/UX Design & Prototype -->
-                <div class="showcase-card">
-                    <div class="card-top-bar">
-                        <span class="badge-figma"><i class="fab fa-figma"></i> Cake Mobile App Figma Design</span>
-                        <div class="win-dots"><span></span><span></span><span></span></div>
-                    </div>
-                    <!-- Live Figma Prototype Viewport -->
-                    <div class="card-media-viewport">
-                        <iframe style="border: none;" width="100%" height="100%" src="https://embed.figma.com/proto/MT9XuwY7MBcPT8uFWWyE7u/Untitled?node-id=0-1&embed-host=share" allowfullscreen></iframe>
-                    </div>
-                    <div class="card-content">
-                        <h2 class="card-title">Cake Mobile App UI Design</h2>
-                        <p class="card-desc">Complete mobile user experience featuring customer ordering flows, component auto-layouts, custom wireframing, and accessible design system tokens. Interact directly with the Figma prototype above.</p>
-                        
-                        <a href="https://www.figma.com/proto/MT9XuwY7MBcPT8uFWWyE7u/Untitled?node-id=0-1&t=UPiipnOm4m94NlOV-1" target="_blank" rel="noopener noreferrer" class="action-btn-green">
-                            <i class="fab fa-figma"></i>
-                            <span>Open Cake App Figma Prototype</span>
-                            <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
+            <!-- FEATURED UI/UX SHOWCASE CARD -->
+            <div class="showcase-card">
+                <div class="card-top-bar">
+                    <span class="badge-figma"><i class="fab fa-figma"></i> Cake Mobile App Figma Design</span>
+                    <div class="win-dots"><span></span><span></span><span></span></div>
                 </div>
-
-                <!-- COLUMN 2: ublobs 3D Landing Page Single Unified Figma Design -->
-                <div class="showcase-card">
-                    <div class="card-top-bar">
-                        <span class="badge-3d"><i class="fas fa-cubes"></i> ublobs 3D Landing Page</span>
-                        <div class="win-dots"><span></span><span></span><span></span></div>
-                    </div>
+                <!-- Live Figma Prototype Viewport -->
+                <div class="card-media-viewport">
+                    <iframe style="border: none;" width="100%" height="100%" src="https://embed.figma.com/proto/MT9XuwY7MBcPT8uFWWyE7u/Untitled?node-id=0-1&embed-host=share" allowfullscreen></iframe>
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">Cake Mobile App UI Design</h2>
+                    <p class="card-desc">Complete mobile user experience featuring customer ordering flows, component auto-layouts, custom wireframing, and accessible design system tokens. Interact directly with the Figma prototype above.</p>
                     
-                    <!-- Single Unified Viewport for the complete ublobs 3D Landing Page -->
-                    <div class="card-media-viewport">
-                        <!-- USER'S EXACT FIGMA DESIGN EMBED CODE -->
-                        <iframe style="border: none;" width="100%" height="100%" src="https://embed.figma.com/design/wSkOGliY9rXckG68lHH57h/Untitled?node-id=0-1&embed-host=share" allowfullscreen></iframe>
-                    </div>
-
-                    <div class="card-content">
-                        <h2 class="card-title">ublobs 3D Animation Landing Page</h2>
-                        <p class="card-desc">An interactive 3D web landing page designed in Figma and powered by a real-time WebGL glass knot vortex shader. Features dynamic glass refraction physics, ambient dark grid backgrounds, responsive typography, and integrated brand partner logos (Spotify, Slack, Y Combinator, Discord).</p>
-                        
-                        <div class="btn-dual-row">
-                            <a href="https://www.figma.com/design/wSkOGliY9rXckG68lHH57h/Untitled?node-id=0-1" target="_blank" rel="noopener noreferrer" class="action-btn-green">
-                                <i class="fab fa-figma"></i>
-                                <span>Open Figma Design</span>
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                            <a href="https://my.spline.design/glassknotvortex-4pkSBEZvQ6F9ejutxt82Ryms/" target="_blank" rel="noopener noreferrer" class="action-btn-green action-btn-accent">
-                                <i class="fas fa-cubes"></i>
-                                <span>Open 3D Live Site</span>
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- COMPREHENSIVE DESIGN SYSTEM & TECHNICAL SPECIFICATIONS SECTION -->
-            <div class="details-breakdown-section">
-                <div class="breakdown-header">
-                    <i class="fas fa-sliders-h"></i>
-                    <div>
-                        <h2>Design Specifications & Technical Breakdown</h2>
-                        <p style="color: #9ca3af; margin: 4px 0 0 0; font-size: 14px;">In-depth analysis of design tokens, screen components, and 3D WebGL physics.</p>
-                    </div>
-                </div>
-
-                <div class="breakdown-grid">
-                    
-                    <div class="breakdown-box">
-                        <h3><i class="fab fa-figma"></i> Cake App Figma Design System</h3>
-                        <p>End-to-end mobile design layout created in Figma. Built with dynamic auto-layouts, custom component variants, dark mode obsidian color tokens, and accessible mobile touch targets for artisanal cake ordering.</p>
-                        <div class="tags-row">
-                            <span class="t-badge t-figma"><i class="fab fa-figma"></i> Figma Layouts</span>
-                            <span class="t-badge t-green"><i class="fas fa-layer-group"></i> Component System</span>
-                            <span class="t-badge t-green"><i class="fas fa-mobile-alt"></i> Mobile Prototype</span>
-                        </div>
-                    </div>
-
-                    <div class="breakdown-box">
-                        <h3><i class="fas fa-cubes"></i> ublobs 3D WebGL Integration</h3>
-                        <p>Custom 3D glass knot vortex model engineered using Spline 3D. Features dynamic glass refraction shaders, ambient lighting environments, responsive orbit controls, and real-time mouse physics integrated with the Figma landing page design.</p>
-                        <div class="tags-row">
-                            <span class="t-badge t-spline"><i class="fas fa-cubes"></i> Spline 3D</span>
-                            <span class="t-badge t-webgl"><i class="fas fa-globe"></i> WebGL Shaders</span>
-                            <span class="t-badge t-spline"><i class="fas fa-glass-martini-alt"></i> Glass Physics</span>
-                        </div>
-                    </div>
-
+                    <a href="https://www.figma.com/proto/MT9XuwY7MBcPT8uFWWyE7u/Untitled?node-id=0-1&t=UPiipnOm4m94NlOV-1" target="_blank" rel="noopener noreferrer" class="action-btn-green">
+                        <i class="fab fa-figma"></i>
+                        <span>Open Cake App Figma Prototype</span>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
                 </div>
             </div>
 
