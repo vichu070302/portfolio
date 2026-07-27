@@ -31,7 +31,7 @@
         .gallery-hero p { color: #9ca3af; font-size: 16px; line-height: 1.6; }
         
         /* Main Showcase Container */
-        .showcase-container { max-width: 1280px; margin: 0 auto; padding: 0 25px; position: relative; z-index: 1; }
+        .showcase-container { max-width: 1320px; margin: 0 auto; padding: 0 25px; position: relative; z-index: 1; }
         .showcase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 35px; margin-bottom: 50px; }
         
         .showcase-card { background: rgba(18, 24, 38, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease; }
@@ -46,17 +46,25 @@
         .win-dots span:nth-child(2) { background: #ffbd2e; }
         .win-dots span:nth-child(3) { background: #27c93f; }
         
-        /* Media Viewports (Expanded 450px height) */
-        .card-media-viewport { position: relative; height: 450px; background: #060a12; overflow: hidden; border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
-        .card-media-viewport img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-        .showcase-card:hover .card-media-viewport img { transform: scale(1.05); }
+        /* Single Viewport Height */
+        .card-media-viewport { position: relative; height: 460px; background: #060a12; overflow: hidden; border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
         .card-media-viewport iframe { width: 100%; height: 100%; border: none; display: block; }
+        
+        /* Merged Figma + 3D Viewport Grid for Box 2 */
+        .merged-figma-3d-grid { display: grid; grid-template-columns: 1fr 1fr; height: 460px; background: #060a12; border-bottom: 1px solid rgba(255, 255, 255, 0.06); position: relative; }
+        .merged-view-box { position: relative; height: 100%; overflow: hidden; }
+        .merged-view-box.figma-side { border-right: 1px solid rgba(255, 255, 255, 0.08); }
+        .merged-view-box iframe { width: 100%; height: 100%; border: none; display: block; }
+        .view-tag { position: absolute; top: 12px; left: 12px; z-index: 10; background: rgba(3, 9, 20, 0.85); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.12); padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 700; color: #52dc3d; display: flex; align-items: center; gap: 6px; pointer-events: none; }
         
         .card-content { padding: 28px; display: flex; flex-direction: column; flex: 1; }
         .card-title { font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 10px; }
         .card-desc { font-size: 14px; color: #9ca3af; line-height: 1.6; margin-bottom: 22px; flex: 1; }
         
-        .action-btn-green { width: 100%; background: linear-gradient(135deg, #52dc3d, #27ae60); color: #060b11; border: none; padding: 14px 24px; border-radius: 30px; font-size: 15px; font-weight: 700; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 6px 20px rgba(82, 220, 61, 0.35); transition: all 0.3s ease; box-sizing: border-box; }
+        .btn-dual-row { display: flex; gap: 12px; }
+        .btn-dual-row .action-btn-green { flex: 1; font-size: 13px; padding: 12px 14px; }
+
+        .action-btn-green { width: 100%; background: linear-gradient(135deg, #52dc3d, #27ae60); color: #060b11; border: none; padding: 14px 24px; border-radius: 30px; font-size: 14px; font-weight: 700; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 6px 20px rgba(82, 220, 61, 0.35); transition: all 0.3s ease; box-sizing: border-box; }
         .action-btn-accent { background: linear-gradient(135deg, #9b59b6, #8e44ad); color: #fff; box-shadow: 0 6px 20px rgba(155, 89, 182, 0.35); }
         .action-btn-green:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(82, 220, 61, 0.5); background: linear-gradient(135deg, #27ae60, #52dc3d); }
         .action-btn-accent:hover { box-shadow: 0 10px 28px rgba(155, 89, 182, 0.5); background: linear-gradient(135deg, #8e44ad, #9b59b6); }
@@ -80,9 +88,12 @@
         .t-green { border-color: rgba(82, 220, 61, 0.4); color: #52dc3d; }
 
         @media (max-width: 992px) {
-            .showcase-grid, .breakdown-grid { grid-template-columns: 1fr; }
+            .showcase-grid, .breakdown-grid, .merged-figma-3d-grid { grid-template-columns: 1fr; }
+            .merged-figma-3d-grid { height: auto; }
+            .merged-view-box { height: 350px; }
             .gallery-hero h1 { font-size: 30px; }
             .card-media-viewport { height: 350px; }
+            .btn-dual-row { flex-direction: column; }
         }
     </style>
 </head>
@@ -117,10 +128,10 @@
                 <!-- COLUMN 1: Full Figma UI/UX Design & Prototype -->
                 <div class="showcase-card">
                     <div class="card-top-bar">
-                        <span class="badge-figma"><i class="fab fa-figma"></i> Full Figma UI Design</span>
+                        <span class="badge-figma"><i class="fab fa-figma"></i> Cake Mobile App Figma Design</span>
                         <div class="win-dots"><span></span><span></span><span></span></div>
                     </div>
-                    <!-- Live Figma Prototype & Screen Preview Viewport -->
+                    <!-- Live Figma Prototype Viewport -->
                     <div class="card-media-viewport">
                         <iframe style="border: none;" width="100%" height="100%" src="https://embed.figma.com/proto/MT9XuwY7MBcPT8uFWWyE7u/Untitled?node-id=0-1&embed-host=share" allowfullscreen></iframe>
                     </div>
@@ -130,31 +141,49 @@
                         
                         <a href="https://www.figma.com/proto/MT9XuwY7MBcPT8uFWWyE7u/Untitled?node-id=0-1&t=UPiipnOm4m94NlOV-1" target="_blank" rel="noopener noreferrer" class="action-btn-green">
                             <i class="fab fa-figma"></i>
-                            <span>Open Full Figma Prototype</span>
+                            <span>Open Cake App Figma Prototype</span>
                             <i class="fas fa-external-link-alt"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- COLUMN 2: Real-time 3D Animation & WebGL Viewport -->
+                <!-- COLUMN 2: ublobs 3D Landing Page & Merged Figma Design -->
                 <div class="showcase-card">
                     <div class="card-top-bar">
-                        <span class="badge-3d"><i class="fas fa-cubes"></i> 3D WebGL Interface</span>
+                        <span class="badge-3d"><i class="fas fa-cubes"></i> ublobs 3D Landing Page</span>
                         <div class="win-dots"><span></span><span></span><span></span></div>
                     </div>
-                    <!-- Real-time 3D Spline Interactive Viewport -->
-                    <div class="card-media-viewport">
-                        <iframe src="https://my.spline.design/glassknotvortex-4pkSBEZvQ6F9ejutxt82Ryms/" frameborder="0" width="100%" height="100%" allow="fullscreen"></iframe>
+                    
+                    <!-- Merged Viewport Grid: Figma Design Embed on Left, Live 3D Spline Viewport on Right -->
+                    <div class="merged-figma-3d-grid">
+                        <div class="merged-view-box figma-side">
+                            <div class="view-tag"><i class="fab fa-figma"></i> Figma Design Embed</div>
+                            <!-- USER'S EXACT FIGMA DESIGN EMBED CODE -->
+                            <iframe style="border: none;" width="100%" height="100%" src="https://embed.figma.com/design/wSkOGliY9rXckG68lHH57h/Untitled?node-id=0-1&embed-host=share" allowfullscreen></iframe>
+                        </div>
+                        <div class="merged-view-box spline-side">
+                            <div class="view-tag"><i class="fas fa-cubes"></i> Live 3D Spline Model</div>
+                            <!-- EXACT SPLINE 3D EMBED CODE -->
+                            <iframe src="https://my.spline.design/glassknotvortex-4pkSBEZvQ6F9ejutxt82Ryms/" frameborder="0" width="100%" height="100%" allow="fullscreen"></iframe>
+                        </div>
                     </div>
+
                     <div class="card-content">
-                        <h2 class="card-title">3D Animation Front Page</h2>
-                        <p class="card-desc">An interactive 3D web landing page engineered around a real-time WebGL glass knot vortex shader. Features dynamic glass refraction physics, ambient lighting environments, responsive camera orbits, and tactile mouse interactions.</p>
+                        <h2 class="card-title">ublobs 3D Animation Landing Page</h2>
+                        <p class="card-desc">An interactive 3D web landing page designed in Figma and powered by a real-time WebGL glass knot vortex shader. Features dynamic glass refraction physics, ambient dark grid backgrounds, responsive typography, and integrated brand partner logos (Spotify, Slack, Y Combinator, Discord).</p>
                         
-                        <a href="https://my.spline.design/glassknotvortex-4pkSBEZvQ6F9ejutxt82Ryms/" target="_blank" rel="noopener noreferrer" class="action-btn-green action-btn-accent">
-                            <i class="fas fa-cubes"></i>
-                            <span>Open 3D Live Front Page</span>
-                            <i class="fas fa-external-link-alt"></i>
-                        </a>
+                        <div class="btn-dual-row">
+                            <a href="https://www.figma.com/design/wSkOGliY9rXckG68lHH57h/Untitled?node-id=0-1" target="_blank" rel="noopener noreferrer" class="action-btn-green">
+                                <i class="fab fa-figma"></i>
+                                <span>Open Figma Design</span>
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <a href="https://my.spline.design/glassknotvortex-4pkSBEZvQ6F9ejutxt82Ryms/" target="_blank" rel="noopener noreferrer" class="action-btn-green action-btn-accent">
+                                <i class="fas fa-cubes"></i>
+                                <span>Open 3D Live Site</span>
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -173,8 +202,8 @@
                 <div class="breakdown-grid">
                     
                     <div class="breakdown-box">
-                        <h3><i class="fab fa-figma"></i> Figma UI/UX Design System</h3>
-                        <p>End-to-end design layout created in Figma. Built with dynamic auto-layouts, custom component variants, dark mode obsidian color tokens, and accessible mobile touch targets for artisanal cake ordering.</p>
+                        <h3><i class="fab fa-figma"></i> Cake App Figma Design System</h3>
+                        <p>End-to-end mobile design layout created in Figma. Built with dynamic auto-layouts, custom component variants, dark mode obsidian color tokens, and accessible mobile touch targets for artisanal cake ordering.</p>
                         <div class="tags-row">
                             <span class="t-badge t-figma"><i class="fab fa-figma"></i> Figma Layouts</span>
                             <span class="t-badge t-green"><i class="fas fa-layer-group"></i> Component System</span>
@@ -183,8 +212,8 @@
                     </div>
 
                     <div class="breakdown-box">
-                        <h3><i class="fas fa-cubes"></i> 3D WebGL & Spline Integration</h3>
-                        <p>Custom 3D glass knot vortex model engineered using Spline 3D. Features dynamic glass refraction shaders, ambient lighting environments, responsive orbit controls, and real-time mouse physics.</p>
+                        <h3><i class="fas fa-cubes"></i> ublobs 3D WebGL Integration</h3>
+                        <p>Custom 3D glass knot vortex model engineered using Spline 3D. Features dynamic glass refraction shaders, ambient lighting environments, responsive orbit controls, and real-time mouse physics integrated with the Figma landing page design.</p>
                         <div class="tags-row">
                             <span class="t-badge t-spline"><i class="fas fa-cubes"></i> Spline 3D</span>
                             <span class="t-badge t-webgl"><i class="fas fa-globe"></i> WebGL Shaders</span>
