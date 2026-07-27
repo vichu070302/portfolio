@@ -496,16 +496,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (openModalBtn) {
         openModalBtn.addEventListener('click', (e) => {
             e.preventDefault();
+            e.stopPropagation();
             openModal();
         });
     }
 
     if (mobileAppCard) {
         mobileAppCard.addEventListener('click', (e) => {
-            // Prevent double firing if clicking directly on link
-            if (e.target.tagName !== 'A') {
-                openModal();
-            }
+            e.preventDefault();
+            openModal();
         });
     }
 

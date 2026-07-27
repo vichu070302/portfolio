@@ -1945,6 +1945,31 @@ html {
     gap: 8px;
 }
 
+.card-action-btn-green {
+    margin-top: 12px;
+    width: 100%;
+    background: linear-gradient(135deg, #52dc3d, #27ae60);
+    color: #060b11;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 25px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 4px 15px rgba(82, 220, 61, 0.35);
+    transition: all 0.3s ease;
+}
+
+.project-card:hover .card-action-btn-green {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(82, 220, 61, 0.5);
+    background: linear-gradient(135deg, #27ae60, #52dc3d);
+}
+
 /* Modal Backdrop */
 .uiux-modal-backdrop {
     position: fixed;
