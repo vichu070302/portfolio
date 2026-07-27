@@ -471,15 +471,20 @@ document.addEventListener('mousemove', (e) => {
 console.log('✨ Portfolio script loaded successfully!');
 
 // UI/UX Showcase Modal Controller
-document.addEventListener('DOMContentLoaded', () => {
-    const openModalBtn = document.getElementById('openUiUxModal');
+function initUiUxModal() {
     const mobileAppCard = document.getElementById('mobileAppUiCard');
+    const viewUiUxBtn = document.getElementById('viewUiUxBtn');
+    const openModalBtn = document.getElementById('openUiUxModal');
     const uiuxModal = document.getElementById('uiuxModal');
     const closeModalBtn = document.getElementById('closeUiUxModal');
     const detailsTabBtns = document.querySelectorAll('.details-tab-btn');
     const tabPanes = document.querySelectorAll('.tab-pane');
 
-    function openModal() {
+    function openModal(e) {
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
         if (uiuxModal) {
             uiuxModal.classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -493,29 +498,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    const viewUiUxBtn = document.getElementById('viewUiUxBtn');
-
-    if (openModalBtn) {
-        openModalBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            openModal();
-        });
+    if (viewUiUxBtn) {
+        viewUiUxBtn.addEventListener('click', openModal);
     }
 
-    if (viewUiUxBtn) {
-        viewUiUxBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            openModal();
-        });
+    if (openModalBtn) {
+        openModalBtn.addEventListener('click', openModal);
     }
 
     if (mobileAppCard) {
-        mobileAppCard.addEventListener('click', (e) => {
-            e.preventDefault();
-            openModal();
-        });
+        mobileAppCard.addEventListener('click', openModal);
     }
 
     if (closeModalBtn) {
@@ -554,5 +546,12 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
-});
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initUiUxModal);
+} else {
+    initUiUxModal();
+}
+
 
