@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI/UX & 3D Showcase | Vishnu Prasad</title>
+    <link rel="stylesheet" href="{% static 'mystyle.css' %}?v=20260727">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Standalone gallery fallback styles ensuring static server compatibility */
+        body { background-color: #030914; color: #f3f4f6; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; margin: 0; padding: 0; min-height: 100vh; }
+        .gallery-page-wrapper { position: relative; min-height: 100vh; padding-bottom: 60px; overflow-x: hidden; }
+        .gallery-nav { padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; background: rgba(3, 9, 20, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255, 255, 255, 0.08); position: sticky; top: 0; z-index: 100; }
+        .gallery-logo { font-size: 24px; font-weight: 800; color: #fff; text-decoration: none; }
+        .gallery-logo span { color: #52dc3d; }
+        .back-home-btn { background: rgba(82, 220, 61, 0.12); border: 1px solid rgba(82, 220, 61, 0.4); color: #52dc3d; padding: 10px 22px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease; }
+        .back-home-btn:hover { background: #52dc3d; color: #060b11; transform: translateX(-4px); box-shadow: 0 6px 20px rgba(82, 220, 61, 0.4); }
+        .gallery-hero { text-align: center; max-width: 800px; margin: 50px auto 40px auto; padding: 0 20px; }
+        .gallery-hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 20px; background: rgba(82, 220, 61, 0.12); border: 1px solid rgba(82, 220, 61, 0.3); color: #52dc3d; font-size: 13px; font-weight: 700; text-transform: uppercase; margin-bottom: 15px; }
+        .gallery-hero h1 { font-size: 38px; font-weight: 800; margin-bottom: 12px; line-height: 1.2; }
+        .gallery-hero h1 span { background: linear-gradient(135deg, #52dc3d, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gallery-hero p { color: #9ca3af; font-size: 16px; line-height: 1.6; }
+        
+        .two-boxes-container { max-width: 1200px; margin: 0 auto; padding: 0 25px; display: grid; grid-template-columns: 1fr 1fr; gap: 35px; }
+        .showcase-box { background: rgba(18, 24, 38, 0.7); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); }
+        .showcase-box:hover { transform: translateY(-10px) scale(1.02); border-color: rgba(82, 220, 61, 0.5); box-shadow: 0 20px 45px rgba(82, 220, 61, 0.22); }
+        .box-top-bar { padding: 16px 24px; background: rgba(0, 0, 0, 0.3); border-bottom: 1px solid rgba(255, 255, 255, 0.06); display: flex; justify-content: space-between; align-items: center; }
+        .box-badge { font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 15px; display: inline-flex; align-items: center; gap: 6px; }
+        .badge-figma { background: rgba(242, 78, 30, 0.15); color: #ff7262; border: 1px solid rgba(242, 78, 30, 0.3); }
+        .badge-3d { background: rgba(155, 89, 182, 0.2); color: #c4b5fd; border: 1px solid rgba(155, 89, 182, 0.4); }
+        
+        .box-media { position: relative; height: 340px; background: #080c14; overflow: hidden; }
+        .box-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .showcase-box:hover .box-media img { transform: scale(1.08); }
+        .box-media iframe { width: 100%; height: 100%; border: none; display: block; }
+        
+        .box-content { padding: 25px; display: flex; flex-direction: column; flex: 1; }
+        .box-title { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+        .box-desc { font-size: 14px; color: #9ca3af; line-height: 1.6; margin-bottom: 20px; flex: 1; }
+        
+        .box-action-btn { width: 100%; background: linear-gradient(135deg, #52dc3d, #27ae60); color: #060b11; border: none; padding: 14px 24px; border-radius: 30px; font-size: 15px; font-weight: 700; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 6px 20px rgba(82, 220, 61, 0.35); transition: all 0.3s ease; }
+        .box-action-btn-accent { background: linear-gradient(135deg, #9b59b6, #8e44ad); color: #fff; box-shadow: 0 6px 20px rgba(155, 89, 182, 0.35); }
+        .box-action-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(82, 220, 61, 0.5); background: linear-gradient(135deg, #27ae60, #52dc3d); }
+        .box-action-btn-accent:hover { box-shadow: 0 10px 28px rgba(155, 89, 182, 0.5); background: linear-gradient(135deg, #8e44ad, #9b59b6); }
+
+        @media (max-width: 992px) {
+            .two-boxes-container { grid-template-columns: 1fr; }
+            .gallery-hero h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="gallery-page-wrapper">
+        <!-- Top Navigation -->
+        <nav class="gallery-nav">
+            <a href="index.html" class="gallery-logo">Vishnu<span>.</span></a>
+            <a href="index.html" class="back-home-btn">
+                <i class="fas fa-arrow-left"></i> Back to Portfolio
+            </a>
+        </nav>
+
+        <!-- Gallery Hero -->
+        <div class="gallery-hero">
+            <div class="gallery-hero-badge"><i class="fas fa-layer-group"></i> Featured Portfolio Projects</div>
+            <h1>UI/UX Design & <span>3D Interactive Showcase</span></h1>
+            <p>Explore high-fidelity mobile app designs, custom Figma UI prototypes, and real-time 3D spatial web experiences built with modern WebGL technology.</p>
+        </div>
+
+        <!-- TWO SIDE-BY-SIDE PROJECT BOXES -->
+        <div class="two-boxes-container">
+            
+            <!-- BOX 1: Cake Mobile App & Figma Project -->
+            <div class="showcase-box">
+                <div class="box-top-bar">
+                    <span class="box-badge badge-figma"><i class="fab fa-figma"></i> Figma Project 01</span>
+                    <span style="color: #9ca3af; font-size: 12px;">Mobile UI Prototype</span>
+                </div>
+                <div class="box-media">
+                    <img src="{% static 'cack app.png' %}" alt="Cake Mobile App UI" onerror="this.src='static/cack app.png'">
+                </div>
+                <div class="box-content">
+                    <h2 class="box-title">Cake Mobile App UI Project</h2>
+                    <p class="box-desc">A high-fidelity mobile UI/UX prototype for an artisanal cake ordering application. Features streamlined customer checkout flows, component auto-layouts, custom wireframing, and accessible design system tokens.</p>
+                    
+                    <a href="https://www.figma.com/proto/MT9XuwY7MBcPT8uFWWyE7u/Untitled?node-id=0-1&t=UPiipnOm4m94NlOV-1" target="_blank" rel="noopener noreferrer" class="box-action-btn">
+                        <span>Open Cake App in Figma</span>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- BOX 2: 3D Animation Front Page Project -->
+            <div class="showcase-box">
+                <div class="box-top-bar">
+                    <span class="box-badge badge-3d"><i class="fas fa-cubes"></i> 3D Web Project 02</span>
+                    <span style="color: #9ca3af; font-size: 12px;">Spline 3D & WebGL</span>
+                </div>
+                <div class="box-media">
+                    <!-- EXACT SPLINE EMBED CODE -->
+                    <iframe src="https://my.spline.design/glassknotvortex-4pkSBEZvQ6F9ejutxt82Ryms/" frameborder="0" width="100%" height="100%" allow="fullscreen"></iframe>
+                </div>
+                <div class="box-content">
+                    <h2 class="box-title">3D Animation Front Page</h2>
+                    <p class="box-desc">An interactive 3D web landing page engineered around a real-time WebGL glass knot vortex shader. Features dynamic glass refraction physics, ambient lighting environments, responsive camera orbits, and tactile mouse interactions.</p>
+                    
+                    <a href="https://my.spline.design/glassknotvortex-4pkSBEZvQ6F9ejutxt82Ryms/" target="_blank" rel="noopener noreferrer" class="box-action-btn box-action-btn-accent">
+                        <span>Open 3D Front Page</span>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
