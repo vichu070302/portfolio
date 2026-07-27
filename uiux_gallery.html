@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{% static 'mystyle.css' %}?v=20260727">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Standalone gallery fallback styles ensuring static server compatibility */
+        /* Standalone gallery styles matching dark portfolio theme */
         body { background-color: #030914; color: #f3f4f6; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; margin: 0; padding: 0; min-height: 100vh; }
         .gallery-page-wrapper { position: relative; min-height: 100vh; padding-bottom: 60px; overflow-x: hidden; }
         .gallery-nav { padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; background: rgba(3, 9, 20, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255, 255, 255, 0.08); position: sticky; top: 0; z-index: 100; }
@@ -39,7 +39,10 @@
         .box-title { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 10px; }
         .box-desc { font-size: 14px; color: #9ca3af; line-height: 1.6; margin-bottom: 20px; flex: 1; }
         
-        .box-action-btn { width: 100%; background: linear-gradient(135deg, #52dc3d, #27ae60); color: #060b11; border: none; padding: 14px 24px; border-radius: 30px; font-size: 15px; font-weight: 700; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 6px 20px rgba(82, 220, 61, 0.35); transition: all 0.3s ease; }
+        .box-btn-group { display: flex; gap: 12px; }
+        .box-btn-group .box-action-btn { flex: 1; font-size: 13px; padding: 12px 14px; }
+        
+        .box-action-btn { width: 100%; background: linear-gradient(135deg, #52dc3d, #27ae60); color: #060b11; border: none; padding: 14px 24px; border-radius: 30px; font-size: 14px; font-weight: 700; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 6px 20px rgba(82, 220, 61, 0.35); transition: all 0.3s ease; box-sizing: border-box; }
         .box-action-btn-accent { background: linear-gradient(135deg, #9b59b6, #8e44ad); color: #fff; box-shadow: 0 6px 20px rgba(155, 89, 182, 0.35); }
         .box-action-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(82, 220, 61, 0.5); background: linear-gradient(135deg, #27ae60, #52dc3d); }
         .box-action-btn-accent:hover { box-shadow: 0 10px 28px rgba(155, 89, 182, 0.5); background: linear-gradient(135deg, #8e44ad, #9b59b6); }
@@ -48,6 +51,9 @@
             .two-boxes-container { grid-template-columns: 1fr; }
             .gallery-hero h1 { font-size: 28px; }
         }
+        @media (max-width: 576px) {
+            .box-btn-group { flex-direction: column; }
+        }
     </style>
 </head>
 <body>
@@ -55,8 +61,8 @@
     <div class="gallery-page-wrapper">
         <!-- Top Navigation -->
         <nav class="gallery-nav">
-            <a href="index.html" class="gallery-logo">Vishnu<span>.</span></a>
-            <a href="index.html" class="back-home-btn">
+            <a href="{% url 'portfolio:home' %}" class="gallery-logo">Vishnu<span>.</span></a>
+            <a href="{% url 'portfolio:home' %}" class="back-home-btn">
                 <i class="fas fa-arrow-left"></i> Back to Portfolio
             </a>
         </nav>
@@ -85,17 +91,18 @@
                     <p class="box-desc">A high-fidelity mobile UI/UX prototype for an artisanal cake ordering application. Features streamlined customer checkout flows, component auto-layouts, custom wireframing, and accessible design system tokens.</p>
                     
                     <a href="https://www.figma.com/proto/MT9XuwY7MBcPT8uFWWyE7u/Untitled?node-id=0-1&t=UPiipnOm4m94NlOV-1" target="_blank" rel="noopener noreferrer" class="box-action-btn">
+                        <i class="fab fa-figma"></i>
                         <span>Open Cake App in Figma</span>
                         <i class="fas fa-external-link-alt"></i>
                     </a>
                 </div>
             </div>
 
-            <!-- BOX 2: 3D Animation Front Page Project -->
+            <!-- BOX 2: 3D Animation Front Page Project (WITH BOTH FIGMA AND LIVE 3D LINKS) -->
             <div class="showcase-box">
                 <div class="box-top-bar">
                     <span class="box-badge badge-3d"><i class="fas fa-cubes"></i> 3D Web Project 02</span>
-                    <span style="color: #9ca3af; font-size: 12px;">Spline 3D & WebGL</span>
+                    <span style="color: #9ca3af; font-size: 12px;">Figma UI & Spline 3D</span>
                 </div>
                 <div class="box-media">
                     <!-- EXACT SPLINE EMBED CODE -->
@@ -103,12 +110,18 @@
                 </div>
                 <div class="box-content">
                     <h2 class="box-title">3D Animation Front Page</h2>
-                    <p class="box-desc">An interactive 3D web landing page engineered around a real-time WebGL glass knot vortex shader. Features dynamic glass refraction physics, ambient lighting environments, responsive camera orbits, and tactile mouse interactions.</p>
+                    <p class="box-desc">An interactive 3D web landing page engineered around a real-time WebGL glass knot vortex shader. Features dynamic glass refraction physics, ambient lighting environments, responsive camera orbits, and full Figma UI layout design.</p>
                     
-                    <a href="https://my.spline.design/glassknotvortex-4pkSBEZvQ6F9ejutxt82Ryms/" target="_blank" rel="noopener noreferrer" class="box-action-btn box-action-btn-accent">
-                        <span>Open 3D Front Page</span>
-                        <i class="fas fa-external-link-alt"></i>
-                    </a>
+                    <div class="box-btn-group">
+                        <a href="https://www.figma.com/proto/MT9XuwY7MBcPT8uFWWyE7u/Untitled?node-id=0-1&t=UPiipnOm4m94NlOV-1" target="_blank" rel="noopener noreferrer" class="box-action-btn">
+                            <i class="fab fa-figma"></i>
+                            <span>View Figma Prototype</span>
+                        </a>
+                        <a href="https://my.spline.design/glassknotvortex-4pkSBEZvQ6F9ejutxt82Ryms/" target="_blank" rel="noopener noreferrer" class="box-action-btn box-action-btn-accent">
+                            <i class="fas fa-cubes"></i>
+                            <span>Open 3D Live Site</span>
+                        </a>
+                    </div>
                 </div>
             </div>
 
