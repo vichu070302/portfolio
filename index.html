@@ -282,7 +282,7 @@
                     </div>
                     </a>
                 </div>
-                <div class="project-card uiux-interactive-card" id="mobileAppUiCard">
+                <div class="project-card uiux-interactive-card" id="mobileAppUiCard" onclick="openUiUxShowcaseModal(event)">
                     <div class="project-image">
                         <img src="{% static 'cack app.png' %}" alt="Cake Mobile App UI">
                     </div>
@@ -290,7 +290,7 @@
                         <span class="project-badge"><i class="fas fa-sparkles"></i> UI/UX Showcase</span>
                         <h3>Mobile App UI</h3>
                         <p>Figma, UI Design & 3D Interactive</p>
-                        <button class="card-action-btn-green" type="button" id="viewUiUxBtn">
+                        <button class="card-action-btn-green" type="button" id="viewUiUxBtn" onclick="openUiUxShowcaseModal(event)">
                             <i class="fas fa-arrow-right"></i> View UI/UX Designing
                         </button>
                     </div>
@@ -436,14 +436,14 @@
     </footer> -->
 
     <!-- UI/UX Showcase Dedicated Interactive View / Modal -->
-    <div class="uiux-modal-backdrop" id="uiuxModal">
+    <div class="uiux-modal-backdrop" id="uiuxModal" onclick="if(event.target === this) closeUiUxShowcaseModal(event)">
         <div class="uiux-modal-container">
             <div class="uiux-modal-header">
                 <div class="modal-title-group">
                     <span class="modal-pill"><i class="fas fa-palette"></i> UI/UX & 3D Interactive Showcase</span>
                     <h2>Featured UI/UX Design Projects</h2>
                 </div>
-                <button class="modal-close-btn" id="closeUiUxModal" title="Close Window">
+                <button class="modal-close-btn" id="closeUiUxModal" onclick="closeUiUxShowcaseModal(event)" title="Close Window">
                     <i class="fas fa-times"></i>
                 </button>
             </div>

@@ -470,7 +470,30 @@ document.addEventListener('mousemove', (e) => {
 
 console.log('✨ Portfolio script loaded successfully!');
 
-// UI/UX Showcase Modal Controller
+// Global UI/UX Showcase Modal Controller Functions
+window.openUiUxShowcaseModal = function(e) {
+    if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+    const modal = document.getElementById('uiuxModal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+};
+
+window.closeUiUxShowcaseModal = function(e) {
+    if (e) {
+        e.preventDefault();
+    }
+    const modal = document.getElementById('uiuxModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+};
+
 function initUiUxModal() {
     const mobileAppCard = document.getElementById('mobileAppUiCard');
     const viewUiUxBtn = document.getElementById('viewUiUxBtn');
@@ -480,45 +503,27 @@ function initUiUxModal() {
     const detailsTabBtns = document.querySelectorAll('.details-tab-btn');
     const tabPanes = document.querySelectorAll('.tab-pane');
 
-    function openModal(e) {
-        if (e) {
-            e.preventDefault();
-            e.stopPropagation();
-        }
-        if (uiuxModal) {
-            uiuxModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-    }
-
-    function closeModal() {
-        if (uiuxModal) {
-            uiuxModal.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-    }
-
     if (viewUiUxBtn) {
-        viewUiUxBtn.addEventListener('click', openModal);
+        viewUiUxBtn.addEventListener('click', window.openUiUxShowcaseModal);
     }
 
     if (openModalBtn) {
-        openModalBtn.addEventListener('click', openModal);
+        openModalBtn.addEventListener('click', window.openUiUxShowcaseModal);
     }
 
     if (mobileAppCard) {
-        mobileAppCard.addEventListener('click', openModal);
+        mobileAppCard.addEventListener('click', window.openUiUxShowcaseModal);
     }
 
     if (closeModalBtn) {
-        closeModalBtn.addEventListener('click', closeModal);
+        closeModalBtn.addEventListener('click', window.closeUiUxShowcaseModal);
     }
 
     // Close on clicking backdrop outside container
     if (uiuxModal) {
         uiuxModal.addEventListener('click', (e) => {
             if (e.target === uiuxModal) {
-                closeModal();
+                window.closeUiUxShowcaseModal(e);
             }
         });
     }
@@ -526,7 +531,7 @@ function initUiUxModal() {
     // Close on ESC key press
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && uiuxModal && uiuxModal.classList.contains('active')) {
-            closeModal();
+            window.closeUiUxShowcaseModal(e);
         }
     });
 
