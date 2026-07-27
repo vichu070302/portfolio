@@ -4,59 +4,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UI/UX & 3D Showcase | Vishnu Prasad</title>
+    <title>Comprehensive UI/UX & 3D Showcase | Vishnu Prasad</title>
     <link rel="stylesheet" href="{% static 'mystyle.css' %}?v=20260727">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Standalone gallery styles matching dark portfolio theme */
+        /* Standalone showcase styling matching dark portfolio theme */
         body { background-color: #030914; color: #f3f4f6; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; margin: 0; padding: 0; min-height: 100vh; }
-        .gallery-page-wrapper { position: relative; min-height: 100vh; padding-bottom: 60px; overflow-x: hidden; }
+        .gallery-page-wrapper { position: relative; min-height: 100vh; padding-bottom: 80px; overflow-x: hidden; }
+        
+        /* Ambient Blobs */
+        .ambient-blobs { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+        .a-blob { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.25; }
+        .a-blob-1 { width: 500px; height: 500px; background: #52dc3d; top: -100px; left: 10%; }
+        .a-blob-2 { width: 450px; height: 450px; background: #38bdf8; bottom: -50px; right: 10%; }
+        
         .gallery-nav { padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; background: rgba(3, 9, 20, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255, 255, 255, 0.08); position: sticky; top: 0; z-index: 100; }
         .gallery-logo { font-size: 24px; font-weight: 800; color: #fff; text-decoration: none; }
         .gallery-logo span { color: #52dc3d; }
         .back-home-btn { background: rgba(82, 220, 61, 0.12); border: 1px solid rgba(82, 220, 61, 0.4); color: #52dc3d; padding: 10px 22px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease; }
         .back-home-btn:hover { background: #52dc3d; color: #060b11; transform: translateX(-4px); box-shadow: 0 6px 20px rgba(82, 220, 61, 0.4); }
-        .gallery-hero { text-align: center; max-width: 800px; margin: 50px auto 40px auto; padding: 0 20px; }
+        
+        .gallery-hero { text-align: center; max-width: 900px; margin: 40px auto 35px auto; padding: 0 20px; position: relative; z-index: 1; }
         .gallery-hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 20px; background: rgba(82, 220, 61, 0.12); border: 1px solid rgba(82, 220, 61, 0.3); color: #52dc3d; font-size: 13px; font-weight: 700; text-transform: uppercase; margin-bottom: 15px; }
-        .gallery-hero h1 { font-size: 38px; font-weight: 800; margin-bottom: 12px; line-height: 1.2; }
-        .gallery-hero h1 span { background: linear-gradient(135deg, #52dc3d, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gallery-hero h1 { font-size: 40px; font-weight: 800; margin-bottom: 12px; line-height: 1.2; }
+        .gallery-hero h1 span { background: linear-gradient(135deg, #52dc3d, #38bdf8, #c4b5fd); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .gallery-hero p { color: #9ca3af; font-size: 16px; line-height: 1.6; }
         
-        .two-boxes-container { max-width: 1200px; margin: 0 auto; padding: 0 25px; display: grid; grid-template-columns: 1fr 1fr; gap: 35px; }
-        .showcase-box { background: rgba(18, 24, 38, 0.7); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); }
-        .showcase-box:hover { transform: translateY(-10px) scale(1.02); border-color: rgba(82, 220, 61, 0.5); box-shadow: 0 20px 45px rgba(82, 220, 61, 0.22); }
-        .box-top-bar { padding: 16px 24px; background: rgba(0, 0, 0, 0.3); border-bottom: 1px solid rgba(255, 255, 255, 0.06); display: flex; justify-content: space-between; align-items: center; }
-        .box-badge { font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 15px; display: inline-flex; align-items: center; gap: 6px; }
-        .badge-figma { background: rgba(242, 78, 30, 0.15); color: #ff7262; border: 1px solid rgba(242, 78, 30, 0.3); }
-        .badge-3d { background: rgba(155, 89, 182, 0.2); color: #c4b5fd; border: 1px solid rgba(155, 89, 182, 0.4); }
+        /* Main Showcase Container */
+        .showcase-container { max-width: 1280px; margin: 0 auto; padding: 0 25px; position: relative; z-index: 1; }
+        .showcase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 35px; margin-bottom: 50px; }
         
-        .box-media { position: relative; height: 340px; background: #080c14; overflow: hidden; }
-        .box-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-        .showcase-box:hover .box-media img { transform: scale(1.08); }
-        .box-media iframe { width: 100%; height: 100%; border: none; display: block; }
+        .showcase-card { background: rgba(18, 24, 38, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease; }
+        .showcase-card:hover { border-color: rgba(82, 220, 61, 0.5); box-shadow: 0 20px 45px rgba(82, 220, 61, 0.22); }
         
-        .box-content { padding: 25px; display: flex; flex-direction: column; flex: 1; }
-        .box-title { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 10px; }
-        .box-desc { font-size: 14px; color: #9ca3af; line-height: 1.6; margin-bottom: 20px; flex: 1; }
+        .card-top-bar { padding: 16px 24px; background: rgba(0, 0, 0, 0.35); border-bottom: 1px solid rgba(255, 255, 255, 0.06); display: flex; justify-content: space-between; align-items: center; }
+        .badge-figma { background: rgba(242, 78, 30, 0.15); color: #ff7262; border: 1px solid rgba(242, 78, 30, 0.3); padding: 4px 12px; border-radius: 15px; font-size: 12px; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
+        .badge-3d { background: rgba(155, 89, 182, 0.2); color: #c4b5fd; border: 1px solid rgba(155, 89, 182, 0.4); padding: 4px 12px; border-radius: 15px; font-size: 12px; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
+        .win-dots { display: flex; gap: 6px; }
+        .win-dots span { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.2); }
+        .win-dots span:nth-child(1) { background: #ff5f56; }
+        .win-dots span:nth-child(2) { background: #ffbd2e; }
+        .win-dots span:nth-child(3) { background: #27c93f; }
         
-        .box-btn-group { display: flex; gap: 12px; }
-        .box-btn-group .box-action-btn { flex: 1; font-size: 13px; padding: 12px 14px; }
+        /* Media Viewports (Expanded 450px height) */
+        .card-media-viewport { position: relative; height: 450px; background: #060a12; overflow: hidden; border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
+        .card-media-viewport img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .showcase-card:hover .card-media-viewport img { transform: scale(1.05); }
+        .card-media-viewport iframe { width: 100%; height: 100%; border: none; display: block; }
         
-        .box-action-btn { width: 100%; background: linear-gradient(135deg, #52dc3d, #27ae60); color: #060b11; border: none; padding: 14px 24px; border-radius: 30px; font-size: 14px; font-weight: 700; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 6px 20px rgba(82, 220, 61, 0.35); transition: all 0.3s ease; box-sizing: border-box; }
-        .box-action-btn-accent { background: linear-gradient(135deg, #9b59b6, #8e44ad); color: #fff; box-shadow: 0 6px 20px rgba(155, 89, 182, 0.35); }
-        .box-action-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(82, 220, 61, 0.5); background: linear-gradient(135deg, #27ae60, #52dc3d); }
-        .box-action-btn-accent:hover { box-shadow: 0 10px 28px rgba(155, 89, 182, 0.5); background: linear-gradient(135deg, #8e44ad, #9b59b6); }
+        .card-content { padding: 28px; display: flex; flex-direction: column; flex: 1; }
+        .card-title { font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+        .card-desc { font-size: 14px; color: #9ca3af; line-height: 1.6; margin-bottom: 22px; flex: 1; }
+        
+        .action-btn-green { width: 100%; background: linear-gradient(135deg, #52dc3d, #27ae60); color: #060b11; border: none; padding: 14px 24px; border-radius: 30px; font-size: 15px; font-weight: 700; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 6px 20px rgba(82, 220, 61, 0.35); transition: all 0.3s ease; box-sizing: border-box; }
+        .action-btn-accent { background: linear-gradient(135deg, #9b59b6, #8e44ad); color: #fff; box-shadow: 0 6px 20px rgba(155, 89, 182, 0.35); }
+        .action-btn-green:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(82, 220, 61, 0.5); background: linear-gradient(135deg, #27ae60, #52dc3d); }
+        .action-btn-accent:hover { box-shadow: 0 10px 28px rgba(155, 89, 182, 0.5); background: linear-gradient(135deg, #8e44ad, #9b59b6); }
+
+        /* Full Details Breakdown Section */
+        .details-breakdown-section { background: rgba(18, 24, 38, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px; padding: 35px; margin-top: 20px; }
+        .breakdown-header { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+        .breakdown-header i { font-size: 26px; color: #52dc3d; }
+        .breakdown-header h2 { font-size: 24px; font-weight: 700; margin: 0; color: #fff; }
+        
+        .breakdown-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .breakdown-box { background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 16px; padding: 22px; }
+        .breakdown-box h3 { font-size: 18px; color: #52dc3d; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .breakdown-box p { font-size: 14px; color: #9ca3af; line-height: 1.6; margin-bottom: 15px; }
+        
+        .tags-row { display: flex; flex-wrap: wrap; gap: 8px; }
+        .t-badge { padding: 5px 12px; border-radius: 16px; font-size: 12px; font-weight: 600; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); color: #fff; display: inline-flex; align-items: center; gap: 6px; }
+        .t-figma { border-color: rgba(242, 78, 30, 0.4); color: #ff7262; }
+        .t-spline { border-color: rgba(155, 89, 182, 0.4); color: #c4b5fd; }
+        .t-webgl { border-color: rgba(56, 189, 248, 0.4); color: #38bdf8; }
+        .t-green { border-color: rgba(82, 220, 61, 0.4); color: #52dc3d; }
 
         @media (max-width: 992px) {
-            .two-boxes-container { grid-template-columns: 1fr; }
-            .gallery-hero h1 { font-size: 28px; }
-        }
-        @media (max-width: 576px) {
-            .box-btn-group { flex-direction: column; }
+            .showcase-grid, .breakdown-grid { grid-template-columns: 1fr; }
+            .gallery-hero h1 { font-size: 30px; }
+            .card-media-viewport { height: 350px; }
         }
     </style>
 </head>
 <body>
+
+    <div class="ambient-blobs">
+        <div class="a-blob a-blob-1"></div>
+        <div class="a-blob a-blob-2"></div>
+    </div>
 
     <div class="gallery-page-wrapper">
         <!-- Top Navigation -->
@@ -69,54 +104,94 @@
 
         <!-- Gallery Hero -->
         <div class="gallery-hero">
-            <div class="gallery-hero-badge"><i class="fas fa-layer-group"></i> Featured Portfolio Projects</div>
-            <h1>UI/UX Design & <span>3D Interactive Showcase</span></h1>
-            <p>Explore high-fidelity mobile app designs, custom Figma UI prototypes, and real-time 3D spatial web experiences built with modern WebGL technology.</p>
+            <div class="gallery-hero-badge"><i class="fas fa-layer-group"></i> Comprehensive Project Showcase</div>
+            <h1>Full Figma Design & <span>3D Animation Showcase</span></h1>
+            <p>Explore the complete layout details, interactive Figma mobile app screens, and real-time WebGL 3D glass knot vortex model integrated into a unified scrollable experience.</p>
         </div>
 
-        <!-- TWO SIDE-BY-SIDE PROJECT BOXES -->
-        <div class="two-boxes-container">
+        <div class="showcase-container">
             
-            <!-- BOX 1: Cake Mobile App & Figma Project -->
-            <div class="showcase-box">
-                <div class="box-top-bar">
-                    <span class="box-badge badge-figma"><i class="fab fa-figma"></i> Figma Project 01</span>
-                    <span style="color: #9ca3af; font-size: 12px;">Mobile UI Prototype</span>
+            <!-- MAIN 2-COLUMN SHOWCASE GRID -->
+            <div class="showcase-grid">
+                
+                <!-- COLUMN 1: Full Figma UI/UX Design & Prototype -->
+                <div class="showcase-card">
+                    <div class="card-top-bar">
+                        <span class="badge-figma"><i class="fab fa-figma"></i> Full Figma UI Design</span>
+                        <div class="win-dots"><span></span><span></span><span></span></div>
+                    </div>
+                    <!-- Live Figma Prototype & Screen Preview Viewport -->
+                    <div class="card-media-viewport">
+                        <iframe style="border: none;" width="100%" height="100%" src="https://embed.figma.com/proto/MT9XuwY7MBcPT8uFWWyE7u/Untitled?node-id=0-1&embed-host=share" allowfullscreen></iframe>
+                    </div>
+                    <div class="card-content">
+                        <h2 class="card-title">Cake Mobile App UI Design</h2>
+                        <p class="card-desc">Complete mobile user experience featuring customer ordering flows, component auto-layouts, custom wireframing, and accessible design system tokens. Interact directly with the Figma prototype above.</p>
+                        
+                        <a href="https://www.figma.com/proto/MT9XuwY7MBcPT8uFWWyE7u/Untitled?node-id=0-1&t=UPiipnOm4m94NlOV-1" target="_blank" rel="noopener noreferrer" class="action-btn-green">
+                            <i class="fab fa-figma"></i>
+                            <span>Open Full Figma Prototype</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="box-media">
-                    <img src="{% static 'cack app.png' %}" alt="Cake Mobile App UI" onerror="this.src='static/cack app.png'">
+
+                <!-- COLUMN 2: Real-time 3D Animation & WebGL Viewport -->
+                <div class="showcase-card">
+                    <div class="card-top-bar">
+                        <span class="badge-3d"><i class="fas fa-cubes"></i> 3D WebGL Interface</span>
+                        <div class="win-dots"><span></span><span></span><span></span></div>
+                    </div>
+                    <!-- Real-time 3D Spline Interactive Viewport -->
+                    <div class="card-media-viewport">
+                        <iframe src="https://my.spline.design/glassknotvortex-4pkSBEZvQ6F9ejutxt82Ryms/" frameborder="0" width="100%" height="100%" allow="fullscreen"></iframe>
+                    </div>
+                    <div class="card-content">
+                        <h2 class="card-title">3D Animation Front Page</h2>
+                        <p class="card-desc">An interactive 3D web landing page engineered around a real-time WebGL glass knot vortex shader. Features dynamic glass refraction physics, ambient lighting environments, responsive camera orbits, and tactile mouse interactions.</p>
+                        
+                        <a href="https://my.spline.design/glassknotvortex-4pkSBEZvQ6F9ejutxt82Ryms/" target="_blank" rel="noopener noreferrer" class="action-btn-green action-btn-accent">
+                            <i class="fas fa-cubes"></i>
+                            <span>Open 3D Live Front Page</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="box-content">
-                    <h2 class="box-title">Cake Mobile App UI Project</h2>
-                    <p class="box-desc">A high-fidelity mobile UI/UX prototype for an artisanal cake ordering application. Features streamlined customer checkout flows, component auto-layouts, custom wireframing, and accessible design system tokens.</p>
-                    
-                    <a href="https://www.figma.com/proto/MT9XuwY7MBcPT8uFWWyE7u/Untitled?node-id=0-1&t=UPiipnOm4m94NlOV-1" target="_blank" rel="noopener noreferrer" class="box-action-btn">
-                        <i class="fab fa-figma"></i>
-                        <span>Open Cake App in Figma</span>
-                        <i class="fas fa-external-link-alt"></i>
-                    </a>
-                </div>
+
             </div>
 
-            <!-- BOX 2: 3D Animation Front Page Project -->
-            <div class="showcase-box">
-                <div class="box-top-bar">
-                    <span class="box-badge badge-3d"><i class="fas fa-cubes"></i> 3D Web Project 02</span>
-                    <span style="color: #9ca3af; font-size: 12px;">Spline 3D & WebGL</span>
+            <!-- COMPREHENSIVE DESIGN SYSTEM & TECHNICAL SPECIFICATIONS SECTION -->
+            <div class="details-breakdown-section">
+                <div class="breakdown-header">
+                    <i class="fas fa-sliders-h"></i>
+                    <div>
+                        <h2>Design Specifications & Technical Breakdown</h2>
+                        <p style="color: #9ca3af; margin: 4px 0 0 0; font-size: 14px;">In-depth analysis of design tokens, screen components, and 3D WebGL physics.</p>
+                    </div>
                 </div>
-                <div class="box-media">
-                    <!-- EXACT SPLINE EMBED CODE -->
-                    <iframe src="https://my.spline.design/glassknotvortex-4pkSBEZvQ6F9ejutxt82Ryms/" frameborder="0" width="100%" height="100%" allow="fullscreen"></iframe>
-                </div>
-                <div class="box-content">
-                    <h2 class="box-title">3D Animation Front Page</h2>
-                    <p class="box-desc">An interactive 3D web landing page engineered around a real-time WebGL glass knot vortex shader. Features dynamic glass refraction physics, ambient lighting environments, responsive camera orbits, and tactile mouse interactions.</p>
+
+                <div class="breakdown-grid">
                     
-                    <a href="https://my.spline.design/glassknotvortex-4pkSBEZvQ6F9ejutxt82Ryms/" target="_blank" rel="noopener noreferrer" class="box-action-btn box-action-btn-accent">
-                        <i class="fas fa-cubes"></i>
-                        <span>Open 3D Front Page</span>
-                        <i class="fas fa-external-link-alt"></i>
-                    </a>
+                    <div class="breakdown-box">
+                        <h3><i class="fab fa-figma"></i> Figma UI/UX Design System</h3>
+                        <p>End-to-end design layout created in Figma. Built with dynamic auto-layouts, custom component variants, dark mode obsidian color tokens, and accessible mobile touch targets for artisanal cake ordering.</p>
+                        <div class="tags-row">
+                            <span class="t-badge t-figma"><i class="fab fa-figma"></i> Figma Layouts</span>
+                            <span class="t-badge t-green"><i class="fas fa-layer-group"></i> Component System</span>
+                            <span class="t-badge t-green"><i class="fas fa-mobile-alt"></i> Mobile Prototype</span>
+                        </div>
+                    </div>
+
+                    <div class="breakdown-box">
+                        <h3><i class="fas fa-cubes"></i> 3D WebGL & Spline Integration</h3>
+                        <p>Custom 3D glass knot vortex model engineered using Spline 3D. Features dynamic glass refraction shaders, ambient lighting environments, responsive orbit controls, and real-time mouse physics.</p>
+                        <div class="tags-row">
+                            <span class="t-badge t-spline"><i class="fas fa-cubes"></i> Spline 3D</span>
+                            <span class="t-badge t-webgl"><i class="fas fa-globe"></i> WebGL Shaders</span>
+                            <span class="t-badge t-spline"><i class="fas fa-glass-martini-alt"></i> Glass Physics</span>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
