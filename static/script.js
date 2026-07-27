@@ -469,3 +469,81 @@ document.addEventListener('mousemove', (e) => {
 });
 
 console.log('✨ Portfolio script loaded successfully!');
+
+// UI/UX Showcase Modal Controller
+document.addEventListener('DOMContentLoaded', () => {
+    const openModalBtn = document.getElementById('openUiUxModal');
+    const mobileAppCard = document.getElementById('mobileAppUiCard');
+    const uiuxModal = document.getElementById('uiuxModal');
+    const closeModalBtn = document.getElementById('closeUiUxModal');
+    const detailsTabBtns = document.querySelectorAll('.details-tab-btn');
+    const tabPanes = document.querySelectorAll('.tab-pane');
+
+    function openModal() {
+        if (uiuxModal) {
+            uiuxModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    function closeModal() {
+        if (uiuxModal) {
+            uiuxModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+
+    if (openModalBtn) {
+        openModalBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal();
+        });
+    }
+
+    if (mobileAppCard) {
+        mobileAppCard.addEventListener('click', (e) => {
+            // Prevent double firing if clicking directly on link
+            if (e.target.tagName !== 'A') {
+                openModal();
+            }
+        });
+    }
+
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', closeModal);
+    }
+
+    // Close on clicking backdrop outside container
+    if (uiuxModal) {
+        uiuxModal.addEventListener('click', (e) => {
+            if (e.target === uiuxModal) {
+                closeModal();
+            }
+        });
+    }
+
+    // Close on ESC key press
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && uiuxModal && uiuxModal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    // Details Tab Switcher
+    detailsTabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            detailsTabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const targetTab = btn.getAttribute('data-tab');
+            tabPanes.forEach(pane => {
+                if (pane.id === targetTab) {
+                    pane.classList.add('active');
+                } else {
+                    pane.classList.remove('active');
+                }
+            });
+        });
+    });
+});
+

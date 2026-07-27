@@ -282,15 +282,18 @@
                     </div>
                     </a>
                 </div>
-                <div class="project-card">
-                     <a href="https://www.figma.com/proto/MT9XuwY7MBcPT8uFWWyE7u/Untitled?node-id=0-1&t=UPiipnOm4m94NlOV-1" target="blank" rel="noopener noreferrer"  class="project-card-link">
+                <div class="project-card" id="mobileAppUiCard">
+                     <a href="javascript:void(0)" class="project-card-link" id="openUiUxModal">
                     <div class="project-image">
                         <img src="{% static 'cack app.png' %}" alt="Cake Mobile App UI">
+                        <div class="project-card-overlay">
+                            <span class="open-modal-btn"><i class="fas fa-expand"></i> View UI/UX & 3D Showcase</span>
+                        </div>
                     </div>
                     <div class="project-info">
-                        <!-- <span class="project-badge">UI/UX</span> -->
+                        <span class="project-badge"><i class="fas fa-sparkles"></i> UI/UX Showcase</span>
                         <h3>Mobile App UI</h3>
-                        <p>Figma, UI Design</p>
+                        <p>Figma, UI Design & 3D Interactive (Click to View)</p>
                     </div>
                     </a>
                 </div>
@@ -433,6 +436,147 @@
             <p>Designed with <i class="fas fa-heart"></i> by Jakso</p>
         </div>
     </footer> -->
+
+    <!-- UI/UX Showcase Interactive Modal -->
+    <div class="uiux-modal-backdrop" id="uiuxModal">
+        <div class="uiux-modal-container">
+            <div class="uiux-modal-header">
+                <div class="modal-title-group">
+                    <span class="modal-pill"><i class="fas fa-palette"></i> UI/UX & 3D Interactive Showcase</span>
+                    <h2>Featured Design Projects</h2>
+                </div>
+                <button class="modal-close-btn" id="closeUiUxModal" title="Close Modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="uiux-modal-body">
+                <!-- Two Side-by-Side Columns for Projects -->
+                <div class="modal-columns-grid">
+                    
+                    <!-- FIRST COLUMN: Previous UI/UX Project -->
+                    <div class="modal-column column-left">
+                        <div class="column-header">
+                            <span class="col-badge prev-col-badge"><i class="fas fa-history"></i> Previous UI/UX Project</span>
+                            <h3>Cake Mobile App & Figma Design System</h3>
+                        </div>
+                        <div class="column-preview-box">
+                            <div class="preview-toolbar">
+                                <div class="toolbar-dots"><span></span><span></span><span></span></div>
+                                <span class="toolbar-label">Figma Interactive Prototype</span>
+                            </div>
+                            <div class="preview-img-wrapper">
+                                <img src="{% static 'cack app.png' %}" alt="Cake Mobile App UI Overview">
+                                <div class="preview-hover-overlay">
+                                    <a href="https://www.figma.com/proto/MT9XuwY7MBcPT8uFWWyE7u/Untitled?node-id=0-1&t=UPiipnOm4m94NlOV-1" target="_blank" rel="noopener noreferrer" class="figma-link-btn">
+                                        <i class="fab fa-figma"></i> Open Prototype in Figma
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECOND COLUMN: Latest Project (3D Website Landing Page with EXACT Spline Embed Code) -->
+                    <div class="modal-column column-right">
+                        <div class="column-header">
+                            <span class="col-badge latest-col-badge"><i class="fas fa-cubes"></i> New Project: 3D Landing Page</span>
+                            <h3>Glass Knot Vortex 3D Experience</h3>
+                        </div>
+                        <div class="spline-modal-viewport">
+                            <!-- EXACT EMBED CODE REQUIRED BY USER -->
+                            <iframe src='https://my.spline.design/glassknotvortex-4pkSBEZvQ6F9ejutxt82Ryms/' frameborder='0' width='100%' height='100%' allow="fullscreen"></iframe>
+                            <div class="spline-hint-overlay">
+                                <i class="fas fa-hand-pointer"></i> 100% Interactive 3D Model (Drag to Rotate & Scroll)
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- PROJECT DETAILS & TOOLS USED SECTION (Right below the two columns) -->
+                <div class="modal-details-box">
+                    <div class="details-box-header">
+                        <div class="details-title-row">
+                            <i class="fas fa-sliders-h details-icon"></i>
+                            <div>
+                                <h3>Project Specifications & Tool Details</h3>
+                                <p>Comprehensive design breakdown and technological stack for both works.</p>
+                            </div>
+                        </div>
+                        <div class="details-tab-nav">
+                            <button class="details-tab-btn active" data-tab="tab-prev">Previous UI/UX</button>
+                            <button class="details-tab-btn" data-tab="tab-latest">New 3D Project</button>
+                            <button class="details-tab-btn" data-tab="tab-compare">Compare Both</button>
+                        </div>
+                    </div>
+
+                    <div class="details-tab-content">
+                        
+                        <!-- Previous UI/UX Project Details -->
+                        <div class="tab-pane active" id="tab-prev">
+                            <div class="pane-grid">
+                                <div class="pane-item">
+                                    <h4><i class="fas fa-mobile-alt"></i> Project Title & Overview</h4>
+                                    <p class="pane-proj-title">Cake Mobile App UI / UX Design</p>
+                                    <p class="pane-text">Designed a modern mobile food-ordering interface for custom artisanal cakes. Focused on streamlined customer ordering flows, component auto-layout design systems, intuitive visual hierarchy, and accessible mobile interactions.</p>
+                                </div>
+                                <div class="pane-item">
+                                    <h4><i class="fas fa-tools"></i> Tools & Technologies Used</h4>
+                                    <div class="tool-tags-container">
+                                        <span class="tool-badge figma-badge"><i class="fab fa-figma"></i> Figma</span>
+                                        <span class="tool-badge xd-badge"><i class="fas fa-pen-nib"></i> Adobe XD</span>
+                                        <span class="tool-badge ps-badge"><i class="fas fa-image"></i> Photoshop</span>
+                                        <span class="tool-badge proto-badge"><i class="fas fa-mobile"></i> Mobile Prototyping</span>
+                                        <span class="tool-badge ux-badge"><i class="fas fa-users"></i> Wireframing & UX Research</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- New 3D Project Details -->
+                        <div class="tab-pane" id="tab-latest">
+                            <div class="pane-grid">
+                                <div class="pane-item">
+                                    <h4><i class="fas fa-cube"></i> Project Title & Overview</h4>
+                                    <p class="pane-proj-title">Glass Knot Vortex 3D Landing Page</p>
+                                    <p class="pane-text">Created a high-impact, spatial web landing page featuring a real-time WebGL 3D glass knot vortex model. Implemented dynamic refraction material physics, ambient lighting environments, responsive camera orbits, and interactive mouse-drag interactions.</p>
+                                </div>
+                                <div class="pane-item">
+                                    <h4><i class="fas fa-tools"></i> Tools & Technologies Used</h4>
+                                    <div class="tool-tags-container">
+                                        <span class="tool-badge spline-badge"><i class="fas fa-cubes"></i> Spline 3D</span>
+                                        <span class="tool-badge webgl-badge"><i class="fas fa-globe"></i> WebGL / Three.js</span>
+                                        <span class="tool-badge figma-badge"><i class="fab fa-figma"></i> Figma 3D Layout</span>
+                                        <span class="tool-badge html-badge"><i class="fab fa-html5"></i> HTML5 Canvas Embed</span>
+                                        <span class="tool-badge css-badge"><i class="fab fa-css3-alt"></i> CSS 3D Animations</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Comparison Details -->
+                        <div class="tab-pane" id="tab-compare">
+                            <div class="comparison-row">
+                                <div class="comp-box">
+                                    <h5>Previous UI/UX Project</h5>
+                                    <p><strong>Focus:</strong> Mobile User Interface, Figma Design Systems & User Flows</p>
+                                    <p><strong>Primary Tools:</strong> Figma, Adobe XD, Photoshop</p>
+                                </div>
+                                <div class="comp-vs">VS</div>
+                                <div class="comp-box highlight-comp">
+                                    <h5>New 3D Landing Page</h5>
+                                    <p><strong>Focus:</strong> Spatial Web Design, Real-time 3D Rendering & Mouse Physics</p>
+                                    <p><strong>Primary Tools:</strong> Spline 3D, WebGL, HTML5/CSS3</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
     <script src="{% static 'script.js' %}"></script>
 </body>
