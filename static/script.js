@@ -553,10 +553,85 @@ function initUiUxModal() {
     });
 }
 
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initUiUxModal);
-} else {
+// ==========================================================================
+// INTERACTIVE SCROLL ANIMATIONS, REVEALS & 3D MOUSE TILT CONTROLLER
+// ==========================================================================
+
+// 1. Top Scroll Reading Progress Bar
+function updateScrollProgress() {
+    const progressBar = document.getElementById('scrollProgressBar');
+    if (!progressBar) return;
+    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    if (scrollHeight > 0) {
+        const scrollPercentage = (scrollTop / scrollHeight) * 100;
+        progressBar.style.width = scrollPercentage + '%';
+    }
+}
+window.addEventListener('scroll', updateScrollProgress);
+
+// 2. IntersectionObserver Scroll Reveal Controller
+function initScrollReveal() {
+    const revealTargets = document.querySelectorAll(
+        '.section-title, .project-card, .skill-card, .service-card, .about-content, .contact-item, .hero-content, .hero-image'
+    );
+
+    revealTargets.forEach((el, index) => {
+        if (!el.classList.contains('reveal-on-scroll')) {
+            el.classList.add('reveal-on-scroll');
+        }
+        // Stagger grid items dynamically
+        const delay = (index % 3) * 0.12;
+        el.style.transitionDelay = `${delay}s`;
+    });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('scroll-reveal-active');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealTargets.forEach(el => revealObserver.observe(el));
+}
+
+// 3. Interactive 3D Card Mouse Tilt Tracking
+function init3DTilt() {
+    const cards = document.querySelectorAll('.project-card, .skill-card, .service-card');
+    cards.forEach(card => {
+        card.classList.add('tilt-card');
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = ((y - centerY) / centerY) * -7;
+            const rotateY = ((x - centerX) / centerX) * 7;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+        });
+    });
+}
+
+function initAllScrollAnimations() {
     initUiUxModal();
+    initScrollReveal();
+    init3DTilt();
+    updateScrollProgress();
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAllScrollAnimations);
+} else {
+    initAllScrollAnimations();
 }
 
 

@@ -2660,4 +2660,72 @@ img, iframe, svg, video {
     }
 }
 
+/* ==========================================================================
+   INTERACTIVE SCROLL ANIMATIONS, REVEALS & 3D TILT SYSTEM
+   ========================================================================== */
+
+/* Top Scroll Progress Indicator */
+.scroll-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3.5px;
+    width: 0%;
+    background: linear-gradient(90deg, #52dc3d 0%, #38bdf8 50%, #9b59b6 100%);
+    z-index: 999999;
+    transition: width 0.15s ease-out;
+    box-shadow: 0 0 12px rgba(82, 220, 61, 0.8), 0 0 20px rgba(56, 189, 248, 0.5);
+    border-radius: 0 2px 2px 0;
+}
+
+/* Scroll Reveal Base Animations */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(45px) scale(0.96);
+    filter: blur(8px);
+    will-change: opacity, transform, filter;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-slide-left {
+    opacity: 0;
+    transform: translateX(-60px);
+    filter: blur(6px);
+    will-change: opacity, transform, filter;
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
+                filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-slide-right {
+    opacity: 0;
+    transform: translateX(60px);
+    filter: blur(6px);
+    will-change: opacity, transform, filter;
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
+                filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Scroll Active State Triggered by IntersectionObserver */
+.scroll-reveal-active {
+    opacity: 1 !important;
+    transform: translate(0, 0) scale(1) !important;
+    filter: blur(0) !important;
+}
+
+/* 3D Tilt Card Motion */
+.tilt-card {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    transition: transform 0.15s ease-out, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.tilt-card:hover {
+    box-shadow: 0 20px 40px rgba(82, 220, 61, 0.22);
+}
+
+
 
