@@ -493,8 +493,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    const viewUiUxBtn = document.getElementById('viewUiUxBtn');
+
     if (openModalBtn) {
         openModalBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            openModal();
+        });
+    }
+
+    if (viewUiUxBtn) {
+        viewUiUxBtn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
             openModal();
