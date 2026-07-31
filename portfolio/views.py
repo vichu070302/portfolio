@@ -9,3 +9,9 @@ def home(request):
 def uiux_gallery(request):
     """Render the UI/UX gallery page."""
     return render(request, "uiux_gallery.html")
+
+
+def ecommerce_gallery(request):
+    """Render the E-commerce gallery page."""
+    return render(request, "ecommerce_gallery.html")
+

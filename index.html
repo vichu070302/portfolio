@@ -30,7 +30,7 @@
                 </a>
                 <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button>
             </div>
-            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+            <div class="hamburger" id="hamburger" onclick="toggleMobileMenu(event)"><span></span><span></span><span></span></div>
         </div>
     </nav>
     <!-- Hero Section -->
@@ -274,16 +274,19 @@
                 <p>Featured Projects</p>
             </div>
             <div class="projects-grid">
-                <div class="project-card">
-                      <a href="https://jakso.pythonanywhere.com" target="blank" rel="noopener noreferrer" class="project-card-link">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1600298881974-6be191ceeda1?w=400&h=300&fit=crop" alt="Woodland E-commerce">
-                    </div>
-                    <div class="project-info">
-                        <!-- <span class="project-badge">🏆 Featured</span> -->
-                        <h3>Jakso E-commerce</h3>
-                        <p>Django, Python, Bootstrap, JS</p>
-                    </div>
+                <div class="project-card" id="ecommerceCard">
+                    <a href="{% url 'portfolio:ecommerce_gallery' %}" target="_blank" rel="noopener noreferrer" class="project-card-link">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1600298881974-6be191ceeda1?w=400&h=300&fit=crop" alt="E-commerce Projects">
+                        </div>
+                        <div class="project-info">
+                            <span class="project-badge"><i class="fas fa-shopping-cart"></i> E-commerce Showcase</span>
+                            <h3>Jakso & Lumina E-commerce</h3>
+                            <p>Django, Python, JS & Lumina Furniture</p>
+                            <span class="card-action-btn-green">
+                                <i class="fas fa-arrow-right"></i> View E-commerce Projects
+                            </span>
+                        </div>
                     </a>
                 </div>
                 <div class="project-card" id="mobileAppUiCard">
