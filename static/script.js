@@ -52,36 +52,45 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Theme Toggle (Moon / Sun Button)
-const themeToggle = document.getElementById('themeToggle');
-const htmlElement = document.documentElement;
+function initThemeToggle() {
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const htmlElement = document.documentElement;
 
-// Initialize saved theme preference or default to dark
-const savedTheme = localStorage.getItem('theme') || 'dark';
-htmlElement.setAttribute('data-theme', savedTheme);
-updateThemeIcon(savedTheme);
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    htmlElement.setAttribute('data-theme', savedTheme);
 
-if (themeToggle) {
-    themeToggle.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        const currentTheme = htmlElement.getAttribute('data-theme') || 'dark';
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        htmlElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        updateThemeIcon(newTheme);
-    });
-}
-
-function updateThemeIcon(theme) {
-    if (!themeToggle) return;
-    const icon = themeToggle.querySelector('i');
-    if (icon) {
-        if (theme === 'dark') {
-            icon.className = 'fas fa-moon';
-        } else {
-            icon.className = 'fas fa-sun';
+    function updateThemeIcon(theme) {
+        const btn = document.getElementById('themeToggle');
+        if (!btn) return;
+        const icon = btn.querySelector('i');
+        if (icon) {
+            if (theme === 'dark') {
+                icon.className = 'fas fa-moon';
+            } else {
+                icon.className = 'fas fa-sun';
+            }
         }
     }
+
+    updateThemeIcon(savedTheme);
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const currentTheme = htmlElement.getAttribute('data-theme') || 'dark';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+    }
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initThemeToggle);
+} else {
+    initThemeToggle();
 }
 
 // Enhanced Navbar class on scroll (without hardcoding inline dark background)
