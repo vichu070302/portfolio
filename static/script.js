@@ -22,25 +22,30 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// Close menu when a link is clicked
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.querySelector('.nav-menu');
-        if (hamburger) hamburger.classList.remove('active');
-        if (navMenu) navMenu.classList.remove('active');
-    });
-});
-
-// Smooth scrolling for navigation links
+// Smooth Scrolling & Close Mobile Menu for Navigation Links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+        const targetId = this.getAttribute('href');
+        if (!targetId || targetId === '#') return;
+
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            e.preventDefault();
+
+            // Close mobile menu if open
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            if (hamburger) hamburger.classList.remove('active');
+            if (navMenu) navMenu.classList.remove('active');
+
+            // Scroll with fixed navbar offset deduction
+            const headerOffset = 75;
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
             });
         }
     });
@@ -50,15 +55,17 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const themeToggle = document.getElementById('themeToggle');
 const htmlElement = document.documentElement;
 
-if (themeToggle) {
-    const currentTheme = localStorage.getItem('theme') || 'dark';
-    htmlElement.setAttribute('data-theme', currentTheme);
-    updateThemeIcon(currentTheme);
+// Initialize saved theme preference or default to dark
+const savedTheme = localStorage.getItem('theme') || 'dark';
+htmlElement.setAttribute('data-theme', savedTheme);
+updateThemeIcon(savedTheme);
 
+if (themeToggle) {
     themeToggle.addEventListener('click', (e) => {
         e.preventDefault();
-        const theme = htmlElement.getAttribute('data-theme') || 'dark';
-        const newTheme = theme === 'dark' ? 'light' : 'dark';
+        e.stopPropagation();
+        const currentTheme = htmlElement.getAttribute('data-theme') || 'dark';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
         htmlElement.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
         updateThemeIcon(newTheme);
@@ -77,19 +84,17 @@ function updateThemeIcon(theme) {
     }
 }
 
-// Enhanced Navbar background on scroll with blur effect
+// Enhanced Navbar class on scroll (without hardcoding inline dark background)
 const navbar = document.querySelector('.navbar');
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(3, 9, 20, 0.98)';
-        navbar.style.backdropFilter = 'blur(10px)';
-        navbar.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.1)';
-    } else {
-        navbar.style.background = 'rgba(3, 9, 20, 0.9)';
-        navbar.style.backdropFilter = 'blur(5px)';
-        navbar.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.05)';
-    }
-});
+if (navbar) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 40) {
+            navbar.classList.add('navbar-scrolled');
+        } else {
+            navbar.classList.remove('navbar-scrolled');
+        }
+    });
+}
 
 // Animate skill bars on scroll
 const observerOptions = {

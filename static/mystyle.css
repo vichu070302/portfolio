@@ -24,9 +24,10 @@ Output
     --text-muted: #94a3b8;
     --primary-green: #52dc3d;
     --primary-color: #52dc3d;
-    --card-bg: rgba(15, 23, 42, 0.5);
+    --card-bg: rgba(15, 23, 42, 0.6);
     --card-border: rgba(255, 255, 255, 0.08);
     --navbar-bg: rgba(3, 9, 20, 0.95);
+    --logo-color: #ffffff;
 }
 
 [data-theme="light"] {
@@ -35,9 +36,10 @@ Output
     --text-muted: #475569;
     --primary-green: #27ae60;
     --primary-color: #27ae60;
-    --card-bg: rgba(255, 255, 255, 0.92);
+    --card-bg: #ffffff;
     --card-border: rgba(0, 0, 0, 0.12);
-    --navbar-bg: rgba(255, 255, 255, 0.95);
+    --navbar-bg: rgba(255, 255, 255, 0.96);
+    --logo-color: #0f172a;
 }
 
 /* --- GLOBAL BODY OVERRIDES FOR HERO --- */
@@ -2894,9 +2896,10 @@ img, iframe, svg, video {
         width: 100% !important;
         height: 68px !important;
         z-index: 99999 !important;
-        background: rgba(3, 9, 20, 0.98) !important;
+        background: var(--navbar-bg) !important;
         backdrop-filter: blur(16px) !important;
         -webkit-backdrop-filter: blur(16px) !important;
+        border-bottom: 1px solid var(--card-border) !important;
     }
 
     .nav-container {
@@ -2928,7 +2931,7 @@ img, iframe, svg, video {
     .hamburger span {
         width: 24px !important;
         height: 3px !important;
-        background: #52dc3d !important;
+        background: var(--primary-green) !important;
         border-radius: 2px !important;
         transition: all 0.3s ease !important;
         display: block !important;
@@ -2952,13 +2955,13 @@ img, iframe, svg, video {
         top: 68px !important;
         left: 0 !important;
         width: 100% !important;
-        background: #030914 !important;
-        border-bottom: 2px solid rgba(82, 220, 61, 0.5) !important;
+        background: var(--navbar-bg) !important;
+        border-bottom: 2px solid var(--primary-green) !important;
         flex-direction: column !important;
         padding: 25px 20px !important;
         gap: 18px !important;
         text-align: center !important;
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.95) !important;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35) !important;
         z-index: 100000 !important;
         list-style: none !important;
         margin: 0 !important;
@@ -2979,14 +2982,14 @@ img, iframe, svg, video {
     .nav-menu .nav-link {
         font-size: 18px !important;
         font-weight: 700 !important;
-        color: #ffffff !important;
+        color: var(--text-color) !important;
         display: block !important;
         padding: 12px 0 !important;
         text-decoration: none !important;
     }
 
     .nav-menu .nav-link:hover {
-        color: #52dc3d !important;
+        color: var(--primary-green) !important;
     }
 }
 
