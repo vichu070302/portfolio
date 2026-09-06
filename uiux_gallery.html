@@ -5,12 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UI/UX Design Showcase | Vishnu Prasad</title>
-    <link rel="stylesheet" href="{% static 'mystyle.css' %}?v=20260727">
+    <link rel="stylesheet" href="{% static 'mystyle.css' %}?v=20260906">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Standalone showcase styling matching dark portfolio theme */
-        body { background-color: #030914; color: #f3f4f6; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; margin: 0; padding: 0; min-height: 100vh; }
-        .gallery-page-wrapper { position: relative; min-height: 100vh; padding-bottom: 80px; overflow-x: hidden; }
+        body { 
+            background-color: #030914; 
+            color: #f3f4f6; 
+            font-family: 'Urbanist', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            min-height: 100vh; 
+        }
+        .gallery-page-wrapper { 
+            position: relative; 
+            min-height: 100vh; 
+            padding-bottom: 80px; 
+            overflow-x: hidden; 
+        }
         
         /* Ambient Blobs */
         .ambient-blobs { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
@@ -18,45 +30,107 @@
         .a-blob-1 { width: 500px; height: 500px; background: #52dc3d; top: -100px; left: 10%; }
         .a-blob-2 { width: 450px; height: 450px; background: #38bdf8; bottom: -50px; right: 10%; }
         
-        .gallery-nav { padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; background: rgba(3, 9, 20, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255, 255, 255, 0.08); position: sticky; top: 0; z-index: 100; }
+        .gallery-nav { 
+            padding: 20px 40px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            background: rgba(3, 9, 20, 0.88); 
+            backdrop-filter: blur(16px); 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08); 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+        }
         .gallery-logo { font-size: 24px; font-weight: 800; color: #fff; text-decoration: none; }
         .gallery-logo span { color: #52dc3d; }
-        .back-home-btn { background: rgba(82, 220, 61, 0.12); border: 1px solid rgba(82, 220, 61, 0.4); color: #52dc3d; padding: 10px 22px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease; }
-        .back-home-btn:hover { background: #52dc3d; color: #060b11; transform: translateX(-4px); box-shadow: 0 6px 20px rgba(82, 220, 61, 0.4); }
+        .back-home-btn { 
+            background: rgba(82, 220, 61, 0.12); 
+            border: 1px solid rgba(82, 220, 61, 0.4); 
+            color: #52dc3d; 
+            padding: 10px 22px; 
+            border-radius: 30px; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 14px; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px; 
+            transition: all 0.3s ease; 
+        }
+        .back-home-btn:hover { 
+            background: #52dc3d; 
+            color: #060b11; 
+            transform: translateX(-4px); 
+            box-shadow: 0 6px 20px rgba(82, 220, 61, 0.4); 
+        }
         
         .gallery-hero { text-align: center; max-width: 850px; margin: 50px auto 40px auto; padding: 0 20px; position: relative; z-index: 1; }
-        .gallery-hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 20px; background: rgba(82, 220, 61, 0.12); border: 1px solid rgba(82, 220, 61, 0.3); color: #52dc3d; font-size: 13px; font-weight: 700; text-transform: uppercase; margin-bottom: 15px; }
+        .gallery-hero-badge { 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px; 
+            padding: 6px 16px; 
+            border-radius: 20px; 
+            background: rgba(82, 220, 61, 0.12); 
+            border: 1px solid rgba(82, 220, 61, 0.3); 
+            color: #52dc3d; 
+            font-size: 13px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            margin-bottom: 15px; 
+        }
         .gallery-hero h1 { font-size: 42px; font-weight: 800; margin-bottom: 12px; line-height: 1.2; }
         .gallery-hero h1 span { background: linear-gradient(135deg, #52dc3d, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .gallery-hero p { color: #9ca3af; font-size: 16px; line-height: 1.6; }
         
-        /* Centered Featured Showcase Card Container */
-        .showcase-container { max-width: 950px; margin: 0 auto; padding: 0 25px; position: relative; z-index: 1; }
+        /* 2-Column Responsive Showcase Grid Container */
+        .showcase-container { max-width: 1240px; margin: 0 auto; padding: 0 25px; position: relative; z-index: 1; }
+        .showcase-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; align-items: stretch; }
         
-        .showcase-card { background: rgba(18, 24, 38, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease; margin-bottom: 40px; }
-        .showcase-card:hover { border-color: rgba(82, 220, 61, 0.5); box-shadow: 0 20px 45px rgba(82, 220, 61, 0.22); }
+        .showcase-card { 
+            background: rgba(18, 24, 38, 0.75); 
+            backdrop-filter: blur(16px); 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            border-radius: 24px; 
+            overflow: hidden; 
+            display: flex; 
+            flex-direction: column; 
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); 
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease; 
+        }
+        .showcase-card:hover { 
+            border-color: rgba(82, 220, 61, 0.5); 
+            transform: translateY(-6px);
+            box-shadow: 0 20px 45px rgba(82, 220, 61, 0.22); 
+        }
         
         .card-top-bar { padding: 16px 24px; background: rgba(0, 0, 0, 0.35); border-bottom: 1px solid rgba(255, 255, 255, 0.06); display: flex; justify-content: space-between; align-items: center; }
         .badge-figma { background: rgba(242, 78, 30, 0.15); color: #ff7262; border: 1px solid rgba(242, 78, 30, 0.3); padding: 4px 14px; border-radius: 15px; font-size: 13px; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
+        .badge-perfume { background: rgba(168, 85, 247, 0.15); color: #c4b5fd; border: 1px solid rgba(168, 85, 247, 0.3); padding: 4px 14px; border-radius: 15px; font-size: 13px; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
         .win-dots { display: flex; gap: 6px; }
         .win-dots span { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.2); }
         .win-dots span:nth-child(1) { background: #ff5f56; }
         .win-dots span:nth-child(2) { background: #ffbd2e; }
         .win-dots span:nth-child(3) { background: #27c93f; }
         
-        .card-media-viewport { position: relative; height: 520px; background: #060a12; overflow: hidden; border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
+        .card-media-viewport { position: relative; height: 440px; background: #060a12; overflow: hidden; border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
         .card-media-viewport iframe { width: 100%; height: 100%; border: none; display: block; }
         
-        .card-content { padding: 32px; display: flex; flex-direction: column; }
-        .card-title { font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 12px; }
-        .card-desc { font-size: 15px; color: #9ca3af; line-height: 1.65; margin-bottom: 24px; }
+        .card-content { padding: 28px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
+        .card-title { font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+        .card-desc { font-size: 14px; color: #9ca3af; line-height: 1.6; margin-bottom: 22px; }
         
-        .action-btn-green { width: 100%; background: linear-gradient(135deg, #52dc3d, #27ae60); color: #060b11; border: none; padding: 16px 28px; border-radius: 30px; font-size: 15px; font-weight: 700; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 6px 20px rgba(82, 220, 61, 0.35); transition: all 0.3s ease; box-sizing: border-box; }
+        .action-btn-green { width: 100%; background: linear-gradient(135deg, #52dc3d, #27ae60); color: #060b11; border: none; padding: 14px 24px; border-radius: 30px; font-size: 14px; font-weight: 700; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 6px 20px rgba(82, 220, 61, 0.35); transition: all 0.3s ease; box-sizing: border-box; }
         .action-btn-green:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(82, 220, 61, 0.5); background: linear-gradient(135deg, #27ae60, #52dc3d); }
+        .action-btn-accent { background: linear-gradient(135deg, #38bdf8, #2563eb); color: #ffffff; box-shadow: 0 6px 20px rgba(56, 189, 248, 0.35); }
+        .action-btn-accent:hover { background: linear-gradient(135deg, #2563eb, #38bdf8); box-shadow: 0 10px 28px rgba(56, 189, 248, 0.5); color: #ffffff; }
 
         @media (max-width: 992px) {
+            .showcase-grid { grid-template-columns: 1fr; }
             .gallery-hero h1 { font-size: 32px; }
-            .card-media-viewport { height: 380px; }
+            .card-media-viewport { height: 360px; }
+            .gallery-nav { padding: 15px 20px; }
         }
     </style>
 </head>
@@ -78,33 +152,64 @@
 
         <!-- Gallery Hero -->
         <div class="gallery-hero">
-            <div class="gallery-hero-badge"><i class="fas fa-layer-group"></i> Featured UI/UX Project</div>
-            <h1>Cake Mobile App <span>Figma UI Showcase</span></h1>
-            <p>Explore the complete mobile ordering user interface, component auto-layout design system, and interactive Figma prototype.</p>
+            <div class="gallery-hero-badge"><i class="fas fa-layer-group"></i> Featured UI/UX Design Projects</div>
+            <h1>Figma Prototypes & <span>UI/UX Design Showcase</span></h1>
+            <p>Explore high-fidelity mobile application interfaces, luxury e-commerce web prototypes, and component design systems created in Figma.</p>
         </div>
 
         <div class="showcase-container">
             
-            <!-- FEATURED UI/UX SHOWCASE CARD -->
-            <div class="showcase-card">
-                <div class="card-top-bar">
-                    <span class="badge-figma"><i class="fab fa-figma"></i> Cake Mobile App Figma Design</span>
-                    <div class="win-dots"><span></span><span></span><span></span></div>
+            <!-- 2-COLUMN SHOWCASE GRID -->
+            <div class="showcase-grid">
+                
+                <!-- BOX 1: Cake Mobile App UI Design -->
+                <div class="showcase-card">
+                    <div class="card-top-bar">
+                        <span class="badge-figma"><i class="fab fa-figma"></i> Cake Mobile App UI</span>
+                        <div class="win-dots"><span></span><span></span><span></span></div>
+                    </div>
+                    <!-- Live Figma Prototype Viewport -->
+                    <div class="card-media-viewport">
+                        <iframe style="border: none;" width="100%" height="100%" src="https://embed.figma.com/proto/MT9XuwY7MBcPT8uFWWyE7u/Untitled?node-id=0-1&embed-host=share" allowfullscreen></iframe>
+                    </div>
+                    <div class="card-content">
+                        <div>
+                            <h2 class="card-title">Cake Mobile App UI Design</h2>
+                            <p class="card-desc">Complete mobile user experience featuring customer ordering flows, component auto-layouts, custom wireframing, and accessible design system tokens. Interact directly with the Figma prototype above.</p>
+                        </div>
+                        
+                        <a href="https://www.figma.com/proto/MT9XuwY7MBcPT8uFWWyE7u/Untitled?node-id=0-1&t=UPiipnOm4m94NlOV-1" target="_blank" rel="noopener noreferrer" class="action-btn-green">
+                            <i class="fab fa-figma"></i>
+                            <span>Open Cake App Figma Prototype</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
                 </div>
-                <!-- Live Figma Prototype Viewport -->
-                <div class="card-media-viewport">
-                    <iframe style="border: none;" width="100%" height="100%" src="https://embed.figma.com/proto/MT9XuwY7MBcPT8uFWWyE7u/Untitled?node-id=0-1&embed-host=share" allowfullscreen></iframe>
+
+                <!-- BOX 2: Perfume Shopping Website UI Design -->
+                <div class="showcase-card">
+                    <div class="card-top-bar">
+                        <span class="badge-perfume"><i class="fab fa-figma"></i> Perfume Shopping Website</span>
+                        <div class="win-dots"><span></span><span></span><span></span></div>
+                    </div>
+                    <!-- Live Figma Viewport for Perfume Shopping Website -->
+                    <div class="card-media-viewport">
+                        <iframe style="border: none;" width="100%" height="100%" src="https://embed.figma.com/proto/bpMfkhjLmaLyqu3OFll7rQ/Perfume-Shopping-Website?node-id=0-6&embed-host=share" allowfullscreen></iframe>
+                    </div>
+                    <div class="card-content">
+                        <div>
+                            <h2 class="card-title">Perfume Shopping Website UI Design</h2>
+                            <p class="card-desc">High-fidelity fragrance e-commerce web interface designed in Figma. Features luxury product showcases, elegant dark mode typography, responsive grid layouts, and interactive prototype shopping flows.</p>
+                        </div>
+                        
+                        <a href="https://www.figma.com/make/bpMfkhjLmaLyqu3OFll7rQ/Perfume-Shopping-Website?code-node-id=0-6&p=f&t=lyJVRkAYhKcX1lUs-0&fullscreen=1" target="_blank" rel="noopener noreferrer" class="action-btn-green action-btn-accent">
+                            <i class="fab fa-figma"></i>
+                            <span>Open Perfume Website Figma Prototype</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="card-content">
-                    <h2 class="card-title">Cake Mobile App UI Design</h2>
-                    <p class="card-desc">Complete mobile user experience featuring customer ordering flows, component auto-layouts, custom wireframing, and accessible design system tokens. Interact directly with the Figma prototype above.</p>
-                    
-                    <a href="https://www.figma.com/proto/MT9XuwY7MBcPT8uFWWyE7u/Untitled?node-id=0-1&t=UPiipnOm4m94NlOV-1" target="_blank" rel="noopener noreferrer" class="action-btn-green">
-                        <i class="fab fa-figma"></i>
-                        <span>Open Cake App Figma Prototype</span>
-                        <i class="fas fa-external-link-alt"></i>
-                    </a>
-                </div>
+
             </div>
 
         </div>
