@@ -2987,6 +2987,225 @@ img, iframe, svg, video {
     }
 }
 
+/* ==========================================================================
+   SELECTED CASE STUDIES STACK SECTION (SOUMYAJYOTI HALDER INSPIRED DESIGN)
+   ========================================================================== */
+.case-studies-section {
+    padding: 90px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.csk-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    margin-top: 45px;
+    list-style: none;
+    padding: 0;
+}
+
+.csk-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    padding: 32px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 32px;
+    align-items: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.csk-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(82, 220, 61, 0.5);
+    box-shadow: 0 25px 50px rgba(82, 220, 61, 0.18);
+}
+
+.csk-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.csk-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    border-radius: 20px;
+    background: rgba(82, 220, 61, 0.12);
+    border: 1px solid rgba(82, 220, 61, 0.35);
+    color: var(--primary-green);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.csk-chip-accent {
+    background: rgba(56, 189, 248, 0.12);
+    border-color: rgba(56, 189, 248, 0.35);
+    color: #38bdf8;
+}
+
+.csk-chip-purple {
+    background: rgba(168, 85, 247, 0.12);
+    border-color: rgba(168, 85, 247, 0.35);
+    color: #c4b5fd;
+}
+
+.csk-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text-color);
+    margin-bottom: 12px;
+    line-height: 1.25;
+    letter-spacing: -0.5px;
+}
+
+.csk-desc {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin-bottom: 22px;
+}
+
+.csk-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 26px;
+    list-style: none;
+    padding: 0;
+}
+
+.csk-tag {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-color);
+    border: 1px solid var(--card-border);
+    padding: 6px 14px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+[data-theme="light"] .csk-tag {
+    background: #f1f5f9;
+    color: #0f172a;
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+.csk-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 26px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, var(--primary-green), #27ae60);
+    color: #060b11;
+    font-weight: 800;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(82, 220, 61, 0.35);
+}
+
+.csk-card:hover .csk-cta {
+    transform: translateX(5px);
+    box-shadow: 0 10px 25px rgba(82, 220, 61, 0.5);
+}
+
+.csk-media {
+    width: 100%;
+    position: relative;
+}
+
+.csk-media-viewport {
+    height: 280px;
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--card-border);
+    background: #060a12;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.csk-media-viewport img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.csk-card:hover .csk-media-viewport img {
+    transform: scale(1.06);
+}
+
+.csk-media-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: rgba(3, 9, 20, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    z-index: 2;
+}
+
+/* Responsive Case Studies Stack */
+@media (max-width: 992px) {
+    .csk-card {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 24px;
+    }
+    
+    .csk-media-viewport {
+        height: 240px;
+    }
+    
+    .csk-title {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .csk-card {
+        padding: 20px;
+        border-radius: 18px;
+    }
+    
+    .csk-media-viewport {
+        height: 200px;
+    }
+    
+    .csk-title {
+        font-size: 20px;
+    }
+    
+    .csk-desc {
+        font-size: 14px;
+    }
+}
+
 
 
 
