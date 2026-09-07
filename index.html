@@ -267,121 +267,71 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="case-studies-section">
+    <section id="projects" class="projects">
         <div class="container">
             <div class="section-title">
-                <h2>SELECTED CASE STUDIES</h2>
-                <p>Featured Work & Engineering Problem-Solving</p>
+                <h2>MY WORK</h2>
+                <p>Featured Projects</p>
             </div>
-            
-            <ul class="csk-stack">
-                <!-- Case Study 1: E-Commerce -->
-                <li class="csk-card-item">
-                    <div class="csk-card" id="ecommerceCard">
-                        <div class="csk-info">
-                            <span class="csk-chip"><i class="fas fa-shopping-cart"></i> B2B & B2C E-Commerce Platform</span>
-                            <h3 class="csk-title">Lumina Furniture & Jakso E-Commerce</h3>
-                            <p class="csk-desc">Reengineered multi-brand e-commerce platforms with custom Django backend, responsive cart systems, and catalog navigation. Accelerated workflow with AntiGravity AI while maintaining robust code architecture and seamless cross-device performance.</p>
-                            <ul class="csk-tags">
-                                <li class="csk-tag">Django</li>
-                                <li class="csk-tag">Python</li>
-                                <li class="csk-tag">JavaScript</li>
-                                <li class="csk-tag">Lumina Furniture</li>
-                                <li class="csk-tag">AntiGravity AI</li>
-                            </ul>
-                            <a href="{% url 'portfolio:ecommerce_gallery' %}" target="_blank" rel="noopener noreferrer" class="csk-cta">
-                                View Case Study <i class="fas fa-arrow-right"></i>
-                            </a>
+            <div class="projects-grid">
+                <div class="project-card" id="ecommerceCard">
+                    <a href="{% url 'portfolio:ecommerce_gallery' %}" target="_blank" rel="noopener noreferrer" class="project-card-link">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1600298881974-6be191ceeda1?w=400&h=300&fit=crop" alt="E-commerce Projects">
                         </div>
-                        <div class="csk-media">
-                            <div class="csk-media-viewport">
-                                <div class="csk-media-badge"><i class="fas fa-shopping-cart"></i> E-Commerce</div>
-                                <img src="https://images.unsplash.com/photo-1600298881974-6be191ceeda1?w=800&h=500&fit=crop" alt="Lumina Furniture E-Commerce Case Study">
-                            </div>
+                        <div class="project-info">
+                            <span class="project-badge"><i class="fas fa-shopping-cart"></i> E-commerce Showcase</span>
+                            <h3>Jakso & Lumina E-commerce</h3>
+                            <p>Django, Python, JS & Lumina Furniture</p>
+                            <span class="card-action-btn-green">
+                                <i class="fas fa-arrow-right"></i> View E-commerce Projects
+                            </span>
                         </div>
+                    </a>
+                </div>
+                <div class="project-card" id="mobileAppUiCard">
+                    <a href="{% url 'portfolio:uiux_gallery' %}" target="_blank" rel="noopener noreferrer" class="project-card-link">
+                        <div class="project-image">
+                            <img src="{% static 'cack app.png' %}" alt="Cake Mobile App UI">
+                        </div>
+                        <div class="project-info">
+                            <span class="project-badge"><i class="fas fa-sparkles"></i> UI/UX Showcase</span>
+                            <h3>Mobile App UI</h3>
+                            <p>Figma, UI Design & 3D Interactive</p>
+                            <span class="card-action-btn-green">
+                                <i class="fas fa-arrow-right"></i> View UI/UX Designing
+                            </span>
+                        </div>
+                    </a>
+                </div>
+                <div class="project-card">
+                    <a href="https://vichu070302.github.io/competition/" target="blank" rel="noopener noreferrer"  class="project-card-link">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop" alt="Admin Dashboard">
                     </div>
-                </li>
-
-                <!-- Case Study 2: UI/UX & 3D -->
-                <li class="csk-card-item">
-                    <div class="csk-card" id="mobileAppUiCard">
-                        <div class="csk-info">
-                            <span class="csk-chip csk-chip-accent"><i class="fas fa-mobile-alt"></i> UI/UX Design & 3D Interactive</span>
-                            <h3 class="csk-title">Perfume Mobile App & Cake Shop 3D</h3>
-                            <p class="csk-desc">High-converting mobile shopping UI designed in Figma paired with an interactive 3D WebGL experience featuring real-time camera physics, spatial product visualization, and smooth micro-interactions.</p>
-                            <ul class="csk-tags">
-                                <li class="csk-tag">Figma Design System</li>
-                                <li class="csk-tag">Mobile UI/UX</li>
-                                <li class="csk-tag">Spline 3D</li>
-                                <li class="csk-tag">WebGL / Three.js</li>
-                                <li class="csk-tag">AntiGravity AI</li>
-                            </ul>
-                            <a href="{% url 'portfolio:uiux_gallery' %}" target="_blank" rel="noopener noreferrer" class="csk-cta">
-                                View Case Study <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                        <div class="csk-media">
-                            <div class="csk-media-viewport">
-                                <div class="csk-media-badge"><i class="fas fa-cubes"></i> 3D + UI/UX</div>
-                                <img src="{% static 'cack app.png' %}" alt="Perfume & Cake Shop 3D UI/UX Case Study">
-                            </div>
-                        </div>
+                    <div class="project-info">
+                        <!-- <span class="project-badge">Backend</span> -->
+                        <h3>Web Design</h3>
+                        <p>HTML, CSS</p>
                     </div>
-                </li>
-
-                <!-- Case Study 3: Full Stack Web -->
-                <li class="csk-card-item">
-                    <div class="csk-card">
-                        <div class="csk-info">
-                            <span class="csk-chip csk-chip-purple"><i class="fas fa-code"></i> Full Stack Web Design</span>
-                            <h3 class="csk-title">High-Performance Web Platform</h3>
-                            <p class="csk-desc">Engineered responsive, fast-loading web applications built with clean HTML5/CSS3 and JavaScript. Focused on modular component design, intuitive navigation, and optimized assets.</p>
-                            <ul class="csk-tags">
-                                <li class="csk-tag">HTML5</li>
-                                <li class="csk-tag">CSS3</li>
-                                <li class="csk-tag">JavaScript</li>
-                                <li class="csk-tag">Responsive Design</li>
-                                <li class="csk-tag">Git</li>
-                            </ul>
-                            <a href="https://vichu070302.github.io/competition/" target="_blank" rel="noopener noreferrer" class="csk-cta">
-                                View Project <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                        <div class="csk-media">
-                            <div class="csk-media-viewport">
-                                <div class="csk-media-badge"><i class="fas fa-globe"></i> Web App</div>
-                                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=500&fit=crop" alt="Web Design Project">
-                            </div>
-                        </div>
+                    </a>
+                </div>
+                <div class="project-card">
+                    <a href="https://www.behance.net/vishnuvichu74" target="blank" rel="noopener noreferrer"  class="project-card-link">
+                    <div class="project-image">
+                        <img src="{% static 'dg front.jpg' %}" alt="">
                     </div>
-                </li>
-
-                <!-- Case Study 4: Graphic Design -->
-                <li class="csk-card-item">
-                    <div class="csk-card">
-                        <div class="csk-info">
-                            <span class="csk-chip"><i class="fas fa-palette"></i> Visual Brand Identity</span>
-                            <h3 class="csk-title">Brand Identity & Graphic Design</h3>
-                            <p class="csk-desc">Comprehensive digital brand identities, marketing assets, vector illustrations, and visual design systems designed using Adobe Photoshop and Illustrator.</p>
-                            <ul class="csk-tags">
-                                <li class="csk-tag">Adobe Photoshop</li>
-                                <li class="csk-tag">Illustrator</li>
-                                <li class="csk-tag">Behance Portfolio</li>
-                                <li class="csk-tag">Brand Identity</li>
-                            </ul>
-                            <a href="https://www.behance.net/vishnuvichu74" target="_blank" rel="noopener noreferrer" class="csk-cta">
-                                View Behance Gallery <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                        <div class="csk-media">
-                            <div class="csk-media-viewport">
-                                <div class="csk-media-badge"><i class="fab fa-behance"></i> Graphic Design</div>
-                                <img src="{% static 'dg front.jpg' %}" alt="Graphic Design Portfolio">
-                            </div>
-                        </div>
+                    <div class="project-info">
+                        <!-- <span class="project-badge">Design</span> -->
+                        <h3>Graphic Design</h3>
+                        <p>Photoshope, Illustrator</p>
                     </div>
-                </li>
-            </ul>
+                    </a>
+                </div>
+            </div>
+            <!-- <div class="view-all">
+                <button class="btn btn-outline">View All Projects →</button>
+            </div> -->
         </div>
     </section>
 
