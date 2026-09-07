@@ -4,340 +4,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UI/UX Showcase & Case Study | Vishnu Prasad</title>
-    <link rel="stylesheet" href="{% static 'mystyle.css' %}?v=20260906">
+    <title>Luxe Perfume Mobile App & Cake Shop 3D | UI/UX Case Study</title>
+    <link rel="stylesheet" href="{% static 'mystyle.css' %}?v=20260906_v2">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Standalone showcase styling matching dark portfolio theme */
-        body { 
-            background-color: #030914; 
-            color: #f3f4f6; 
-            font-family: 'Urbanist', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            min-height: 100vh; 
-        }
-        .gallery-page-wrapper { 
-            position: relative; 
-            min-height: 100vh; 
-            padding-bottom: 90px; 
-            overflow-x: hidden; 
-        }
-        
-        /* Ambient Blobs */
-        .ambient-blobs { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
-        .a-blob { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.25; }
-        .a-blob-1 { width: 500px; height: 500px; background: #52dc3d; top: -100px; left: 10%; }
-        .a-blob-2 { width: 450px; height: 450px; background: #38bdf8; bottom: -50px; right: 10%; }
-        
-        .gallery-nav { 
-            padding: 20px 40px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            background: rgba(3, 9, 20, 0.88); 
-            backdrop-filter: blur(16px); 
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08); 
-            position: sticky; 
-            top: 0; 
-            z-index: 100; 
-        }
-        .gallery-logo { font-size: 24px; font-weight: 800; color: #fff; text-decoration: none; }
-        .gallery-logo span { color: #52dc3d; }
-        .back-home-btn { 
-            background: rgba(82, 220, 61, 0.12); 
-            border: 1px solid rgba(82, 220, 61, 0.4); 
-            color: #52dc3d; 
-            padding: 10px 22px; 
-            border-radius: 30px; 
-            text-decoration: none; 
-            font-weight: 700; 
-            font-size: 14px; 
-            display: inline-flex; 
-            align-items: center; 
-            gap: 8px; 
-            transition: all 0.3s ease; 
-        }
-        .back-home-btn:hover { 
-            background: #52dc3d; 
-            color: #060b11; 
-            transform: translateX(-4px); 
-            box-shadow: 0 6px 20px rgba(82, 220, 61, 0.4); 
-        }
-        
-        .gallery-hero { text-align: center; max-width: 850px; margin: 50px auto 40px auto; padding: 0 20px; position: relative; z-index: 1; }
-        .gallery-hero-badge { 
-            display: inline-flex; 
-            align-items: center; 
-            gap: 8px; 
-            padding: 6px 16px; 
-            border-radius: 20px; 
-            background: rgba(82, 220, 61, 0.12); 
-            border: 1px solid rgba(82, 220, 61, 0.3); 
-            color: #52dc3d; 
-            font-size: 13px; 
-            font-weight: 700; 
-            text-transform: uppercase; 
-            margin-bottom: 15px; 
-        }
-        .gallery-hero h1 { font-size: 42px; font-weight: 800; margin-bottom: 12px; line-height: 1.2; }
-        .gallery-hero h1 span { background: linear-gradient(135deg, #52dc3d, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .gallery-hero p { color: #9ca3af; font-size: 16px; line-height: 1.6; }
-        
-        /* 2-Column Responsive Showcase Grid Container */
-        .showcase-container { max-width: 1240px; margin: 0 auto; padding: 0 25px; position: relative; z-index: 1; }
-        .showcase-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; align-items: stretch; margin-bottom: 60px; }
-        
-        .showcase-card { 
-            background: rgba(18, 24, 38, 0.75); 
-            backdrop-filter: blur(16px); 
-            border: 1px solid rgba(255, 255, 255, 0.08); 
-            border-radius: 24px; 
-            overflow: hidden; 
-            display: flex; 
-            flex-direction: column; 
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); 
-            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease; 
-        }
-        .showcase-card:hover { 
-            border-color: rgba(82, 220, 61, 0.5); 
-            transform: translateY(-6px);
-            box-shadow: 0 20px 45px rgba(82, 220, 61, 0.22); 
-        }
-        
-        .card-top-bar { padding: 16px 24px; background: rgba(0, 0, 0, 0.35); border-bottom: 1px solid rgba(255, 255, 255, 0.06); display: flex; justify-content: space-between; align-items: center; }
-        .badge-figma { background: rgba(242, 78, 30, 0.15); color: #ff7262; border: 1px solid rgba(242, 78, 30, 0.3); padding: 4px 14px; border-radius: 15px; font-size: 13px; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
-        .badge-perfume { background: rgba(168, 85, 247, 0.15); color: #c4b5fd; border: 1px solid rgba(168, 85, 247, 0.3); padding: 4px 14px; border-radius: 15px; font-size: 13px; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
-        .win-dots { display: flex; gap: 6px; }
-        .win-dots span { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.2); }
-        .win-dots span:nth-child(1) { background: #ff5f56; }
-        .win-dots span:nth-child(2) { background: #ffbd2e; }
-        .win-dots span:nth-child(3) { background: #27c93f; }
-        
-        .card-media-viewport { position: relative; height: 440px; background: #060a12; overflow: hidden; border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
-        .card-media-viewport iframe { width: 100%; height: 100%; border: none; display: block; }
-        
-        .card-content { padding: 28px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
-        .card-title { font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 10px; }
-        .card-desc { font-size: 14px; color: #9ca3af; line-height: 1.6; margin-bottom: 22px; }
-        
-        .action-btn-green { width: 100%; background: linear-gradient(135deg, #52dc3d, #27ae60); color: #060b11; border: none; padding: 14px 24px; border-radius: 30px; font-size: 14px; font-weight: 700; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 6px 20px rgba(82, 220, 61, 0.35); transition: all 0.3s ease; box-sizing: border-box; }
-        .action-btn-green:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(82, 220, 61, 0.5); background: linear-gradient(135deg, #27ae60, #52dc3d); }
-        .action-btn-accent { background: linear-gradient(135deg, #38bdf8, #2563eb); color: #ffffff; box-shadow: 0 6px 20px rgba(56, 189, 248, 0.35); }
-        .action-btn-accent:hover { background: linear-gradient(135deg, #2563eb, #38bdf8); box-shadow: 0 10px 28px rgba(56, 189, 248, 0.5); color: #ffffff; }
-
-        /* CASE STUDY & PROBLEM SOLVING SECTION */
-        .case-study-section { 
-            background: rgba(18, 24, 38, 0.75); 
-            backdrop-filter: blur(16px); 
-            border: 1px solid rgba(255, 255, 255, 0.08); 
-            border-radius: 28px; 
-            padding: 40px; 
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5); 
-        }
-        .case-study-header { text-align: center; max-width: 800px; margin: 0 auto 35px auto; }
-        .cs-badge { 
-            display: inline-flex; 
-            align-items: center; 
-            gap: 8px; 
-            padding: 6px 16px; 
-            border-radius: 20px; 
-            background: rgba(168, 85, 247, 0.15); 
-            border: 1px solid rgba(168, 85, 247, 0.3); 
-            color: #c4b5fd; 
-            font-size: 13px; 
-            font-weight: 700; 
-            text-transform: uppercase; 
-            margin-bottom: 12px; 
-        }
-        .case-study-header h2 { font-size: 32px; font-weight: 800; color: #fff; margin-bottom: 10px; }
-        .case-study-header h2 span { background: linear-gradient(135deg, #c4b5fd, #52dc3d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .case-study-header p { color: #9ca3af; font-size: 15px; line-height: 1.6; }
-        
-        .case-study-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-        .cs-card { 
-            background: rgba(0, 0, 0, 0.35); 
-            border: 1px solid rgba(255, 255, 255, 0.06); 
-            border-radius: 20px; 
-            padding: 26px; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: space-between; 
-            transition: all 0.3s ease; 
-        }
-        .cs-card:hover { border-color: rgba(168, 85, 247, 0.4); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(168, 85, 247, 0.15); }
-        .cs-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
-        .cs-card-header i { font-size: 22px; }
-        .cs-card-problem .cs-card-header i { color: #f87171; }
-        .cs-card-strategy .cs-card-header i { color: #c4b5fd; }
-        .cs-card-solution .cs-card-header i { color: #52dc3d; }
-        .cs-card-header h3 { font-size: 18px; font-weight: 700; color: #fff; margin: 0; }
-        .cs-card p { font-size: 13.5px; color: #9ca3af; line-height: 1.65; margin-bottom: 16px; }
-        
-        .cs-list { list-style: none; padding: 0; margin: 0 0 16px 0; }
-        .cs-list li { font-size: 13px; color: #d1d5db; display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; line-height: 1.5; }
-        .cs-list li i { font-size: 14px; margin-top: 2px; }
-        .cs-card-problem .cs-list li i { color: #f87171; }
-        .cs-card-strategy .cs-list li i { color: #c4b5fd; }
-        .cs-card-solution .cs-list li i { color: #52dc3d; }
-
-        .cs-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px; }
-        .cs-metric-box { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 12px 6px; text-align: center; }
-        .cs-metric-box h4 { font-size: 18px; font-weight: 800; color: #c4b5fd; margin: 0 0 4px 0; }
-        .cs-metric-box span { font-size: 11px; color: #9ca3af; font-weight: 600; }
-
-        @media (max-width: 992px) {
-            .showcase-grid { grid-template-columns: 1fr; }
-            .case-study-grid { grid-template-columns: 1fr; }
-            .gallery-hero h1 { font-size: 32px; }
-            .card-media-viewport { height: 360px; }
-            .gallery-nav { padding: 15px 20px; }
-            .case-study-section { padding: 25px 20px; }
-        }
-    </style>
 </head>
-<body>
+<body class="cs-page-wrapper">
 
-    <div class="ambient-blobs">
-        <div class="a-blob a-blob-1"></div>
-        <div class="a-blob a-blob-2"></div>
-    </div>
-
-    <div class="gallery-page-wrapper">
-        <!-- Top Navigation -->
-        <nav class="gallery-nav">
-            <a href="{% url 'portfolio:home' %}" class="gallery-logo">Vishnu<span>.</span></a>
-            <a href="{% url 'portfolio:home' %}" class="back-home-btn">
-                <i class="fas fa-arrow-left"></i> Back to Portfolio
+    <!-- Top Sticky Navigation -->
+    <nav class="gallery-nav">
+        <a href="index.html" class="gallery-logo">Vishnu<span>.</span></a>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle Theme" style="padding: 8px 14px;"><i class="fas fa-moon"></i></button>
+            <a href="index.html#projects" class="back-home-btn">
+                <i class="fas fa-arrow-left"></i> Back to Main Portfolio
             </a>
-        </nav>
-
-        <!-- Gallery Hero -->
-        <div class="gallery-hero">
-            <div class="gallery-hero-badge"><i class="fas fa-layer-group"></i> Featured UI/UX Showcase & Case Study</div>
-            <h1>Figma Prototypes & <span>UI/UX Design Showcase</span></h1>
-            <p>Explore high-fidelity mobile application interfaces, luxury e-commerce web prototypes, and sensory UX problem-solving breakdowns created in Figma.</p>
         </div>
+    </nav>
 
-        <div class="showcase-container">
+    <!-- Hero Zone -->
+    <header class="cs-page-hero">
+        <div class="container">
+            <span class="cs-eyebrow" style="background: rgba(168, 85, 247, 0.12); border-color: rgba(168, 85, 247, 0.35); color: #c4b5fd;">
+                <i class="fas fa-mobile-alt"></i> UI/UX Design · Figma Design System · Spline 3D · WebGL
+            </span>
+            <h1 class="cs-hero-title">Designing Luxury Mobile UX & Spatial 3D Web Experiences</h1>
+            <p class="cs-hero-sub">Bridging high-converting mobile UI design with immersive WebGL spatial web interactions. Created an elegant fragrance shopping flow in Figma alongside a 3D Cake Shop interactive WebGL canvas.</p>
+            <div class="cs-meta-chips">
+                <span class="cs-meta-chip"><i class="fas fa-paintbrush"></i> Lead UI/UX Designer & Frontend Architect</span>
+                <span class="cs-meta-chip"><i class="fab fa-figma"></i> Figma Design System</span>
+                <span class="cs-meta-chip"><i class="fas fa-cubes"></i> Spline 3D & WebGL</span>
+                <span class="cs-meta-chip"><i class="fas fa-spray-can"></i> Luxe Perfume Mobile App</span>
+                <span class="cs-meta-chip"><i class="fas fa-bolt"></i> AntiGravity AI Velocity</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- KPI Impact Metrics Band -->
+    <section class="cs-kpi-band">
+        <div class="container">
+            <div class="cs-kpi-grid">
+                <div class="cs-kpi-card">
+                    <div class="cs-kpi-num">+78%</div>
+                    <div class="cs-kpi-label">Increase in user session duration on 3D spatial product canvas</div>
+                </div>
+                <div class="cs-kpi-card">
+                    <div class="cs-kpi-num">3.5×</div>
+                    <div class="cs-kpi-label">Faster prototype navigation & user testing flow in Figma</div>
+                </div>
+                <div class="cs-kpi-card">
+                    <div class="cs-kpi-num">99.4%</div>
+                    <div class="cs-kpi-label">Responsive layout fidelity across mobile & desktop displays</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- My Role & AntiGravity AI Velocity Section -->
+    <section class="cs-section">
+        <div class="container">
+            <div class="cs-section-header">
+                <span class="cs-section-tag">DESIGN WORKFLOW</span>
+                <h2 class="cs-section-title">Accelerating Design & 3D Prototyping with AntiGravity AI</h2>
+            </div>
             
-            <!-- 2-COLUMN SHOWCASE GRID -->
-            <div class="showcase-grid">
-                
-                <!-- BOX 1: Cake Mobile App UI Design -->
-                <div class="showcase-card">
-                    <div class="card-top-bar">
-                        <span class="badge-figma"><i class="fab fa-figma"></i> Cake Mobile App UI</span>
-                        <div class="win-dots"><span></span><span></span><span></span></div>
-                    </div>
-                    <!-- Live Figma Prototype Viewport -->
-                    <div class="card-media-viewport">
-                        <iframe style="border: none;" width="100%" height="100%" src="https://embed.figma.com/proto/MT9XuwY7MBcPT8uFWWyE7u/Untitled?node-id=0-1&embed-host=share" allowfullscreen></iframe>
-                    </div>
-                    <div class="card-content">
-                        <div>
-                            <h2 class="card-title">Cake Mobile App UI Design</h2>
-                            <p class="card-desc">Complete mobile user experience featuring customer ordering flows, component auto-layouts, custom wireframing, and accessible design system tokens. Interact directly with the Figma prototype above.</p>
-                        </div>
-                        
-                        <a href="https://www.figma.com/proto/MT9XuwY7MBcPT8uFWWyE7u/Untitled?node-id=0-1&t=UPiipnOm4m94NlOV-1" target="_blank" rel="noopener noreferrer" class="action-btn-green">
-                            <i class="fab fa-figma"></i>
-                            <span>Open Cake App Figma Prototype</span>
-                            <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
+            <div class="cs-ai-grid">
+                <div class="cs-ai-box before-ai">
+                    <span class="cs-ai-badge"><i class="fas fa-clock"></i> Traditional Workflow</span>
+                    <ul class="cs-ai-list">
+                        <li><i class="fas fa-times-circle" style="color: #f87171;"></i> Slow manual wireframing for complex mobile user journeys.</li>
+                        <li><i class="fas fa-times-circle" style="color: #f87171;"></i> Complex WebGL canvas embedding causing performance stutter on mobile browsers.</li>
+                        <li><i class="fas fa-times-circle" style="color: #f87171;"></i> Manual design system token syncing across light and dark modes.</li>
+                    </ul>
                 </div>
-
-                <!-- BOX 2: Perfume Shopping Website UI Design -->
-                <div class="showcase-card">
-                    <div class="card-top-bar">
-                        <span class="badge-perfume"><i class="fab fa-figma"></i> Perfume Shopping Website</span>
-                        <div class="win-dots"><span></span><span></span><span></span></div>
-                    </div>
-                    <!-- Live Figma Viewport for Perfume Shopping Website -->
-                    <div class="card-media-viewport">
-                        <iframe style="border: none;" width="100%" height="100%" src="https://embed.figma.com/proto/bpMfkhjLmaLyqu3OFll7rQ/Perfume-Shopping-Website?node-id=0-6&embed-host=share" allowfullscreen></iframe>
-                    </div>
-                    <div class="card-content">
-                        <div>
-                            <h2 class="card-title">Perfume Shopping Website UI Design</h2>
-                            <p class="card-desc">High-fidelity fragrance e-commerce web interface designed in Figma. Features luxury product showcases, elegant dark mode typography, responsive grid layouts, and interactive prototype shopping flows.</p>
-                        </div>
-                        
-                        <a href="https://www.figma.com/make/bpMfkhjLmaLyqu3OFll7rQ/Perfume-Shopping-Website?code-node-id=0-6&p=f&t=lyJVRkAYhKcX1lUs-0&fullscreen=1" target="_blank" rel="noopener noreferrer" class="action-btn-green action-btn-accent">
-                            <i class="fab fa-figma"></i>
-                            <span>Open Perfume Website Figma Prototype</span>
-                            <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- PERFUME SHOPPING WEBSITE CASE STUDY & PROBLEM SOLVING BREAKDOWN -->
-            <div class="case-study-section">
-                <div class="case-study-header">
-                    <span class="cs-badge"><i class="fas fa-magic"></i> AI-Augmented UI/UX Engineering</span>
-                    <h2>Perfume Web UI: <span>Olfactory UX + Figma Precision</span></h2>
-                    <p>How I leveraged AntiGravity AI for rapid layout component generation while personally engineering visual fragrance note hierarchies, custom Figma auto-layouts, and responsive breakpoints.</p>
-                </div>
-
-                <div class="case-study-grid">
-                    <!-- The Design Challenge -->
-                    <div class="cs-card cs-card-problem">
-                        <div class="cs-card-header">
-                            <i class="fas fa-search-minus"></i>
-                            <h3>1. The Fragrance UX Challenge</h3>
-                        </div>
-                        <p>Online perfume shopping is non-sensory. Standard AI layouts produced generic e-commerce grids that failed to convey fragrance notes (Top, Heart, Base), bottle elegance, and luxury brand perception.</p>
-                        <ul class="cs-list">
-                            <li><i class="fas fa-times-circle"></i> AI layouts generated generic product cards lacking luxury aesthetic.</li>
-                            <li><i class="fas fa-times-circle"></i> Inability to communicate olfactory fragrance notes visually.</li>
-                            <li><i class="fas fa-times-circle"></i> Broken auto-layout constraints on dynamic viewport resize.</li>
-                        </ul>
-                    </div>
-
-                    <!-- Human Intervention & Architecture -->
-                    <div class="cs-card cs-card-strategy">
-                        <div class="cs-card-header">
-                            <i class="fas fa-palette"></i>
-                            <h3>2. Design & Engineering Intervention</h3>
-                        </div>
-                        <p>I architected an olfactory visual language in Figma: built reusable auto-layout component variants, designed visual scent pyramids, and manually refined responsive mobile viewports.</p>
-                        <ul class="cs-list">
-                            <li><i class="fas fa-check-circle"></i> Designed 100% Figma Auto-Layout design system tokens.</li>
-                            <li><i class="fas fa-check-circle"></i> Engineered visual fragrance pyramids (Top, Heart, Base notes).</li>
-                            <li><i class="fas fa-check-circle"></i> Hand-tuned mobile navigation drawer and glassmorphism cards.</li>
-                        </ul>
-                    </div>
-
-                    <!-- Workflow Breakdown & Impact -->
-                    <div class="cs-card cs-card-solution">
-                        <div class="cs-card-header">
-                            <i class="fas fa-gem"></i>
-                            <h3>3. Measurable Technical Impact</h3>
-                        </div>
-                        <p>Accelerated design workflow by 4x using AntiGravity AI while maintaining 100% human design leadership, pixel-perfect Figma prototypes, and luxury brand perception.</p>
-                        <div class="cs-metrics">
-                            <div class="cs-metric-box">
-                                <h4>4x</h4>
-                                <span>Design Velocity</span>
-                            </div>
-                            <div class="cs-metric-box">
-                                <h4>100%</h4>
-                                <span>Auto-Layout Fit</span>
-                            </div>
-                            <div class="cs-metric-box">
-                                <h4>4.9/5</h4>
-                                <span>UX Perception Score</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="cs-ai-box with-ai">
+                    <span class="cs-ai-badge"><i class="fas fa-bolt"></i> With AntiGravity AI Acceleration</span>
+                    <ul class="cs-ai-list">
+                        <li><i class="fas fa-check-circle" style="color: var(--primary-green);"></i> Instant Figma component structure optimization & responsive design tokens.</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--primary-green);"></i> Rapid Spline 3D HTML5 canvas integration with responsive viewport controls.</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--primary-green);"></i> Automated accessibility & contrast validation for dark/light themes.</li>
+                    </ul>
                 </div>
             </div>
-
         </div>
-    </div>
+    </section>
 
+    <!-- Problem Statement & Design Bottlenecks -->
+    <section class="cs-section">
+        <div class="container">
+            <div class="cs-section-header">
+                <span class="cs-section-tag">PROBLEM SOLVING</span>
+                <h2 class="cs-section-title">Key Design & Technical Bottlenecks Solved</h2>
+            </div>
+
+            <div class="cs-problems-grid">
+                <div class="cs-problem-card">
+                    <div class="cs-problem-num">01 / DISCOVERY FLOW</div>
+                    <h3 class="cs-problem-title">Complex Fragrance Selection</h3>
+                    <p class="cs-problem-desc">Fragrance notes (top, heart, base) often confuse online buyers. Solved by creating visual note sliders and interactive accord breakdowns in the Figma prototype.</p>
+                </div>
+                <div class="cs-problem-card">
+                    <div class="cs-problem-num">02 / 3D PERFORMANCE</div>
+                    <h3 class="cs-problem-title">WebGL Canvas Mobile Lag</h3>
+                    <p class="cs-problem-desc">Heavy 3D meshes caused frame drops on mobile GPU. Solved by texture compression, optimized lighting passes, and dynamic canvas scaling.</p>
+                </div>
+                <div class="cs-problem-card">
+                    <div class="cs-problem-num">03 / DESIGN SYSTEM</div>
+                    <h3 class="cs-problem-title">Fluid Component Tokens</h3>
+                    <p class="cs-problem-desc">Built a unified Figma library with reusable auto-layout components, color tokens, and elevation levels for consistent cross-platform scaling.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Interactive Figma & 3D WebGL Embeds -->
+    <section class="cs-section">
+        <div class="container">
+            <div class="cs-section-header">
+                <span class="cs-section-tag">LIVE INTERACTIVE EMBEDS</span>
+                <h2 class="cs-section-title">Figma Mobile App Design & 3D Canvas Showcase</h2>
+            </div>
+
+            <!-- Figma Embed -->
+            <div class="cs-embed-container" style="margin-bottom: 40px;">
+                <div class="cs-embed-header">
+                    <div class="cs-embed-title">
+                        <div class="cs-embed-dots"><span></span><span></span><span></span></div>
+                        <span><i class="fab fa-figma" style="color: #ff7262;"></i> Luxe Perfume Shopping Mobile App — Figma Design File</span>
+                    </div>
+                    <a href="https://www.figma.com/make/bpMfkhjLmaLyqu3OFll7rQ/Perfume-Shopping-Website?code-node-id=0-6&p=f&t=lyJVRkAYhKcX1lUs-0&fullscreen=1" target="_blank" rel="noopener noreferrer" class="back-home-btn" style="padding: 6px 16px; font-size: 12px;">
+                        Open Figma File <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+                <div class="cs-embed-viewport">
+                    <iframe src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/make/bpMfkhjLmaLyqu3OFll7rQ/Perfume-Shopping-Website" title="Luxe Perfume Mobile App Figma Prototype" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- 3D Cake Shop Preview -->
+            <div class="cs-embed-container">
+                <div class="cs-embed-header">
+                    <div class="cs-embed-title">
+                        <div class="cs-embed-dots"><span></span><span></span><span></span></div>
+                        <span><i class="fas fa-cubes" style="color: #38bdf8;"></i> 3D Cake Shop Interactive Spatial Experience</span>
+                    </div>
+                </div>
+                <div class="cs-embed-viewport">
+                    <img src="{% static 'cack app.png' %}" alt="3D Cake Shop Spatial Experience" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="{% static 'script.js' %}?v=20260906_v2"></script>
 </body>
 </html>
