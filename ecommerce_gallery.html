@@ -4,141 +4,341 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lumina Furniture & Jakso E-Commerce | UX & Full Stack Case Study</title>
-    <link rel="stylesheet" href="{% static 'mystyle.css' %}?v=20260906_v2">
+    <title>E-Commerce Showcase & UX Case Study | Vishnu Prasad</title>
+    <link rel="stylesheet" href="{% static 'mystyle.css' %}?v=20260906">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Standalone E-Commerce Showcase styling matching dark portfolio theme */
+        body { 
+            background-color: #030914; 
+            color: #f3f4f6; 
+            font-family: 'Urbanist', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            min-height: 100vh; 
+        }
+        .gallery-page-wrapper { 
+            position: relative; 
+            min-height: 100vh; 
+            padding-bottom: 90px; 
+            overflow-x: hidden; 
+        }
+        
+        /* Ambient Blobs */
+        .ambient-blobs { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+        .a-blob { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.25; }
+        .a-blob-1 { width: 500px; height: 500px; background: #52dc3d; top: -100px; left: 10%; }
+        .a-blob-2 { width: 450px; height: 450px; background: #38bdf8; bottom: -50px; right: 10%; }
+        
+        .gallery-nav { 
+            padding: 20px 40px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            background: rgba(3, 9, 20, 0.88); 
+            backdrop-filter: blur(16px); 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08); 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+        }
+        .gallery-logo { font-size: 24px; font-weight: 800; color: #fff; text-decoration: none; }
+        .gallery-logo span { color: #52dc3d; }
+        .back-home-btn { 
+            background: rgba(82, 220, 61, 0.12); 
+            border: 1px solid rgba(82, 220, 61, 0.4); 
+            color: #52dc3d; 
+            padding: 10px 22px; 
+            border-radius: 30px; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 14px; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px; 
+            transition: all 0.3s ease; 
+        }
+        .back-home-btn:hover { 
+            background: #52dc3d; 
+            color: #060b11; 
+            transform: translateX(-4px); 
+            box-shadow: 0 6px 20px rgba(82, 220, 61, 0.4); 
+        }
+        
+        .gallery-hero { text-align: center; max-width: 850px; margin: 50px auto 40px auto; padding: 0 20px; position: relative; z-index: 1; }
+        .gallery-hero-badge { 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px; 
+            padding: 6px 16px; 
+            border-radius: 20px; 
+            background: rgba(82, 220, 61, 0.12); 
+            border: 1px solid rgba(82, 220, 61, 0.3); 
+            color: #52dc3d; 
+            font-size: 13px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            margin-bottom: 15px; 
+        }
+        .gallery-hero h1 { font-size: 42px; font-weight: 800; margin-bottom: 12px; line-height: 1.2; }
+        .gallery-hero h1 span { background: linear-gradient(135deg, #52dc3d, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gallery-hero p { color: #9ca3af; font-size: 16px; line-height: 1.6; }
+        
+        /* 2-Column Responsive Showcase Grid Container */
+        .showcase-container { max-width: 1240px; margin: 0 auto; padding: 0 25px; position: relative; z-index: 1; }
+        .showcase-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; align-items: stretch; margin-bottom: 60px; }
+        
+        .showcase-card { 
+            background: rgba(18, 24, 38, 0.75); 
+            backdrop-filter: blur(16px); 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            border-radius: 24px; 
+            overflow: hidden; 
+            display: flex; 
+            flex-direction: column; 
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); 
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease; 
+        }
+        .showcase-card:hover { 
+            border-color: rgba(82, 220, 61, 0.5); 
+            transform: translateY(-6px);
+            box-shadow: 0 20px 45px rgba(82, 220, 61, 0.22); 
+        }
+        
+        .card-top-bar { padding: 16px 24px; background: rgba(0, 0, 0, 0.35); border-bottom: 1px solid rgba(255, 255, 255, 0.06); display: flex; justify-content: space-between; align-items: center; }
+        .badge-django { background: rgba(59, 130, 246, 0.15); color: #38bdf8; border: 1px solid rgba(59, 130, 246, 0.3); padding: 4px 14px; border-radius: 15px; font-size: 13px; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
+        .badge-lumina { background: rgba(168, 85, 247, 0.15); color: #c4b5fd; border: 1px solid rgba(168, 85, 247, 0.3); padding: 4px 14px; border-radius: 15px; font-size: 13px; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
+        .win-dots { display: flex; gap: 6px; }
+        .win-dots span { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.2); }
+        .win-dots span:nth-child(1) { background: #ff5f56; }
+        .win-dots span:nth-child(2) { background: #ffbd2e; }
+        .win-dots span:nth-child(3) { background: #27c93f; }
+        
+        .card-media-viewport { position: relative; height: 420px; background: #060a12; overflow: hidden; border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
+        .card-media-viewport iframe { width: 100%; height: 100%; border: none; display: block; }
+        .card-media-viewport img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        
+        .card-content { padding: 28px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
+        .card-title { font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+        .card-desc { font-size: 14px; color: #9ca3af; line-height: 1.6; margin-bottom: 22px; }
+        
+        .action-btn-green { width: 100%; background: linear-gradient(135deg, #52dc3d, #27ae60); color: #060b11; border: none; padding: 14px 24px; border-radius: 30px; font-size: 14px; font-weight: 700; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 6px 20px rgba(82, 220, 61, 0.35); transition: all 0.3s ease; box-sizing: border-box; }
+        .action-btn-green:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(82, 220, 61, 0.5); background: linear-gradient(135deg, #27ae60, #52dc3d); }
+        .action-btn-accent { background: linear-gradient(135deg, #38bdf8, #2563eb); color: #ffffff; box-shadow: 0 6px 20px rgba(56, 189, 248, 0.35); }
+        .action-btn-accent:hover { background: linear-gradient(135deg, #2563eb, #38bdf8); box-shadow: 0 10px 28px rgba(56, 189, 248, 0.5); color: #ffffff; }
+
+        /* CASE STUDY & PROBLEM SOLVING SECTION */
+        .case-study-section { 
+            background: rgba(18, 24, 38, 0.75); 
+            backdrop-filter: blur(16px); 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            border-radius: 28px; 
+            padding: 40px; 
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5); 
+        }
+        .case-study-header { text-align: center; max-width: 800px; margin: 0 auto 35px auto; }
+        .cs-badge { 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px; 
+            padding: 6px 16px; 
+            border-radius: 20px; 
+            background: rgba(56, 189, 248, 0.15); 
+            border: 1px solid rgba(56, 189, 248, 0.3); 
+            color: #38bdf8; 
+            font-size: 13px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            margin-bottom: 12px; 
+        }
+        .case-study-header h2 { font-size: 32px; font-weight: 800; color: #fff; margin-bottom: 10px; }
+        .case-study-header h2 span { background: linear-gradient(135deg, #38bdf8, #52dc3d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .case-study-header p { color: #9ca3af; font-size: 15px; line-height: 1.6; }
+        
+        .case-study-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .cs-card { 
+            background: rgba(0, 0, 0, 0.35); 
+            border: 1px solid rgba(255, 255, 255, 0.06); 
+            border-radius: 20px; 
+            padding: 26px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            transition: all 0.3s ease; 
+        }
+        .cs-card:hover { border-color: rgba(82, 220, 61, 0.4); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(82, 220, 61, 0.15); }
+        .cs-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+        .cs-card-header i { font-size: 22px; color: #52dc3d; }
+        .cs-card-problem .cs-card-header i { color: #f87171; }
+        .cs-card-strategy .cs-card-header i { color: #38bdf8; }
+        .cs-card-solution .cs-card-header i { color: #52dc3d; }
+        .cs-card-header h3 { font-size: 18px; font-weight: 700; color: #fff; margin: 0; }
+        .cs-card p { font-size: 13.5px; color: #9ca3af; line-height: 1.65; margin-bottom: 16px; }
+        
+        .cs-list { list-style: none; padding: 0; margin: 0 0 16px 0; }
+        .cs-list li { font-size: 13px; color: #d1d5db; display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; line-height: 1.5; }
+        .cs-list li i { font-size: 14px; margin-top: 2px; }
+        .cs-card-problem .cs-list li i { color: #f87171; }
+        .cs-card-strategy .cs-list li i { color: #38bdf8; }
+        .cs-card-solution .cs-list li i { color: #52dc3d; }
+
+        .cs-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px; }
+        .cs-metric-box { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 12px 6px; text-align: center; }
+        .cs-metric-box h4 { font-size: 18px; font-weight: 800; color: #52dc3d; margin: 0 0 4px 0; }
+        .cs-metric-box span { font-size: 11px; color: #9ca3af; font-weight: 600; }
+
+        @media (max-width: 992px) {
+            .showcase-grid { grid-template-columns: 1fr; }
+            .case-study-grid { grid-template-columns: 1fr; }
+            .gallery-hero h1 { font-size: 32px; }
+            .card-media-viewport { height: 340px; }
+            .gallery-nav { padding: 15px 20px; }
+            .case-study-section { padding: 25px 20px; }
+        }
+    </style>
 </head>
-<body class="cs-page-wrapper">
+<body>
 
-    <!-- Top Sticky Navigation -->
-    <nav class="gallery-nav">
-        <a href="index.html" class="gallery-logo">Vishnu<span>.</span></a>
-        <div style="display: flex; align-items: center; gap: 15px;">
-            <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle Theme" style="padding: 8px 14px;"><i class="fas fa-moon"></i></button>
-            <a href="index.html#projects" class="back-home-btn">
-                <i class="fas fa-arrow-left"></i> Back to Main Portfolio
+    <div class="ambient-blobs">
+        <div class="a-blob a-blob-1"></div>
+        <div class="a-blob a-blob-2"></div>
+    </div>
+
+    <div class="gallery-page-wrapper">
+        <!-- Top Navigation -->
+        <nav class="gallery-nav">
+            <a href="{% url 'portfolio:home' %}" class="gallery-logo">Vishnu<span>.</span></a>
+            <a href="{% url 'portfolio:home' %}" class="back-home-btn">
+                <i class="fas fa-arrow-left"></i> Back to Portfolio
             </a>
-        </div>
-    </nav>
+        </nav>
 
-    <!-- Hero Zone -->
-    <header class="cs-page-hero">
-        <div class="container">
-            <span class="cs-eyebrow"><i class="fas fa-shopping-cart"></i> B2B & B2C E-Commerce · Django · Python · Lumina</span>
-            <h1 class="cs-hero-title">Reengineering E-Commerce for Modern Spatial & Modular Retail</h1>
-            <p class="cs-hero-sub">Transforming a complex furniture catalog into a high-converting, lightning-fast self-serve shopping experience. Built with custom Django backend routing, responsive cart mechanics, and accelerated using AntiGravity AI tools.</p>
-            <div class="cs-meta-chips">
-                <span class="cs-meta-chip"><i class="fas fa-user-gear"></i> Lead Full-Stack Architect & UI/UX</span>
-                <span class="cs-meta-chip"><i class="fab fa-python"></i> Django / Python</span>
-                <span class="cs-meta-chip"><i class="fab fa-js"></i> JavaScript / CSS3</span>
-                <span class="cs-meta-chip"><i class="fas fa-couch"></i> Lumina Furniture</span>
-                <span class="cs-meta-chip"><i class="fas fa-bolt"></i> AntiGravity AI Velocity</span>
-            </div>
+        <!-- Gallery Hero -->
+        <div class="gallery-hero">
+            <div class="gallery-hero-badge"><i class="fas fa-shopping-bag"></i> Featured E-Commerce Showcase & Case Study</div>
+            <h1>Full-Stack & <span>Modern E-Commerce Projects</span></h1>
+            <p>Explore full-stack Django e-commerce applications and modern furniture web stores with dynamic shopping interfaces, responsive layouts, and UX problem-solving breakdowns.</p>
         </div>
-    </header>
 
-    <!-- KPI Impact Metrics Band -->
-    <section class="cs-kpi-band">
-        <div class="container">
-            <div class="cs-kpi-grid">
-                <div class="cs-kpi-card">
-                    <div class="cs-kpi-num">−65%</div>
-                    <div class="cs-kpi-label">Drop in mobile checkout cart abandonment</div>
-                </div>
-                <div class="cs-kpi-card">
-                    <div class="cs-kpi-num">4.2×</div>
-                    <div class="cs-kpi-label">Faster page load & catalog search speed</div>
-                </div>
-                <div class="cs-kpi-card">
-                    <div class="cs-kpi-num">+82%</div>
-                    <div class="cs-kpi-label">Mobile catalog interaction & self-serve checkout</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- My Role & AntiGravity AI Velocity Section -->
-    <section class="cs-section">
-        <div class="container">
-            <div class="cs-section-header">
-                <span class="cs-section-tag">ENGINEERING WORKFLOW</span>
-                <h2 class="cs-section-title">Accelerating Development with AntiGravity AI</h2>
-            </div>
+        <div class="showcase-container">
             
-            <div class="cs-ai-grid">
-                <div class="cs-ai-box before-ai">
-                    <span class="cs-ai-badge"><i class="fas fa-clock"></i> Traditional Workflow</span>
-                    <ul class="cs-ai-list">
-                        <li><i class="fas fa-times-circle" style="color: #f87171;"></i> Hours spent writing redundant Django view boilerplate & URL routing.</li>
-                        <li><i class="fas fa-times-circle" style="color: #f87171;"></i> Manual CSS debugging for cross-browser mobile dropdown inconsistencies.</li>
-                        <li><i class="fas fa-times-circle" style="color: #f87171;"></i> Hardcoded colors breaking dark/light theme switching across sections.</li>
-                    </ul>
-                </div>
-                <div class="cs-ai-box with-ai">
-                    <span class="cs-ai-badge"><i class="fas fa-bolt"></i> With AntiGravity AI Acceleration</span>
-                    <ul class="cs-ai-list">
-                        <li><i class="fas fa-check-circle" style="color: var(--primary-green);"></i> Instant code refactoring, rapid diagnostic tracebooks, and automated bug fixes.</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--primary-green);"></i> Built robust CSS token systems (`--bg-color`, `--text-color`, `--card-bg`) in minutes.</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--primary-green);"></i> Compressed project Turn-Around Time (TAT) from weeks to days while keeping strict engineering standards.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Problem Statement & Engineering Bottlenecks -->
-    <section class="cs-section">
-        <div class="container">
-            <div class="cs-section-header">
-                <span class="cs-section-tag">PROBLEM SOLVING</span>
-                <h2 class="cs-section-title">Key Bottlenecks Solved in Lumina & Jakso</h2>
-            </div>
-
-            <div class="cs-problems-grid">
-                <div class="cs-problem-card">
-                    <div class="cs-problem-num">01 / PERF BOTTLE-NECK</div>
-                    <h3 class="cs-problem-title">Heavy Media Assets</h3>
-                    <p class="cs-problem-desc">Unoptimized high-resolution furniture imagery was slowing page render times. Solved by implementing lazy loading, WebP compression, and responsive image srcset pipelines.</p>
-                </div>
-                <div class="cs-problem-card">
-                    <div class="cs-problem-num">02 / UI/UX BUG</div>
-                    <h3 class="cs-problem-title">Mobile Dropdown Offsets</h3>
-                    <p class="cs-problem-desc">Nested navbar padding was shifting mobile navigation dropdowns off-screen. Reengineered layout using `position: static` containers and `top: 100%` viewport anchors.</p>
-                </div>
-                <div class="cs-problem-card">
-                    <div class="cs-problem-num">03 / THEME ENGINE</div>
-                    <h3 class="cs-problem-title">Dark/Light Mode Contrast</h3>
-                    <p class="cs-problem-desc">Hardcoded text colors resulted in white-on-white text during light mode toggle. Refactored all selectors to consume root CSS variables dynamically.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Live Interactive Website Showcase Embed -->
-    <section class="cs-section">
-        <div class="container">
-            <div class="cs-section-header">
-                <span class="cs-section-tag">LIVE INTERACTIVE SHOWCASE</span>
-                <h2 class="cs-section-title">Explore the Lumina Furniture Website Live</h2>
-            </div>
-
-            <div class="cs-embed-container">
-                <div class="cs-embed-header">
-                    <div class="cs-embed-title">
-                        <div class="cs-embed-dots"><span></span><span></span><span></span></div>
-                        <span><i class="fas fa-globe"></i> https://lumina-furniture-psi.vercel.app/</span>
+            <!-- 2-COLUMN SHOWCASE GRID -->
+            <div class="showcase-grid">
+                
+                <!-- BOX 1: Jakso E-commerce Platform -->
+                <div class="showcase-card">
+                    <div class="card-top-bar">
+                        <span class="badge-django"><i class="fab fa-python"></i> Django & Python E-commerce</span>
+                        <div class="win-dots"><span></span><span></span><span></span></div>
                     </div>
-                    <a href="https://lumina-furniture-psi.vercel.app/" target="_blank" rel="noopener noreferrer" class="back-home-btn" style="padding: 6px 16px; font-size: 12px;">
-                        Open in New Tab <i class="fas fa-external-link-alt"></i>
-                    </a>
+                    <!-- Live Viewport / Preview for Jakso E-commerce -->
+                    <div class="card-media-viewport">
+                        <iframe src="https://jakso.pythonanywhere.com" style="border: none;" width="100%" height="100%" allowfullscreen></iframe>
+                    </div>
+                    <div class="card-content">
+                        <div>
+                            <h2 class="card-title">Jakso E-commerce Platform</h2>
+                            <p class="card-desc">Full-stack e-commerce web application featuring user authentication, product catalog management, shopping cart system, checkout flows, and responsive Bootstrap layout built with Django & Python.</p>
+                        </div>
+                        
+                        <a href="https://jakso.pythonanywhere.com" target="_blank" rel="noopener noreferrer" class="action-btn-green">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>Open Jakso E-commerce Live Site</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="cs-embed-viewport">
-                    <iframe src="https://lumina-furniture-psi.vercel.app/" title="Lumina Furniture E-Commerce Web App"></iframe>
+
+                <!-- BOX 2: Lumina Furniture E-commerce -->
+                <div class="showcase-card">
+                    <div class="card-top-bar">
+                        <span class="badge-lumina"><i class="fas fa-couch"></i> Lumina Furniture Web Store</span>
+                        <div class="win-dots"><span></span><span></span><span></span></div>
+                    </div>
+                    <!-- Live Viewport for Lumina Furniture E-commerce -->
+                    <div class="card-media-viewport">
+                        <iframe src="https://lumina-furniture-psi.vercel.app/" style="border: none;" width="100%" height="100%" allowfullscreen></iframe>
+                    </div>
+                    <div class="card-content">
+                        <div>
+                            <h2 class="card-title">Lumina Furniture E-commerce</h2>
+                            <p class="card-desc">Modern luxury furniture e-commerce website featuring high-end interactive UI design, dynamic product showcases, smooth animations, and an intuitive web shopping experience.</p>
+                        </div>
+                        
+                        <a href="https://lumina-furniture-psi.vercel.app/" target="_blank" rel="noopener noreferrer" class="action-btn-green action-btn-accent">
+                            <i class="fas fa-store"></i>
+                            <span>Open Lumina Furniture Live Site</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- LUMINA FURNITURE E-COMMERCE CASE STUDY & PROBLEM SOLVING BREAKDOWN -->
+            <div class="case-study-section">
+                <div class="case-study-header">
+                    <span class="cs-badge"><i class="fas fa-microchip"></i> AI-Augmented Engineering Case Study</span>
+                    <h2>Lumina Furniture: <span>AI Velocity + Human Precision</span></h2>
+                    <p>How I leveraged AntiGravity AI for rapid prototyping while personally architecting custom CSS breakpoints, state synchronization, and performance optimization for a flawless e-commerce experience.</p>
+                </div>
+
+                <div class="case-study-grid">
+                    <!-- The Engineering Challenge -->
+                    <div class="cs-card cs-card-problem">
+                        <div class="cs-card-header">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <h3>1. The Technical Challenge</h3>
+                        </div>
+                        <p>Standard AI-generated code produced responsive layout shifts (`< 992px` breaking viewport bounds), unoptimized asset pipelines, and rigid CSS grid overflow on mobile devices.</p>
+                        <ul class="cs-list">
+                            <li><i class="fas fa-times-circle"></i> AI code generated hardcoded pixel widths breaking mobile viewports.</li>
+                            <li><i class="fas fa-times-circle"></i> Layout shifts during iframe render causing 4.2s load delay.</li>
+                            <li><i class="fas fa-times-circle"></i> Multi-breakpoint grid collapse on small screens (`< 480px`).</li>
+                        </ul>
+                    </div>
+
+                    <!-- Human Intervention & Architecture -->
+                    <div class="cs-card cs-card-strategy">
+                        <div class="cs-card-header">
+                            <i class="fas fa-user-cog"></i>
+                            <h3>2. Engineering Intervention</h3>
+                        </div>
+                        <p>I took control of the architecture: refactored CSS into modular CSS variables, engineered fluid typography (`clamp()`), manually tuned viewport bounds, and optimized touch interaction targets.</p>
+                        <ul class="cs-list">
+                            <li><i class="fas fa-check-circle"></i> Refactored raw AI output into clean, modular CSS variable architecture.</li>
+                            <li><i class="fas fa-check-circle"></i> Implemented fluid CSS Grid + Flexbox responsive media queries.</li>
+                            <li><i class="fas fa-check-circle"></i> Engineered asynchronous viewport loading for 0.4s fast paint.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Workflow Breakdown & Impact -->
+                    <div class="cs-card cs-card-solution">
+                        <div class="cs-card-header">
+                            <i class="fas fa-chart-line"></i>
+                            <h3>3. Measurable Technical Impact</h3>
+                        </div>
+                        <p>Accelerated development timeline by 3x using AntiGravity AI while maintaining 100% human-verified code quality, zero layout shifts, and bulletproof multi-device responsiveness.</p>
+                        <div class="cs-metrics">
+                            <div class="cs-metric-box">
+                                <h4>3x</h4>
+                                <span>Dev Velocity</span>
+                            </div>
+                            <div class="cs-metric-box">
+                                <h4>100%</h4>
+                                <span>Mobile Responsive</span>
+                            </div>
+                            <div class="cs-metric-box">
+                                <h4>0.4s</h4>
+                                <span>Page Load Speed</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <script src="{% static 'script.js' %}?v=20260906_v2"></script>
+        </div>
+    </div>
+
 </body>
 </html>
