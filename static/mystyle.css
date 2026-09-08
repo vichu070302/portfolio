@@ -196,10 +196,15 @@
 /* --- GLOBAL BODY OVERRIDES FOR HERO --- */
 body {
     font-family: 'Urbanist', sans-serif;
+    font-size: 17px;
     background-color: var(--bg-color);
     background-image: var(--body-bg-gradient);
     color: var(--text-color);
     transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+p, li, a, span, button {
+    font-size: 1.02rem;
 }
 
 /* --- HERO SECTION STYLING --- */
@@ -271,10 +276,10 @@ body {
 
 .hero-description {
     color: var(--text-muted);
-    font-size: 18px;
-    line-height: 1.6;
+    font-size: 20px;
+    line-height: 1.7;
     margin: 30px 0 40px 0;
-    max-width: 500px;
+    max-width: 540px;
 }
 
 /* Action Buttons */
@@ -874,7 +879,7 @@ body {
 }
 
 .about-text h3 {
-    font-size: 28px;
+    font-size: 32px;
     margin-bottom: 20px;
     color: var(--text-light);
     
@@ -884,7 +889,7 @@ body {
     color: var(--text-muted);
     margin-bottom: 30px;
     line-height: 1.8;
-    font-size: 18px;
+    font-size: 20px;
     margin-left: 20px;
 }
 
@@ -1028,7 +1033,7 @@ body {
 }
 
 .service-card h3 {
-    font-size: 20px;
+    font-size: 24px;
     margin-bottom: 15px;
     color: var(--text-light);
 }
@@ -1036,7 +1041,8 @@ body {
 .service-card p {
     color: var(--text-muted);
     margin-bottom: 20px;
-    font-size: 14px;
+    font-size: 17px;
+    line-height: 1.7;
 }
 
 .read-more {
@@ -1105,12 +1111,14 @@ body {
 .project-info h3 {
     color: var(--text-light);
     margin-bottom: 8px;
+    font-size: 24px;
 }
 
 .project-info p {
     color: var(--text-muted);
-    font-size: 14px;
+    font-size: 17px;
     margin-bottom: 15px;
+    line-height: 1.6;
 }
 
 .project-links {
@@ -1302,7 +1310,7 @@ body {
 
 .contact-label {
     color: var(--text-muted);
-    font-size: 12px;
+    font-size: 13px;
     margin-bottom: 5px;
 }
 
@@ -1310,6 +1318,7 @@ body {
 .contact-item p {
     color: var(--text-light);
     text-decoration: none;
+    font-size: 17px;
 }
 
 .contact-item a:hover {
