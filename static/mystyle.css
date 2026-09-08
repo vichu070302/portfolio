@@ -172,12 +172,25 @@
     box-sizing: border-box !important;
 }
 
+.theme-toggle i {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
 .theme-toggle:hover {
     background: var(--primary-green) !important;
     color: #060b11 !important;
     border-color: var(--primary-green) !important;
     transform: scale(1.08) !important;
     box-shadow: 0 4px 15px rgba(82, 220, 61, 0.35) !important;
+}
+
+[data-theme="light"] .theme-toggle {
+    background: rgba(39, 174, 96, 0.10) !important;
+    border-color: rgba(39, 174, 96, 0.35) !important;
+    color: #27ae60 !important;
 }
 
 /* --- GLOBAL BODY OVERRIDES FOR HERO --- */
@@ -595,7 +608,7 @@ body {
 }
 
 .social-icon {
-    color: var(--text-light);
+    color: var(--text-color);
     width: 45px;
     height: 45px;
     display: flex;
@@ -605,7 +618,7 @@ body {
     border-radius: 8px;
     transition: all 0.3s ease;
     font-size: 20px;
-    background: rgba(26, 31, 58, 0.5);
+    background: rgba(255, 255, 255, 0.06);
 }
 
 .social-icon:hover {
@@ -613,6 +626,12 @@ body {
     color: var(--bg-dark);
     border-color: var(--primary-color);
     transform: translateY(-5px);
+}
+
+[data-theme="light"] .social-icon {
+    background: rgba(15, 23, 42, 0.04);
+    color: var(--text-color);
+    border-color: rgba(15, 23, 42, 0.12);
 }
 
 /* Hero Section */
