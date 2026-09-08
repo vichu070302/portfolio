@@ -682,8 +682,34 @@ function fixStaticDjangoTags() {
     });
 }
 
+// Back to Case Studies Navigation Handler (Prevents 404 on static hosting)
+function initBackHomeButtons() {
+    document.querySelectorAll('.back-home-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const href = btn.getAttribute('href');
+            if (href && href.includes('index.html#case-studies')) {
+                const isHomePage = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/') || window.location.pathname === '';
+                if (isHomePage) {
+                    e.preventDefault();
+                    const target = document.querySelector('#case-studies');
+                    if (target) {
+                        const headerOffset = 80;
+                        const elementPosition = target.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                    }
+                } else {
+                    e.preventDefault();
+                    window.location.href = './index.html#case-studies';
+                }
+            }
+        });
+    });
+}
+
 function initAllScrollAnimations() {
     fixStaticDjangoTags();
+    initBackHomeButtons();
     initUiUxModal();
     initScrollReveal();
     init3DTilt();
