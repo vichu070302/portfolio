@@ -652,7 +652,21 @@ function init3DTilt() {
     });
 }
 
+// Dual Compatibility Static Path Fixer for GitHub Pages & Django
+function fixStaticDjangoTags() {
+    document.querySelectorAll('img').forEach(img => {
+        let src = img.getAttribute('src');
+        if (src && (src.includes('{%') || src.includes('%7B%25'))) {
+            let match = src.match(/['"](.*?)['"]/);
+            if (match && match[1]) {
+                img.src = 'static/' + match[1];
+            }
+        }
+    });
+}
+
 function initAllScrollAnimations() {
+    fixStaticDjangoTags();
     initUiUxModal();
     initScrollReveal();
     init3DTilt();

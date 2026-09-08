@@ -335,6 +335,7 @@ body {
 }
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 80px;
 }
 
 body {
@@ -1670,12 +1671,15 @@ html {
 
 .project-image img { 
     aspect-ratio: 16 / 10; 
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.25);
     transition: transform 0.4s ease;
 }
 
 .project-card:hover .project-image img {
-    transform: scale(1.15) rotate(1deg);
+    transform: scale(1.03);
 }
 
 @media (max-width: 768px) {
@@ -3125,19 +3129,94 @@ img, iframe, svg, video {
     overflow: hidden;
     position: relative;
     border: 1px solid var(--card-border);
-    background: #060a12;
+    background: rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .csk-media-viewport img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center;
+    padding: 10px;
     display: block;
-    transition: transform 0.5s ease;
+    transition: transform 0.4s ease;
 }
 
 .csk-card:hover .csk-media-viewport img {
-    transform: scale(1.06);
+    transform: scale(1.03);
+}
+
+/* ==========================================================================
+   GLOBAL GALLERY TOP NAVBAR & BACK TO CASE STUDIES BUTTON ALIGNMENT
+   ========================================================================== */
+.gallery-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: var(--navbar-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--card-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    z-index: 1000;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.gallery-logo {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--logo-color);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+.gallery-logo span {
+    color: var(--primary-green);
+}
+
+.back-home-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    background: rgba(82, 220, 61, 0.12);
+    border: 1px solid rgba(82, 220, 61, 0.35);
+    color: var(--primary-green);
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.back-home-btn i {
+    font-size: 14px;
+    transition: transform 0.25s ease;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.back-home-btn:hover {
+    background: var(--primary-green);
+    color: #060b11;
+    border-color: var(--primary-green);
+    transform: translateX(-3px);
+    box-shadow: 0 4px 15px rgba(82, 220, 61, 0.35);
+}
+
+.back-home-btn:hover i {
+    transform: translateX(-3px);
 }
 
 /* Full Case Study Web Page Styles */
