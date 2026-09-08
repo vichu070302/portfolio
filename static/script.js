@@ -53,29 +53,29 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Theme Toggle (Moon / Sun Button)
 function initThemeToggle() {
-    const themeToggleBtn = document.getElementById('themeToggle');
+    const themeToggleBtns = document.querySelectorAll('.theme-toggle, #themeToggle');
     const htmlElement = document.documentElement;
 
     const savedTheme = localStorage.getItem('theme') || 'dark';
     htmlElement.setAttribute('data-theme', savedTheme);
 
     function updateThemeIcon(theme) {
-        const btn = document.getElementById('themeToggle');
-        if (!btn) return;
-        const icon = btn.querySelector('i');
-        if (icon) {
-            if (theme === 'dark') {
-                icon.className = 'fas fa-moon';
-            } else {
-                icon.className = 'fas fa-sun';
+        themeToggleBtns.forEach(btn => {
+            const icon = btn.querySelector('i');
+            if (icon) {
+                if (theme === 'dark') {
+                    icon.className = 'fas fa-moon';
+                } else {
+                    icon.className = 'fas fa-sun';
+                }
             }
-        }
+        });
     }
 
     updateThemeIcon(savedTheme);
 
-    if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', (e) => {
+    themeToggleBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
             const currentTheme = htmlElement.getAttribute('data-theme') || 'dark';
@@ -84,7 +84,7 @@ function initThemeToggle() {
             localStorage.setItem('theme', newTheme);
             updateThemeIcon(newTheme);
         });
-    }
+    });
 }
 
 if (document.readyState === 'loading') {
@@ -93,7 +93,28 @@ if (document.readyState === 'loading') {
     initThemeToggle();
 }
 
-// Enhanced Navbar class on scroll (without hardcoding inline dark background)
+// Initial URL Hash Smooth Scroll (e.g. index.html#case-studies)
+function handleInitialHashScroll() {
+    if (window.location.hash) {
+        const targetId = window.location.hash;
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            setTimeout(() => {
+                const headerOffset = 80;
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }, 250);
+        }
+    }
+}
+
+window.addEventListener('load', handleInitialHashScroll);
+
+// Enhanced Navbar class on scroll
 const navbar = document.querySelector('.navbar');
 if (navbar) {
     window.addEventListener('scroll', () => {
@@ -106,26 +127,22 @@ if (navbar) {
 }
 
 // Animate skill bars on scroll
-const observerOptions = {
-    threshold: 0.5
-};
-
 const skillObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             const skillProgress = entry.target.querySelector('.skill-progress');
             if (skillProgress && !skillProgress.classList.contains('animated')) {
-                const width = skillProgress.style.width;
-                skillProgress.style.width = '0';
+                const targetWidth = skillProgress.getAttribute('data-width') || skillProgress.style.width || '85%';
+                skillProgress.style.width = '0%';
                 setTimeout(() => {
-                    skillProgress.style.width = width;
+                    skillProgress.style.width = targetWidth;
                     skillProgress.classList.add('animated');
                 }, 100);
             }
             skillObserver.unobserve(entry.target);
         }
     });
-}, observerOptions);
+}, { threshold: 0.2 });
 
 document.querySelectorAll('.skill-item').forEach(item => {
     skillObserver.observe(item);

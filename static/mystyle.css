@@ -20,6 +20,8 @@
     --text-muted: #94a3b8;
     --primary-green: #52dc3d;
     --primary-color: #52dc3d;
+    --secondary-color: #27ae60;
+    --border-color: rgba(255, 255, 255, 0.12);
     --card-bg: rgba(15, 23, 42, 0.7);
     --card-border: rgba(255, 255, 255, 0.08);
     --navbar-bg: rgba(3, 9, 20, 0.95);
@@ -35,11 +37,56 @@
     --text-muted: #475569;
     --primary-green: #27ae60;
     --primary-color: #27ae60;
+    --secondary-color: #52dc3d;
+    --border-color: rgba(0, 0, 0, 0.12);
     --card-bg: #ffffff;
     --card-border: rgba(0, 0, 0, 0.12);
     --navbar-bg: rgba(255, 255, 255, 0.96);
     --logo-color: #0f172a;
     --body-bg-gradient: radial-gradient(circle at 64% 16%, rgba(39, 174, 96, .08), transparent 23%), radial-gradient(circle at 18% 37%, rgba(60, 96, 214, .05), transparent 28%);
+}
+
+[data-theme="light"] .skill-item, 
+[data-theme="light"] .service-card, 
+[data-theme="light"] .project-card, 
+[data-theme="light"] .testimonial-card,
+[data-theme="light"] .csk-card,
+[data-theme="light"] .cs-goal-card,
+[data-theme="light"] .cs-problem-card,
+[data-theme="light"] .cs-ai-box,
+[data-theme="light"] .stats-card,
+[data-theme="light"] .badge-freelance {
+    background: #ffffff !important;
+    border-color: rgba(0, 0, 0, 0.12) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+    color: #0f172a !important;
+}
+
+[data-theme="light"] .skill-name,
+[data-theme="light"] .service-card h3,
+[data-theme="light"] .project-info h3,
+[data-theme="light"] .stat-info h3,
+[data-theme="light"] .csk-title,
+[data-theme="light"] .cs-hero-title,
+[data-theme="light"] .cs-section-title,
+[data-theme="light"] .section-title h2 {
+    color: #0f172a !important;
+}
+
+[data-theme="light"] .hero-description,
+[data-theme="light"] .service-card p,
+[data-theme="light"] .project-info p,
+[data-theme="light"] .stat-info p,
+[data-theme="light"] .csk-desc,
+[data-theme="light"] .cs-lead-text,
+[data-theme="light"] .cs-hero-sub {
+    color: #475569 !important;
+}
+
+[data-theme="light"] .hero-title {
+    background: linear-gradient(135deg, #0f172a, #334155) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
 }
 
 /* --- GLOBAL BODY OVERRIDES FOR HERO --- */
@@ -780,17 +827,25 @@ body {
 }
 
 .skill-bar {
-    height: 6px;
-    background: var(--border-color);
-    border-radius: 3px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 4px;
     overflow: hidden;
+    margin-top: 8px;
+    position: relative;
+    width: 100%;
+}
+
+[data-theme="light"] .skill-bar {
+    background: rgba(0, 0, 0, 0.1);
 }
 
 .skill-progress {
     height: 100%;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    border-radius: 3px;
-    transition: width 0.5s ease;
+    background: linear-gradient(90deg, var(--primary-green), #27ae60);
+    border-radius: 4px;
+    transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 0 10px rgba(82, 220, 61, 0.4);
 }
 
 /* Services Section */
