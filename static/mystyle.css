@@ -89,6 +89,97 @@
     -webkit-text-fill-color: transparent !important;
 }
 
+/* --- UNIVERSAL LIGHT MODE OVERRIDES FOR CASE STUDY PAGES --- */
+[data-theme="light"] .cs-page-wrapper {
+    background-color: #f8fafc !important;
+    background-image: radial-gradient(circle at 64% 16%, rgba(39, 174, 96, .06), transparent 25%), radial-gradient(circle at 18% 37%, rgba(60, 96, 214, .04), transparent 28%) !important;
+    color: #0f172a !important;
+}
+
+[data-theme="light"] .cs-page-hero {
+    background: radial-gradient(ellipse at 50% 20%, rgba(39, 174, 96, 0.08), transparent 70%) !important;
+    border-bottom-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme="light"] .cs-section {
+    border-bottom-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="light"] .cs-meta-chip,
+[data-theme="light"] .cs-flow-step,
+[data-theme="light"] .cs-problem-card,
+[data-theme="light"] .cs-goal-card,
+[data-theme="light"] .cs-ai-box,
+[data-theme="light"] .cs-matrix-table {
+    background: #ffffff !important;
+    border-color: rgba(0, 0, 0, 0.12) !important;
+    color: #0f172a !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+}
+
+[data-theme="light"] .cs-matrix-table th {
+    background: #f1f5f9 !important;
+    color: #27ae60 !important;
+    border-bottom-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+[data-theme="light"] .cs-matrix-table td {
+    color: #0f172a !important;
+    border-bottom-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="light"] .cs-matrix-table tr:hover td {
+    background: rgba(39, 174, 96, 0.06) !important;
+}
+
+[data-theme="light"] .cs-quote-box {
+    background: linear-gradient(135deg, rgba(39, 174, 96, 0.08), #ffffff) !important;
+    border-color: rgba(39, 174, 96, 0.3) !important;
+    box-shadow: 0 10px 30px rgba(39, 174, 96, 0.08) !important;
+}
+
+[data-theme="light"] .cs-quote-text {
+    color: #0f172a !important;
+}
+
+[data-theme="light"] .gallery-nav {
+    background: rgba(255, 255, 255, 0.96) !important;
+    border-bottom-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme="light"] .gallery-logo {
+    color: #0f172a !important;
+}
+
+/* Symmetrical & Sized Theme Toggle Button */
+.theme-toggle {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    border-radius: 50% !important;
+    background: rgba(82, 220, 61, 0.12) !important;
+    border: 1px solid rgba(82, 220, 61, 0.35) !important;
+    color: var(--primary-green) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    font-size: 16px !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+    box-sizing: border-box !important;
+}
+
+.theme-toggle:hover {
+    background: var(--primary-green) !important;
+    color: #060b11 !important;
+    border-color: var(--primary-green) !important;
+    transform: scale(1.08) !important;
+    box-shadow: 0 4px 15px rgba(82, 220, 61, 0.35) !important;
+}
+
 /* --- GLOBAL BODY OVERRIDES FOR HERO --- */
 body {
     font-family: 'Urbanist', sans-serif;
