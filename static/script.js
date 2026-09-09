@@ -305,6 +305,58 @@ document.addEventListener('mousemove', () => {
 
 console.log('✨ Portfolio script loaded successfully!');
 
+// Global E-Commerce Showcase Modal Controller Functions
+window.openEcommerceShowcaseModal = function(e) {
+    if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+    const modal = document.getElementById('ecommerceModal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+};
+
+window.closeEcommerceShowcaseModal = function(e) {
+    if (e) {
+        e.preventDefault();
+    }
+    const modal = document.getElementById('ecommerceModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+};
+
+function initEcommerceModal() {
+    const ecommerceCard = document.getElementById('ecommerceCard');
+    const modal = document.getElementById('ecommerceModal');
+    const closeModalBtn = document.getElementById('closeEcommerceModal');
+
+    if (ecommerceCard) {
+        ecommerceCard.addEventListener('click', window.openEcommerceShowcaseModal);
+    }
+
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', window.closeEcommerceShowcaseModal);
+    }
+
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                window.closeEcommerceShowcaseModal(e);
+            }
+        });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
+            window.closeEcommerceShowcaseModal(e);
+        }
+    });
+}
+
 // Global UI/UX Showcase Modal Controller Functions
 window.openUiUxShowcaseModal = function(e) {
     if (e) {
@@ -469,12 +521,12 @@ function fixStaticDjangoTags() {
     });
 }
 
-// Back to Case Studies Navigation Handler (Prevents 404 on static hosting)
+// Back to Case Studies Navigation Handler (Prevents 404 on Django/static hosting)
 function initBackHomeButtons() {
     document.querySelectorAll('.back-home-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             const href = btn.getAttribute('href');
-            if (href && href.includes('index.html#case-studies')) {
+            if (href && href.includes('#case-studies')) {
                 const isHomePage = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/') || window.location.pathname === '';
                 if (isHomePage) {
                     e.preventDefault();
@@ -487,7 +539,8 @@ function initBackHomeButtons() {
                     }
                 } else {
                     e.preventDefault();
-                    window.location.href = './index.html#case-studies';
+                    const homePath = window.location.protocol === 'file:' ? 'index.html#case-studies' : '/#case-studies';
+                    window.location.href = homePath;
                 }
             }
         });
@@ -497,6 +550,7 @@ function initBackHomeButtons() {
 function initAllScrollAnimations() {
     fixStaticDjangoTags();
     initBackHomeButtons();
+    initEcommerceModal();
     initUiUxModal();
     initScrollReveal();
     init3DTilt();

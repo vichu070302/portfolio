@@ -275,35 +275,31 @@
                 <p>Featured Projects</p>
             </div>
             <div class="projects-grid">
-                <div class="project-card" id="ecommerceCard">
-                    <a href="ecommerce_gallery.html" target="_blank" rel="noopener noreferrer" class="project-card-link">
-                        <div class="project-image">
-                            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80" alt="Lumina Furniture E-Commerce UX Showcase">
-                        </div>
-                        <div class="project-info">
-                            <span class="project-badge"><i class="fas fa-shopping-cart"></i> E-commerce Showcase</span>
-                            <h3>Jakso & Lumina E-commerce</h3>
-                            <p>Django, Python, JS & Lumina Furniture</p>
-                            <span class="card-action-btn-green">
-                                <i class="fas fa-arrow-right"></i> View E-commerce Projects
-                            </span>
-                        </div>
-                    </a>
+                <div class="project-card uiux-interactive-card" id="ecommerceCard" onclick="openEcommerceShowcaseModal(event)">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80" alt="Lumina Furniture E-Commerce UX Showcase">
+                    </div>
+                    <div class="project-info">
+                        <span class="project-badge"><i class="fas fa-shopping-cart"></i> E-commerce Showcase</span>
+                        <h3>Jakso & Lumina E-commerce</h3>
+                        <p>Django, PythonAnywhere, JS & Lumina Furniture</p>
+                        <button type="button" class="card-action-btn-green" onclick="openEcommerceShowcaseModal(event)">
+                            <i class="fas fa-eye"></i> View E-Commerce Projects & Live Links
+                        </button>
+                    </div>
                 </div>
-                <div class="project-card" id="mobileAppUiCard">
-                    <a href="uiux_gallery.html" target="_blank" rel="noopener noreferrer" class="project-card-link">
-                        <div class="project-image">
-                            <img src="static/cack app.png" alt="Cake Mobile App UI">
-                        </div>
-                        <div class="project-info">
-                            <span class="project-badge"><i class="fas fa-sparkles"></i> UI/UX Showcase</span>
-                            <h3>Mobile App UI</h3>
-                            <p>Figma, UI Design & 3D Interactive</p>
-                            <span class="card-action-btn-green">
-                                <i class="fas fa-arrow-right"></i> View UI/UX Designing
-                            </span>
-                        </div>
-                    </a>
+                <div class="project-card uiux-interactive-card" id="mobileAppUiCard" onclick="openUiUxShowcaseModal(event)">
+                    <div class="project-image">
+                        <img src="static/cack app.png" alt="Cake Mobile App UI">
+                    </div>
+                    <div class="project-info">
+                        <span class="project-badge"><i class="fas fa-sparkles"></i> UI/UX Showcase</span>
+                        <h3>Mobile App UI & Perfume Design</h3>
+                        <p>Figma Prototype, Cake App & Luxe Perfume</p>
+                        <button type="button" class="card-action-btn-green" onclick="openUiUxShowcaseModal(event)">
+                            <i class="fab fa-figma"></i> View UI/UX Figma Designs
+                        </button>
+                    </div>
                 </div>
                 <div class="project-card">
                     <a href="https://vichu070302.github.io/competition/" target="_blank" rel="noopener noreferrer" class="project-card-link">
@@ -554,19 +550,26 @@
                     <!-- SECOND BOX: Cake Shop / Baking UI & New 3D Landing Page -->
                     <div class="modal-column column-right">
                         <div class="column-header">
-                            <span class="col-badge latest-col-badge"><i class="fas fa-cubes"></i> Project 02: 3D & Baking UI</span>
-                            <h3>Cake Shop UI & 3D Landing Page</h3>
+                            <span class="col-badge latest-col-badge"><i class="fab fa-figma"></i> Project 02: Perfume UI & 3D</span>
+                            <h3>Luxe Perfume UI & 3D Experience</h3>
                         </div>
-                        <div class="spline-modal-viewport">
-                            <!-- EXACT EMBED CODE REQUIRED BY USER -->
-                            <iframe src='https://my.spline.design/glassknotvortex-4pkSBEZvQ6F9ejutxt82Ryms/' frameborder='0' width='100%' height='100%' allow="fullscreen"></iframe>
-                            <div class="spline-hint-overlay">
-                                <i class="fas fa-hand-pointer"></i> 100% Interactive 3D Model (Drag to Rotate & Scroll)
+                        <div class="column-preview-box">
+                            <div class="preview-toolbar">
+                                <div class="toolbar-dots"><span></span><span></span><span></span></div>
+                                <span class="toolbar-label">Figma Interactive Design</span>
+                            </div>
+                            <div class="preview-img-wrapper">
+                                <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=800&q=80" alt="Luxe Perfume Figma UI/UX Design">
+                                <div class="preview-hover-overlay">
+                                    <a href="https://www.figma.com/make/bpMfkhjLmaLyqu3OFll7rQ/Perfume-Shopping-Website" target="_blank" rel="noopener noreferrer" class="figma-link-btn" style="background: linear-gradient(135deg, #9b59b6, #8e44ad);">
+                                        <i class="fab fa-figma"></i> Open Perfume Figma Design
+                                    </a>
+                                </div>
                             </div>
                         </div>
                         <div class="box-mini-desc">
-                            <h4><i class="fas fa-gem"></i> Interactive 3D Experience</h4>
-                            <p>Real-time WebGL 3D glass knot vortex model integrated into a modern spatial web experience with dynamic glass refraction shaders.</p>
+                            <h4><i class="fas fa-spray-can"></i> Luxury Fragrance UI & Spatial Design</h4>
+                            <p>Premium fragrance shopping interface with sensory visual hierarchy, interactive scent note filters, and spatial WebGL 3D glass product viewports.</p>
                         </div>
                     </div>
 
@@ -583,8 +586,8 @@
                             </div>
                         </div>
                         <div class="details-tab-nav">
-                            <button class="details-tab-btn active" data-tab="tab-prev">Figma UI/UX Project</button>
-                            <button class="details-tab-btn" data-tab="tab-latest">Cake Shop 3D Project</button>
+                            <button class="details-tab-btn active" data-tab="tab-prev">Cake App UI Project</button>
+                            <button class="details-tab-btn" data-tab="tab-latest">Luxe Perfume 3D Project</button>
                             <button class="details-tab-btn" data-tab="tab-compare">Compare Both</button>
                         </div>
                     </div>
@@ -617,8 +620,8 @@
                             <div class="pane-grid">
                                 <div class="pane-item">
                                     <h4><i class="fas fa-cube"></i> Project Overview & Methodology</h4>
-                                    <p class="pane-proj-title">Cake Shop & Glass Knot 3D Experience</p>
-                                    <p class="pane-text">Created a high-impact, spatial web landing page featuring a real-time WebGL 3D glass knot vortex model. Implemented dynamic refraction material physics, ambient lighting environments, responsive camera orbits, and interactive mouse-drag interactions.</p>
+                                    <p class="pane-proj-title">Luxe Perfume & 3D Experience</p>
+                                    <p class="pane-text">Created a high-impact fragrance landing page featuring real-time 3D perfume bottle viewports. Implemented dynamic refraction material physics, ambient lighting environments, responsive camera orbits, and interactive mouse-drag interactions.</p>
                                 </div>
                                 <div class="pane-item">
                                     <h4><i class="fas fa-tools"></i> Tools & Technologies Used</h4>
@@ -637,19 +640,121 @@
                         <div class="tab-pane" id="tab-compare">
                             <div class="comparison-row">
                                 <div class="comp-box">
-                                    <h5>Figma UI/UX Project</h5>
+                                    <h5>Cake App UI Project</h5>
                                     <p><strong>Focus:</strong> Mobile User Interface, Figma Design Systems & User Flows</p>
                                     <p><strong>Primary Tools:</strong> Figma, Adobe XD, Photoshop</p>
                                 </div>
                                 <div class="comp-vs">VS</div>
                                 <div class="comp-box highlight-comp">
-                                    <h5>Cake Shop 3D Project</h5>
+                                    <h5>Luxe Perfume 3D Project</h5>
                                     <p><strong>Focus:</strong> Spatial Web Design, Real-time 3D Rendering & Mouse Physics</p>
-                                    <p><strong>Primary Tools:</strong> Spline 3D, WebGL, HTML5/CSS3</p>
+                                    <p><strong>Primary Tools:</strong> Figma, Spline 3D, WebGL, HTML5/CSS3</p>
                                 </div>
                             </div>
                         </div>
 
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- E-COMMERCE SHOWCASE MODAL -->
+    <div class="uiux-modal-backdrop" id="ecommerceModal" onclick="if(event.target === this) closeEcommerceShowcaseModal(event)">
+        <div class="uiux-modal-container">
+            <div class="uiux-modal-header">
+                <div class="modal-title-group">
+                    <span class="modal-pill" style="background: rgba(59, 130, 246, 0.15); color: #3b82f6;"><i class="fas fa-shopping-cart"></i> E-Commerce Projects & Live Applications</span>
+                    <h2>Featured E-Commerce Web Applications</h2>
+                </div>
+                <button class="modal-close-btn" id="closeEcommerceModal" onclick="closeEcommerceShowcaseModal(event)" title="Close Window">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="uiux-modal-body">
+                <div class="modal-columns-grid">
+                    
+                    <!-- BOX 1: PythonAnywhere Django E-Commerce Web App -->
+                    <div class="modal-column column-left">
+                        <div class="column-header">
+                            <span class="col-badge prev-col-badge" style="background: rgba(59, 130, 246, 0.15); color: #3b82f6;"><i class="fab fa-python"></i> Project 01: Django Live App</span>
+                            <h3>Jakso Django E-Commerce Web App</h3>
+                        </div>
+                        <div class="column-preview-box">
+                            <div class="preview-toolbar">
+                                <div class="toolbar-dots"><span></span><span></span><span></span></div>
+                                <span class="toolbar-label">PythonAnywhere Hosted Web App</span>
+                            </div>
+                            <div class="preview-img-wrapper">
+                                <img src="https://images.unsplash.com/photo-1556742049-0a67daf40955?w=800&q=80" alt="PythonAnywhere Django E-Commerce">
+                                <div class="preview-hover-overlay">
+                                    <a href="https://vichu.pythonanywhere.com/" target="_blank" rel="noopener noreferrer" class="figma-link-btn" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8);">
+                                        <i class="fas fa-external-link-alt"></i> Open PythonAnywhere Web App
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-mini-desc">
+                            <h4><i class="fas fa-server"></i> Full-Stack Django & SQLite3</h4>
+                            <p>Complete e-commerce platform deployed on PythonAnywhere featuring user authentication, product catalogues, cart checkout, and backend order management.</p>
+                        </div>
+                    </div>
+
+                    <!-- BOX 2: Lumina Furniture E-Commerce Web App -->
+                    <div class="modal-column column-right">
+                        <div class="column-header">
+                            <span class="col-badge latest-col-badge" style="background: rgba(82, 220, 61, 0.15); color: #52dc3d;"><i class="fas fa-couch"></i> Project 02: Lumina Web App</span>
+                            <h3>Lumina Furniture Web Application</h3>
+                        </div>
+                        <div class="column-preview-box">
+                            <div class="preview-toolbar">
+                                <div class="toolbar-dots"><span></span><span></span><span></span></div>
+                                <span class="toolbar-label">Vercel Live Interactive Web App</span>
+                            </div>
+                            <div class="preview-img-wrapper">
+                                <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80" alt="Lumina Furniture Live Web App">
+                                <div class="preview-hover-overlay">
+                                    <a href="https://lumina-furniture-psi.vercel.app/" target="_blank" rel="noopener noreferrer" class="figma-link-btn" style="background: linear-gradient(135deg, #52dc3d, #27ae60); color: #060b11;">
+                                        <i class="fas fa-external-link-alt"></i> Open Lumina Live Site
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-mini-desc">
+                            <h4><i class="fas fa-desktop"></i> Modern Responsive E-Commerce</h4>
+                            <p>High-performance frontend e-commerce web application featuring intuitive product filters, spec grid cards, responsive cart drawer, and sleek visual layout.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal-details-box">
+                    <div class="details-box-header">
+                        <div class="details-title-row">
+                            <i class="fas fa-code details-icon"></i>
+                            <div>
+                                <h3>Full-Stack & E-Commerce Technologies</h3>
+                                <p>Backend Django, PythonAnywhere deployment, and frontend JavaScript architecture.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pane-grid">
+                        <div class="pane-item">
+                            <h4><i class="fas fa-layer-group"></i> Architecture Summary</h4>
+                            <p class="pane-text">Combines secure Django ORM data models, PythonAnywhere production WSGI hosting, dynamic cart state management, and optimized responsive layouts.</p>
+                        </div>
+                        <div class="pane-item">
+                            <h4><i class="fas fa-tools"></i> Tech Stack</h4>
+                            <div class="tool-tags-container">
+                                <span class="tool-badge figma-badge" style="border-color: rgba(59, 130, 246, 0.4); color: #3b82f6;"><i class="fab fa-python"></i> Python & Django</span>
+                                <span class="tool-badge spline-badge"><i class="fas fa-database"></i> SQLite3</span>
+                                <span class="tool-badge proto-badge"><i class="fab fa-js"></i> JavaScript ES6</span>
+                                <span class="tool-badge webgl-badge"><i class="fas fa-cloud"></i> PythonAnywhere</span>
+                                <span class="tool-badge figma-badge"><i class="fas fa-bolt"></i> Vercel Web Hosting</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
