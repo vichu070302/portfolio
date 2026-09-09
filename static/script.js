@@ -330,14 +330,9 @@ window.closeEcommerceShowcaseModal = function(e) {
 };
 
 function initEcommerceModal() {
-    const fruitsAiCard = document.getElementById('fruitsAiCard');
     const ecommerceCard = document.getElementById('ecommerceCard');
     const modal = document.getElementById('ecommerceModal');
     const closeModalBtn = document.getElementById('closeEcommerceModal');
-
-    if (fruitsAiCard) {
-        fruitsAiCard.addEventListener('click', window.openEcommerceShowcaseModal);
-    }
 
     if (ecommerceCard) {
         ecommerceCard.addEventListener('click', window.openEcommerceShowcaseModal);
