@@ -294,8 +294,8 @@
                     </div>
                     <div class="project-info">
                         <span class="project-badge"><i class="fas fa-sparkles"></i> UI/UX Showcase</span>
-                        <h3>Mobile App UI & Perfume Design</h3>
-                        <p>Figma Prototype, Cake App & Luxe Perfume</p>
+                        <h3>Mobile App UI, Perfume & AstroConnect</h3>
+                        <p>Figma Prototypes: Cake App, Luxe Perfume & AstroConnect</p>
                         <button type="button" class="card-action-btn-green" onclick="openUiUxShowcaseModal(event)">
                             <i class="fab fa-figma"></i> View UI/UX Figma Designs
                         </button>
@@ -518,7 +518,7 @@
             </div>
 
             <div class="uiux-modal-body">
-                <!-- Two Side-by-Side Project Boxes -->
+                <!-- Three Side-by-Side Project Boxes -->
                 <div class="modal-columns-grid">
                     
                     <!-- FIRST BOX: Previous Figma UI/UX Project -->
@@ -573,22 +573,49 @@
                         </div>
                     </div>
 
+                    <!-- THIRD BOX: AstroConnect App Design -->
+                    <div class="modal-column column-astro">
+                        <div class="column-header">
+                            <span class="col-badge astro-col-badge"><i class="fab fa-figma"></i> Project 03: AstroConnect App</span>
+                            <h3>AstroConnect App Design</h3>
+                        </div>
+                        <div class="column-preview-box">
+                            <div class="preview-toolbar">
+                                <div class="toolbar-dots"><span></span><span></span><span></span></div>
+                                <span class="toolbar-label">Figma Interactive Design</span>
+                            </div>
+                            <div class="preview-img-wrapper">
+                                <img src="https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=800&q=80" alt="AstroConnect App Figma UI/UX Design">
+                                <div class="preview-hover-overlay">
+                                    <a href="https://www.figma.com/make/WdZKRzVlhPDXEediEjKZWG/AstroConnect-App-Design?t=G4isQcK6CoWa3mZD-1" target="_blank" rel="noopener noreferrer" class="figma-link-btn" style="background: linear-gradient(135deg, #e67e22, #d35400);">
+                                        <i class="fab fa-figma"></i> Open AstroConnect Figma Design
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-mini-desc">
+                            <h4><i class="fas fa-star"></i> Astrology & Horoscope Mobile UI</h4>
+                            <p>Personalized astrology & live consultation mobile app featuring dark space aesthetics, constellation visual cards, interactive daily horoscope feeds, and real-time booking flows.</p>
+                        </div>
+                    </div>
+
                 </div>
 
-                <!-- PROJECT DETAILS & TOOLS SPECIFICATION BOX (Right below the two columns) -->
+                <!-- PROJECT DETAILS & TOOLS SPECIFICATION BOX (Right below the columns) -->
                 <div class="modal-details-box">
                     <div class="details-box-header">
                         <div class="details-title-row">
                             <i class="fas fa-sliders-h details-icon"></i>
                             <div>
                                 <h3>Project Specifications & Tool Details</h3>
-                                <p>Comprehensive design breakdown and technological stack for both projects.</p>
+                                <p>Comprehensive design breakdown and technological stack for all featured projects.</p>
                             </div>
                         </div>
                         <div class="details-tab-nav">
                             <button class="details-tab-btn active" data-tab="tab-prev">Cake App UI Project</button>
                             <button class="details-tab-btn" data-tab="tab-latest">Luxe Perfume 3D Project</button>
-                            <button class="details-tab-btn" data-tab="tab-compare">Compare Both</button>
+                            <button class="details-tab-btn" data-tab="tab-astro">AstroConnect App</button>
+                            <button class="details-tab-btn" data-tab="tab-compare">Compare All</button>
                         </div>
                     </div>
 
@@ -636,19 +663,44 @@
                             </div>
                         </div>
 
+                        <!-- Box 3 Details: AstroConnect -->
+                        <div class="tab-pane" id="tab-astro">
+                            <div class="pane-grid">
+                                <div class="pane-item">
+                                    <h4><i class="fas fa-mobile-alt"></i> Project Overview & Methodology</h4>
+                                    <p class="pane-proj-title">AstroConnect Mobile App UI Design</p>
+                                    <p class="pane-text">Designed an intuitive mobile app experience connecting users with personalized astrology insights and live astrologer consultations. Built dark space visual themes, interactive zodiac profile cards, real-time consultation booking flows, and accessible mobile interfaces.</p>
+                                </div>
+                                <div class="pane-item">
+                                    <h4><i class="fas fa-tools"></i> Tools & Technologies Used</h4>
+                                    <div class="tool-tags-container">
+                                        <span class="tool-badge figma-badge"><i class="fab fa-figma"></i> Figma</span>
+                                        <span class="tool-badge xd-badge"><i class="fas fa-pen-nib"></i> Adobe XD</span>
+                                        <span class="tool-badge ps-badge"><i class="fas fa-image"></i> Photoshop</span>
+                                        <span class="tool-badge proto-badge"><i class="fas fa-mobile"></i> Mobile UX Prototyping</span>
+                                        <span class="tool-badge ux-badge"><i class="fas fa-users"></i> Wireframing & Design System</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Comparison Details -->
                         <div class="tab-pane" id="tab-compare">
-                            <div class="comparison-row">
+                            <div class="comparison-row" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
                                 <div class="comp-box">
                                     <h5>Cake App UI Project</h5>
                                     <p><strong>Focus:</strong> Mobile User Interface, Figma Design Systems & User Flows</p>
                                     <p><strong>Primary Tools:</strong> Figma, Adobe XD, Photoshop</p>
                                 </div>
-                                <div class="comp-vs">VS</div>
-                                <div class="comp-box highlight-comp">
+                                <div class="comp-box">
                                     <h5>Luxe Perfume 3D Project</h5>
                                     <p><strong>Focus:</strong> Spatial Web Design, Real-time 3D Rendering & Mouse Physics</p>
                                     <p><strong>Primary Tools:</strong> Figma, Spline 3D, WebGL, HTML5/CSS3</p>
+                                </div>
+                                <div class="comp-box highlight-comp" style="border-color: rgba(230, 126, 34, 0.5);">
+                                    <h5 style="color: #e67e22;">AstroConnect App Project</h5>
+                                    <p><strong>Focus:</strong> Personalization UI, Dark Celestial Theme & Booking Flow</p>
+                                    <p><strong>Primary Tools:</strong> Figma, Mobile UX Prototyping, Adobe XD</p>
                                 </div>
                             </div>
                         </div>

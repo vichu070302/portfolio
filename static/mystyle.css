@@ -2335,11 +2335,11 @@ html {
     gap: 25px;
 }
 
-/* Two Side-by-Side Columns */
+/* Three Side-by-Side Columns */
 .modal-columns-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 }
 
 .modal-column {
@@ -2375,6 +2375,7 @@ html {
 
 .prev-col-badge { background: rgba(52, 152, 219, 0.15); color: #3498db; }
 .latest-col-badge { background: rgba(155, 89, 182, 0.2); color: #9b59b6; }
+.astro-col-badge { background: rgba(230, 126, 34, 0.2); color: #e67e22; }
 
 .column-header h3 {
     font-size: 17px;
