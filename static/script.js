@@ -723,26 +723,39 @@ function initCustomCursor() {
 }
 
 function spawnCursorParticle(x, y) {
-    const particle = document.createElement('div');
-    particle.className = 'cursor-particle';
-    particle.style.left = `${x}px`;
-    particle.style.top = `${y}px`;
+    const particleColors = ['#52dc3d', '#38bdf8', '#a855f7', '#34d399'];
+    const count = Math.floor(Math.random() * 2) + 2; // Spawn 2 to 3 particles per burst
 
-    const angle = Math.random() * Math.PI * 2;
-    const distance = 10 + Math.random() * 16;
-    const destX = x + Math.cos(angle) * distance;
-    const destY = y + Math.sin(angle) * distance;
+    for (let i = 0; i < count; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'cursor-particle';
+        const size = Math.floor(Math.random() * 6) + 4; // 4px to 9px size
+        const color = particleColors[Math.floor(Math.random() * particleColors.length)];
+        
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.background = color;
+        particle.style.boxShadow = `0 0 12px ${color}`;
+        particle.style.left = `${x}px`;
+        particle.style.top = `${y}px`;
 
-    document.body.appendChild(particle);
+        // Wider particle spread distance (25px to 55px)
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 25 + Math.random() * 35;
+        const destX = x + Math.cos(angle) * distance;
+        const destY = y + Math.sin(angle) * distance;
 
-    requestAnimationFrame(() => {
-        particle.style.left = `${destX}px`;
-        particle.style.top = `${destY}px`;
-        particle.style.transform = `translate(-50%, -50%) scale(0)`;
-        particle.style.opacity = `0`;
-    });
+        document.body.appendChild(particle);
 
-    setTimeout(() => particle.remove(), 550);
+        requestAnimationFrame(() => {
+            particle.style.left = `${destX}px`;
+            particle.style.top = `${destY}px`;
+            particle.style.transform = `translate(-50%, -50%) scale(0)`;
+            particle.style.opacity = `0`;
+        });
+
+        setTimeout(() => particle.remove(), 700);
+    }
 }
 
 

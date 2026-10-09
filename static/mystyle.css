@@ -4008,62 +4008,61 @@ img, iframe, svg, video {
     }
 }
 
-/* 6. Custom Smooth Interactive Animated Mouse Cursor & Particle Trail */
+/* 6. Custom Smooth Interactive Animated Mouse Cursor & Dynamic Particle Trail */
 @media (pointer: fine) {
     .cursor-dot {
         position: fixed;
         top: 0;
         left: 0;
-        width: 8px;
-        height: 8px;
-        background: #38bdf8;
+        width: 9px;
+        height: 9px;
+        background: var(--primary-color, #52dc3d);
         border-radius: 50%;
         pointer-events: none;
         z-index: 999999;
         transform: translate(-50%, -50%);
         transition: opacity 0.3s ease, transform 0.1s ease;
-        box-shadow: 0 0 10px #38bdf8, 0 0 18px #52dc3d;
+        box-shadow: 0 0 12px var(--primary-color, #52dc3d), 0 0 22px rgba(56, 189, 248, 0.6);
     }
 
     .cursor-follower {
         position: fixed;
         top: 0;
         left: 0;
-        width: 38px;
-        height: 38px;
-        border: 1.5px solid rgba(56, 189, 248, 0.6);
-        background: rgba(56, 189, 248, 0.05);
+        width: 42px;
+        height: 42px;
+        border: 1.5px solid var(--primary-color, #52dc3d);
+        background: rgba(82, 220, 61, 0.05);
         border-radius: 50%;
         pointer-events: none;
         z-index: 999998;
         transform: translate(-50%, -50%);
         transition: transform 0.15s cubic-bezier(0.1, 0.8, 0.2, 1), border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-        box-shadow: 0 0 15px rgba(56, 189, 248, 0.25);
+        box-shadow: 0 0 20px rgba(82, 220, 61, 0.3);
     }
 
     .cursor-follower.cursor-hover {
-        transform: translate(-50%, -50%) scale(1.6);
-        border-color: #52dc3d;
-        background: rgba(82, 220, 61, 0.12);
-        box-shadow: 0 0 25px rgba(82, 220, 61, 0.4);
+        transform: translate(-50%, -50%) scale(1.75);
+        border-color: #38bdf8;
+        background: rgba(56, 189, 248, 0.15);
+        box-shadow: 0 0 30px rgba(56, 189, 248, 0.5);
     }
 
     .cursor-follower.cursor-active {
         transform: translate(-50%, -50%) scale(0.85);
         border-color: #a855f7;
+        box-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
     }
 
     .cursor-particle {
         position: fixed;
-        width: 5px;
-        height: 5px;
         border-radius: 50%;
-        background: radial-gradient(circle, #38bdf8 0%, #52dc3d 100%);
         pointer-events: none;
         z-index: 999997;
-        opacity: 0.8;
+        opacity: 0.9;
         transform: translate(-50%, -50%) scale(1);
-        transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+        transition: transform 0.7s cubic-bezier(0.1, 0.8, 0.2, 1), opacity 0.7s ease-out;
+        box-shadow: 0 0 10px rgba(82, 220, 61, 0.6);
     }
 }
 
