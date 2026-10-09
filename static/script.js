@@ -563,4 +563,111 @@ if (document.readyState === 'loading') {
     initAllScrollAnimations();
 }
 
+// ==========================================================================
+// VISHNU'S AI PORTFOLIO ASSISTANT CHATBOT ENGINE (2026)
+// ==========================================================================
+
+window.toggleAiAssistantModal = function(e) {
+    if (e) e.stopPropagation();
+    const modal = document.getElementById('aiAssistantModal');
+    if (modal) {
+        modal.classList.toggle('active');
+        if (modal.classList.contains('active')) {
+            const input = document.getElementById('aiUserInput');
+            if (input) setTimeout(() => input.focus(), 200);
+        }
+    }
+};
+
+window.sendQuickPrompt = function(promptText) {
+    const userInput = document.getElementById('aiUserInput');
+    if (userInput) {
+        userInput.value = promptText;
+        const form = document.getElementById('aiInputForm');
+        if (form) {
+            form.dispatchEvent(new Event('submit', { cancelable: true }));
+        }
+    }
+};
+
+window.handleAiChatSubmit = function(e) {
+    e.preventDefault();
+    const input = document.getElementById('aiUserInput');
+    const messagesContainer = document.getElementById('aiChatMessages');
+    if (!input || !messagesContainer) return;
+
+    const userText = input.value.trim();
+    if (!userText) return;
+
+    // Append user message bubble
+    const userMsgDiv = document.createElement('div');
+    userMsgDiv.className = 'ai-message user-message';
+    userMsgDiv.innerHTML = `
+        <div class="msg-avatar"><i class="fas fa-user"></i></div>
+        <div class="msg-bubble"><p>${escapeHtml(userText)}</p></div>
+    `;
+    messagesContainer.appendChild(userMsgDiv);
+    input.value = '';
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+    // Show typing indicator
+    const botMsgDiv = document.createElement('div');
+    botMsgDiv.className = 'ai-message bot-message';
+    botMsgDiv.innerHTML = `
+        <div class="msg-avatar"><i class="fas fa-robot"></i></div>
+        <div class="msg-bubble"><p><i class="fas fa-spinner fa-spin"></i> Analyzing Vishnu's portfolio knowledge base...</p></div>
+    `;
+    messagesContainer.appendChild(botMsgDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+    // Generate intelligent AI response after short delay
+    setTimeout(() => {
+        const responseText = generatePortfolioAiResponse(userText);
+        const bubble = botMsgDiv.querySelector('.msg-bubble');
+        if (bubble) {
+            bubble.innerHTML = responseText;
+        }
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }, 450);
+};
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.innerText = text;
+    return div.innerHTML;
+}
+
+function generatePortfolioAiResponse(query) {
+    const q = query.toLowerCase();
+
+    if (q.includes('skill') || q.includes('technolog') || q.includes('stack') || q.includes('ai') || q.includes('llm') || q.includes('gpt')) {
+        return `<p>⚡ <strong>Vishnu's AI & Technical Skill Set:</strong></p>
+                <ul>
+                    <li>🤖 <strong>AI & LLMs:</strong> OpenAI API, Gemini API, Prompt Engineering, Agentic Workflows, Cursor AI (92%)</li>
+                    <li>🐍 <strong>Backend:</strong> Python, Django, REST APIs, SQLite3, PythonAnywhere (88%)</li>
+                    <li>🎨 <strong>UI/UX Design:</strong> Figma, Design Systems, Mobile App Wireframing, Spline 3D (95%)</li>
+                    <li>💻 <strong>Frontend:</strong> HTML5, CSS3, JavaScript ES6, Responsive Web Layouts (95%)</li>
+                </ul>`;
+    } else if (q.includes('project') || q.includes('jakso') || q.includes('lumina') || q.includes('e-commerce') || q.includes('ecommerce')) {
+        return `<p>🛍️ <strong>Vishnu's Featured AI & E-Commerce Projects:</strong></p>
+                <p>1. <strong>Jakso Django E-Commerce:</strong> Full-stack web application hosted on PythonAnywhere featuring Django ORM, authentication, and cart backend.<br>
+                2. <strong>Lumina Furniture:</strong> High-performance responsive e-commerce web app with 3D product viewports.<br>
+                3. <strong>Figma Mobile UI Showcase:</strong> Cake Shop App, Luxe Perfume 3D Experience, and AstroConnect Mobile App UI.</p>`;
+    } else if (q.includes('hire') || q.includes('work') || q.includes('company') || q.includes('job') || q.includes('role') || q.includes('feature')) {
+        return `<p>🚀 <strong>Why Hire Vishnu for AI & Web Development?</strong></p>
+                <p>Vishnu builds end-to-end intelligent web products from AI concept to production code! He specializes in integrating LLM APIs (OpenAI/Gemini), creating AI agents, engineering Django backends, and crafting Figma UI/UX design systems.</p>`;
+    } else if (q.includes('contact') || q.includes('email') || q.includes('phone') || q.includes('reach') || q.includes('call')) {
+        return `<p>📩 <strong>Contact Vishnu Prasad:</strong></p>
+                <ul>
+                    <li>📧 Email: <a href="mailto:vichu0703@gmail.com" style="color: #38bdf8;">vichu0703@gmail.com</a></li>
+                    <li>📞 Phone: <a href="tel:+919778720176" style="color: #38bdf8;">+91 9778720176</a></li>
+                    <li>📍 Location: Palakkad, Kerala, India</li>
+                    <li>🌐 GitHub: <a href="https://github.com/vichu070302" target="_blank" style="color: #38bdf8;">github.com/vichu070302</a></li>
+                </ul>`;
+    } else {
+        return `<p>💡 Vishnu is an <strong>AI-Powered Full Stack Developer & UI/UX Designer</strong> specializing in Python Django, AI Agent workflows, OpenAI/Gemini integrations, and responsive Figma designs.</p>
+                <p>Feel free to ask about his <strong>AI skills</strong>, <strong>Jakso/Lumina projects</strong>, or <strong>contact info</strong>!</p>`;
+    }
+}
+
 

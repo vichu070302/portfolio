@@ -3591,6 +3591,423 @@ img, iframe, svg, video {
     }
 }
 
+/* ==========================================================================
+   AI FEATURES, INTERACTIVE CHATBOT & MOBILE RESPONSIVE ENHANCEMENTS (2026)
+   ========================================================================== */
+
+/* 1. Hero AI Capability Badge & Chat Button */
+.ai-badge-hero {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(56, 189, 248, 0.12);
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    color: #38bdf8;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    letter-spacing: 0.3px;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+    animation: aiPulseGlow 3s infinite ease-in-out;
+}
+
+@keyframes aiPulseGlow {
+    0%, 100% { box-shadow: 0 0 15px rgba(56, 189, 248, 0.25); border-color: rgba(56, 189, 248, 0.4); }
+    50% { box-shadow: 0 0 25px rgba(168, 85, 247, 0.4); border-color: rgba(168, 85, 247, 0.6); }
+}
+
+.ai-chat-hero-btn {
+    border-color: rgba(56, 189, 248, 0.5) !important;
+    color: #38bdf8 !important;
+}
+
+.ai-chat-hero-btn:hover {
+    background: rgba(56, 189, 248, 0.15) !important;
+    border-color: #38bdf8 !important;
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.4) !important;
+}
+
+/* 2. AI Badges & Highlight Cards */
+.ai-badge-glow {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(168, 85, 247, 0.2)) !important;
+    border: 1px solid rgba(56, 189, 248, 0.4) !important;
+    color: #38bdf8 !important;
+}
+
+.ai-tag {
+    background: rgba(168, 85, 247, 0.15) !important;
+    color: #c4b5fd !important;
+    border: 1px solid rgba(168, 85, 247, 0.3) !important;
+}
+
+.highlight-ai-card {
+    border: 1px solid rgba(56, 189, 248, 0.4) !important;
+    box-shadow: 0 10px 30px rgba(56, 189, 248, 0.1) !important;
+}
+
+.ai-service-icon {
+    background: rgba(56, 189, 248, 0.15) !important;
+    color: #38bdf8 !important;
+}
+
+/* 3. Floating AI Assistant Button */
+.ai-assistant-floating-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: linear-gradient(135deg, #38bdf8, #8b5cf6);
+    color: #ffffff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(56, 189, 248, 0.4), 0 0 20px rgba(139, 92, 246, 0.3);
+    z-index: 99999;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.ai-assistant-floating-btn:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 12px 35px rgba(56, 189, 248, 0.6), 0 0 30px rgba(139, 92, 246, 0.5);
+}
+
+/* 4. AI Assistant Chatbot Modal Drawer */
+.ai-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(6, 11, 17, 0.75);
+    backdrop-filter: blur(10px);
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    padding: 20px;
+}
+
+.ai-modal-backdrop.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.ai-modal-container {
+    width: 100%;
+    max-width: 480px;
+    height: 600px;
+    max-height: 90vh;
+    background: #0d1520;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(56, 189, 248, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: translateY(20px) scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.ai-modal-backdrop.active .ai-modal-container {
+    transform: translateY(0) scale(1);
+}
+
+.ai-modal-header {
+    padding: 16px 20px;
+    background: rgba(15, 23, 42, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ai-header-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.ai-avatar {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #38bdf8, #8b5cf6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 18px;
+}
+
+.online-dot {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    background: #52dc3d;
+    border: 2px solid #0d1520;
+    border-radius: 50%;
+}
+
+.ai-header-info h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+}
+
+.ai-header-info p {
+    font-size: 12px;
+    color: #94a3b8;
+    margin: 2px 0 0 0;
+}
+
+.ai-modal-close {
+    background: rgba(255, 255, 255, 0.08);
+    border: none;
+    color: #94a3b8;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.ai-modal-close:hover {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+}
+
+.ai-modal-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    gap: 12px;
+    overflow: hidden;
+}
+
+.ai-chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-right: 6px;
+}
+
+.ai-chat-messages::-webkit-scrollbar {
+    width: 5px;
+}
+.ai-chat-messages::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+}
+
+.ai-message {
+    display: flex;
+    gap: 10px;
+    max-width: 88%;
+}
+
+.bot-message {
+    align-self: flex-start;
+}
+
+.user-message {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.msg-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(56, 189, 248, 0.2);
+    color: #38bdf8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.user-message .msg-avatar {
+    background: rgba(82, 220, 61, 0.2);
+    color: #52dc3d;
+}
+
+.msg-bubble {
+    padding: 12px 15px;
+    border-radius: 14px;
+    font-size: 13.5px;
+    line-height: 1.5;
+}
+
+.bot-message .msg-bubble {
+    background: rgba(30, 41, 59, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #e2e8f0;
+    border-top-left-radius: 2px;
+}
+
+.user-message .msg-bubble {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: #ffffff;
+    border-top-right-radius: 2px;
+}
+
+.ai-quick-prompts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding-top: 6px;
+}
+
+.ai-chip {
+    background: rgba(30, 41, 59, 0.9);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    color: #38bdf8;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 11.5px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+
+.ai-chip:hover {
+    background: rgba(56, 189, 248, 0.2);
+    border-color: #38bdf8;
+    transform: translateY(-2px);
+}
+
+.ai-input-form {
+    display: flex;
+    gap: 8px;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    padding: 4px 6px 4px 16px;
+}
+
+.ai-input-form input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 13.5px;
+}
+
+.ai-send-btn {
+    background: #38bdf8;
+    color: #0d1520;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.ai-send-btn:hover {
+    background: #52dc3d;
+    transform: scale(1.08);
+}
+
+/* 5. Mobile Responsive Fixes for MY WORK Projects */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+
+    .project-card {
+        border-radius: 16px !important;
+        overflow: hidden !important;
+    }
+
+    .project-image {
+        height: 220px !important;
+        min-height: 220px !important;
+    }
+
+    .project-image img {
+        height: 100% !important;
+        width: 100% !important;
+        object-fit: cover !important;
+    }
+
+    .project-info {
+        padding: 20px 18px !important;
+    }
+
+    .project-info h3 {
+        font-size: 18px !important;
+        line-height: 1.35 !important;
+        margin-bottom: 6px !important;
+    }
+
+    .project-info p {
+        font-size: 13px !important;
+        margin-bottom: 16px !important;
+    }
+
+    .card-action-btn-green {
+        width: 100% !important;
+        justify-content: center !important;
+        padding: 12px 16px !important;
+        font-size: 13px !important;
+    }
+
+    .ai-assistant-floating-btn {
+        bottom: 18px;
+        right: 18px;
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-image {
+        height: 200px !important;
+        min-height: 200px !important;
+    }
+
+    .project-info {
+        padding: 16px 14px !important;
+    }
+
+    .ai-modal-container {
+        height: 100%;
+        max-height: 100%;
+        border-radius: 0;
+    }
+}
+
 
 
 

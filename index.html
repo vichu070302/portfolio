@@ -40,19 +40,20 @@
         <div class="hero-container">
             
             <div class="hero-content">
+                <div class="ai-badge-hero">
+                    <i class="fas fa-brain"></i> <span>AI Agent & Web Applications Specialist</span>
+                </div>
                 <p class="greeting">Hello, I'm</p>
                 <h1 class="hero-title">VISHNU PRASAD</h1>
-                <div class="subtitle">UI/UX Designer</div>
-                <h1 class="hero-title-2">& Python Full Stack Developer </h1>
-                <p class="hero-description">I create modern, responsive and user-friendly web experiences that help brands grow and people get things done. Specializing in elegant design and robust backend solutions.</p>
+                <div class="subtitle">AI-Powered Full Stack Developer</div>
+                <h1 class="hero-title-2">& AI UI/UX Designer</h1>
+                <p class="hero-description">I design and engineer intelligent, responsive web applications powered by AI agent workflows, custom LLM API integrations (OpenAI/Gemini), Python Django backends, and intuitive user-centered interfaces.</p>
                 
                 <div class="hero-buttons">
                     <a href="#projects" style="text-decoration: none;">
-                    <button class="btn btn-primary" ><i class="fa-solid fa-arrow-right" ></i> View My Work</button>
+                    <button class="btn btn-primary"><i class="fa-solid fa-arrow-right"></i> View My Work</button>
                     </a>
-                    <a href="#contact" style="text-decoration: none;">
-                    <button class="btn btn-secondary" ><i class="fa-regular fa-envelope"></i> Contact Me </button>
-                </a>
+                    <button class="btn btn-secondary ai-chat-hero-btn" type="button" onclick="toggleAiAssistantModal(event)"><i class="fas fa-robot"></i> Ask AI Assistant</button>
                 </div>
             </div>
 
@@ -119,9 +120,8 @@
                     <img src="{% static 'lapfrnd.png' %}" alt="Profile Image">
                 </div>
                 <div class="about-text">
-                    <h3>Crafting Digital Experiences That Inspire</h3>
-                    <p>I'm Vishnu prasad. I design, build, and market digital experiences. With a strong background in UI/UX and Graphic Design, I focus on creating interfaces that look great and feel intuitive to use. But I don't stop at design—I write clean code for both front-end and back-end to bring those layouts to life, and I use digital marketing to make sure they reach the right audience. Simply put, I handle the entire journey of a digital product from a rough sketch to a fully functional, visible website</p>
-                    <!-- <button class="btn btn-outline">More About Me</button> -->
+                    <h3>Pioneering Intelligent Digital Experiences</h3>
+                    <p>I'm Vishnu Prasad—an AI-driven Full Stack Developer & UI/UX Designer specializing in intelligent web applications and modern interface design. I bridge the gap between AI workflows (OpenAI/Gemini APIs, agentic tools) and production-ready full-stack applications built with Python Django and modern JavaScript. From conceptual wireframes in Figma to AI-enhanced backends and cloud deployment, I craft seamless digital solutions tailored for high-growth tech companies.</p>
                 </div>
             </div>
         </div>
@@ -136,8 +136,28 @@
             <div class="skills-grid">
                 <div class="skill-item">
                     <div class="skill-header">
-                        <i class="fab fa-html5"></i>
-                        <span class="skill-name">HTML / CSS</span>
+                        <i class="fas fa-brain" style="color: #38bdf8;"></i>
+                        <span class="skill-name">AI & LLM Integration (OpenAI / Gemini)</span>
+                        <span class="skill-percent">92%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="92%" style="width: 92%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <i class="fas fa-wand-magic-sparkles" style="color: #a855f7;"></i>
+                        <span class="skill-name">AI-Driven UI/UX & Agentic Design</span>
+                        <span class="skill-percent">90%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="90%" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <i class="fas fa-robot" style="color: #52dc3d;"></i>
+                        <span class="skill-name">Prompt Engineering & Cursor AI</span>
                         <span class="skill-percent">95%</span>
                     </div>
                     <div class="skill-bar">
@@ -146,48 +166,28 @@
                 </div>
                 <div class="skill-item">
                     <div class="skill-header">
-                        <i class="fab fa-js"></i>
-                        <span class="skill-name">JavaScript</span>
-                        <span class="skill-percent">90%</span>
+                        <i class="fab fa-html5"></i>
+                        <span class="skill-name">HTML / CSS / JS</span>
+                        <span class="skill-percent">95%</span>
                     </div>
                     <div class="skill-bar">
-                        <div class="skill-progress" data-width="90%" style="width: 90%"></div>
+                        <div class="skill-progress" data-width="95%" style="width: 95%"></div>
                     </div>
                 </div>
                 <div class="skill-item">
                     <div class="skill-header">
                         <i class="fab fa-python"></i>
-                        <span class="skill-name">Python</span>
-                        <span class="skill-percent">85%</span>
+                        <span class="skill-name">Python & Django</span>
+                        <span class="skill-percent">88%</span>
                     </div>
                     <div class="skill-bar">
-                        <div class="skill-progress" data-width="85%" style="width: 85%"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <i class="fas fa-database"></i>
-                        <span class="skill-name">Django</span>
-                        <span class="skill-percent">85%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-width="85%" style="width: 85%"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <i class="fas fa-pencil"></i>
-                        <span class="skill-name">UI/UX Design</span>
-                        <span class="skill-percent">90%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-width="90%" style="width: 90%"></div>
+                        <div class="skill-progress" data-width="88%" style="width: 88%"></div>
                     </div>
                 </div>
                 <div class="skill-item">
                     <div class="skill-header">
                         <i class="fab fa-figma"></i>
-                        <span class="skill-name">Figma</span>
+                        <span class="skill-name">Figma & Prototyping</span>
                         <span class="skill-percent">95%</span>
                     </div>
                     <div class="skill-bar">
@@ -197,7 +197,7 @@
                 <div class="skill-item">
                     <div class="skill-header">
                         <i class="fas fa-paint-brush"></i>
-                        <span class="skill-name">Graphic Designing</span>
+                        <span class="skill-name">Graphic Designing & Visual Assets</span>
                         <span class="skill-percent">85%</span>
                     </div>
                     <div class="skill-bar">
@@ -205,7 +205,8 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
     <!-- Services Section -->
     <section id="services" class="services">
@@ -215,53 +216,47 @@
                 <p>Services I Provide</p>
             </div>
             <div class="services-grid">
+                <div class="service-card highlight-ai-card">
+                    <div class="service-icon ai-service-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI Web Apps & Intelligent Agents</h3>
+                    <p>Building smart, AI-powered web applications integrated with OpenAI/Gemini APIs, dynamic chatbots, and agentic automation.</p>
+                </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-palette"></i>
                     </div>
-                    <h3>UI/UX Design</h3>
-                    <p>Designing beautiful and user-friendly interfaces that deliver great experiences.</p>
-                    <!-- <a href="#" class="read-more">Read More →</a> -->
+                    <h3>AI UI/UX Design</h3>
+                    <p>Designing user-centric, responsive interfaces with personalized AI components and spatial visual hierarchies.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-code"></i>
                     </div>
-                    <h3>Web Development</h3>
-                    <p>Building fast, responsive and modern websites with clean and efficient code.</p>
-                    <!-- <a href="#" class="read-more">Read More →</a> -->
+                    <h3>Full Stack Web Development</h3>
+                    <p>Building high-performance Python Django backends, RESTful APIs, and modern responsive frontends.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-paint-brush"></i>
                     </div>
-                    <h3>Graphic Design</h3>
-                    <p>Creating eye-catching visuals, branding assets, and layouts for digital and print.</p>
-                    <!-- <a href="#" class="read-more">Read More →</a> -->
+                    <h3>Graphic & Brand Design</h3>
+                    <p>Creating eye-catching visuals, branding assets, and layouts for digital products.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-bullhorn"></i>
                     </div>
                     <h3>Digital Marketing</h3>
-                    <p>Helping brands grow online with content strategy, social media, and campaign design.</p>
-                    <!-- <a href="#" class="read-more">Read More →</a> -->
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-server"></i>
-                    </div>
-                    <h3>Backend Development</h3>
-                    <p>Develop secure and scalable backend systems and APIs using Django.</p>
-                    <!-- <a href="#" class="read-more">Read More →</a> -->
+                    <p>Helping brands grow online with content strategy, social media campaigns, and AI analytics.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-mobile-alt"></i>
                     </div>
                     <h3>Responsive Design</h3>
-                    <p>Creating perfect responsive layouts that work on all devices and screen sizes.</p>
-                    <!-- <a href="#" class="read-more">Read More →</a> -->
+                    <p>Creating flawless responsive layouts engineered for perfect viewing across all mobile devices and desktops.</p>
                 </div>
             </div>
         </div>
@@ -277,12 +272,12 @@
             <div class="projects-grid">
                 <div class="project-card uiux-interactive-card" id="ecommerceCard" onclick="openEcommerceShowcaseModal(event)">
                     <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80" alt="Lumina Furniture E-Commerce UX Showcase">
+                        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80" alt="Lumina Furniture AI-Enhanced E-Commerce UX Showcase">
                     </div>
                     <div class="project-info">
-                        <span class="project-badge"><i class="fas fa-shopping-cart"></i> E-commerce Showcase</span>
-                        <h3>Jakso & Lumina E-commerce</h3>
-                        <p>Django, PythonAnywhere, JS & Lumina Furniture</p>
+                        <span class="project-badge ai-badge-glow"><i class="fas fa-brain"></i> AI E-Commerce & Full Stack</span>
+                        <h3>Jakso & Lumina AI-Enhanced E-Commerce</h3>
+                        <p>Django, PythonAnywhere, AI Recommendations & Lumina Furniture</p>
                         <button type="button" class="card-action-btn-green" onclick="openEcommerceShowcaseModal(event)">
                             <i class="fas fa-eye"></i> View E-Commerce Projects & Live Links
                         </button>
@@ -293,9 +288,9 @@
                         <img src="static/cack app.png" alt="Cake Mobile App UI">
                     </div>
                     <div class="project-info">
-                        <span class="project-badge"><i class="fas fa-sparkles"></i> UI/UX Showcase</span>
-                        <h3>Mobile App UI, Perfume & AstroConnect</h3>
-                        <p>Figma Prototypes: Cake App, Luxe Perfume & AstroConnect</p>
+                        <span class="project-badge ai-badge-glow"><i class="fas fa-wand-magic-sparkles"></i> AI UI/UX & Figma Showcase</span>
+                        <h3>AI-Driven Mobile UI, Perfume & AstroConnect</h3>
+                        <p>Figma Prototypes: AI Cake App, Luxe Perfume & AstroConnect</p>
                         <button type="button" class="card-action-btn-green" onclick="openUiUxShowcaseModal(event)">
                             <i class="fab fa-figma"></i> View UI/UX Figma Designs
                         </button>
@@ -307,9 +302,9 @@
                         <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="Web Design Showcase">
                     </div>
                     <div class="project-info">
-                        <!-- <span class="project-badge">Backend</span> -->
-                        <h3>Web Design</h3>
-                        <p>HTML, CSS</p>
+                        <span class="project-badge"><i class="fas fa-code"></i> Frontend Web</span>
+                        <h3>Modern Web Design</h3>
+                        <p>HTML5, CSS3, JavaScript ES6</p>
                     </div>
                     </a>
                 </div>
@@ -319,16 +314,13 @@
                         <img src="static/dg front.jpg" alt="Graphic Design">
                     </div>
                     <div class="project-info">
-                        <!-- <span class="project-badge">Design</span> -->
-                        <h3>Graphic Design</h3>
-                        <p>Photoshop, Illustrator</p>
+                        <span class="project-badge"><i class="fas fa-vector-square"></i> Branding & Visuals</span>
+                        <h3>Graphic & Visual Design</h3>
+                        <p>Photoshop, Illustrator, Visual Assets</p>
                     </div>
                     </a>
                 </div>
             </div>
-            <!-- <div class="view-all">
-                <button class="btn btn-outline">View All Projects →</button>
-            </div> -->
         </div>
     </section>
 
@@ -337,7 +329,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>SELECTED UX CASE STUDIES</h2>
-                <p>Deep Dives into E-Commerce UX, Research & Problem Solving</p>
+                <p>Deep Dives into AI UX Research, E-Commerce & Strategic Design</p>
             </div>
             
             <ul class="csk-stack">
@@ -345,14 +337,14 @@
                 <li class="csk-card-item">
                     <div class="csk-card" id="luminaCaseStudyCard">
                         <div class="csk-info">
-                            <span class="csk-chip"><i class="fas fa-couch"></i> E-Commerce / Web Design</span>
+                            <span class="csk-chip"><i class="fas fa-couch"></i> E-Commerce / AI Web Design</span>
                             <h3 class="csk-title">Lumina Furniture E-Commerce UX Case Study</h3>
-                            <p class="csk-desc">Designing a modern furniture shopping experience that helps users explore, evaluate, and purchase products with confidence. Balanced visual inspiration with structured product specifications.</p>
+                            <p class="csk-desc">Designing an AI-enhanced modern furniture shopping experience that helps users explore, evaluate 3D dimensions, and purchase products with high confidence.</p>
                             <ul class="csk-tags">
+                                <li class="csk-tag ai-tag"><i class="fas fa-brain"></i> AI UX Research</li>
                                 <li class="csk-tag">Figma</li>
                                 <li class="csk-tag">HTML5</li>
                                 <li class="csk-tag">CSS3</li>
-                                <li class="csk-tag">JavaScript</li>
                                 <li class="csk-tag">Responsive Web</li>
                             </ul>
                             <a href="ecommerce_gallery.html" target="_blank" rel="noopener noreferrer" class="csk-cta">
@@ -371,13 +363,14 @@
                 <li class="csk-card-item">
                     <div class="csk-card" id="perfumeCaseStudyCard">
                         <div class="csk-info">
-                            <span class="csk-chip csk-chip-accent"><i class="fas fa-spray-can"></i> E-Commerce / UI/UX Design</span>
+                            <span class="csk-chip csk-chip-accent"><i class="fas fa-spray-can"></i> E-Commerce / AI UI/UX Design</span>
                             <h3 class="csk-title">Luxe Perfume E-Commerce UI/UX Case Study</h3>
-                            <p class="csk-desc">Designing a premium fragrance shopping experience that helps users discover, understand, and confidently choose a perfume online without being able to smell it physically.</p>
+                            <p class="csk-desc">Designing a premium fragrance shopping experience utilizing sensory visual language, scent breakdown models, and 3D WebGL spatial viewports.</p>
                             <ul class="csk-tags">
+                                <li class="csk-tag ai-tag"><i class="fas fa-wand-magic-sparkles"></i> AI Sensory UI</li>
                                 <li class="csk-tag">Figma</li>
                                 <li class="csk-tag">FigJam</li>
-                                <li class="csk-tag">UI/UX Design</li>
+                                <li class="csk-tag">Spatial 3D</li>
                                 <li class="csk-tag">Responsive Web</li>
                             </ul>
                             <a href="uiux_gallery.html" target="_blank" rel="noopener noreferrer" class="csk-cta">
@@ -810,6 +803,52 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating AI Portfolio Assistant Trigger -->
+    <button class="ai-assistant-floating-btn" id="aiAssistantFloatingBtn" onclick="toggleAiAssistantModal(event)" aria-label="Open AI Assistant">
+        <i class="fas fa-robot"></i>
+        <span class="ai-pulse-glow"></span>
+        <span class="ai-btn-text">Ask AI</span>
+    </button>
+
+    <!-- AI Portfolio Assistant Interactive Modal -->
+    <div class="ai-modal-backdrop" id="aiAssistantModal" onclick="if(event.target === this) toggleAiAssistantModal(event)">
+        <div class="ai-modal-container">
+            <div class="ai-modal-header">
+                <div class="ai-header-info">
+                    <div class="ai-avatar"><i class="fas fa-brain"></i><span class="online-dot"></span></div>
+                    <div>
+                        <h3>Vishnu's AI Assistant</h3>
+                        <p><i class="fas fa-circle" style="color:#52dc3d; font-size: 8px;"></i> Live Portfolio AI Knowledge Engine</p>
+                    </div>
+                </div>
+                <button class="ai-modal-close" onclick="toggleAiAssistantModal(event)" aria-label="Close AI Assistant"><i class="fas fa-times"></i></button>
+            </div>
+
+            <div class="ai-modal-body">
+                <div class="ai-chat-messages" id="aiChatMessages">
+                    <div class="ai-message bot-message">
+                        <div class="msg-avatar"><i class="fas fa-robot"></i></div>
+                        <div class="msg-bubble">
+                            <p>👋 Hi! I am Vishnu's AI Assistant. Ask me anything about Vishnu's AI Full-Stack skills, Django projects, Figma UI/UX designs, or hiring availability!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ai-quick-prompts">
+                    <button class="ai-chip" type="button" onclick="sendQuickPrompt('What are Vishnu\'s AI & Full Stack skills?')"><i class="fas fa-brain"></i> AI Skills</button>
+                    <button class="ai-chip" type="button" onclick="sendQuickPrompt('Tell me about Jakso & Lumina AI projects')"><i class="fas fa-shopping-cart"></i> E-Commerce</button>
+                    <button class="ai-chip" type="button" onclick="sendQuickPrompt('How can Vishnu build AI features for my company?')"><i class="fas fa-bolt"></i> AI Capabilities</button>
+                    <button class="ai-chip" type="button" onclick="sendQuickPrompt('How do I contact Vishnu?')"><i class="fas fa-envelope"></i> Contact</button>
+                </div>
+
+                <form class="ai-input-form" id="aiInputForm" onsubmit="handleAiChatSubmit(event)">
+                    <input type="text" id="aiUserInput" placeholder="Ask about AI, Django, Figma or Projects..." autocomplete="off" required>
+                    <button type="submit" class="ai-send-btn" aria-label="Send Message"><i class="fas fa-paper-plane"></i></button>
+                </form>
             </div>
         </div>
     </div>
