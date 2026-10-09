@@ -657,9 +657,10 @@ function generatePortfolioAiResponse(query) {
     } else if (q.includes('hire') || q.includes('work') || q.includes('company') || q.includes('job') || q.includes('role') || q.includes('feature')) {
         return `<p>🚀 <strong>Why Hire Vishnu for AI & Web Development?</strong></p>
                 <p>Vishnu builds end-to-end intelligent web products from AI concept to production code! He specializes in integrating LLM APIs (OpenAI/Gemini), creating AI agents, engineering Django backends, and crafting Figma UI/UX design systems.</p>`;
-    } else if (q.includes('contact') || q.includes('email') || q.includes('phone') || q.includes('reach') || q.includes('call')) {
+    } else if (q.includes('contact') || q.includes('email') || q.includes('phone') || q.includes('reach') || q.includes('call') || q.includes('linkedin')) {
         return `<p>📩 <strong>Contact Vishnu Prasad:</strong></p>
                 <ul>
+                    <li>💼 LinkedIn: <a href="https://www.linkedin.com/in/vishnu-prasad-307a0b370" target="_blank" style="color: #38bdf8;">linkedin.com/in/vishnu-prasad-307a0b370</a></li>
                     <li>📧 Email: <a href="mailto:vichu0703@gmail.com" style="color: #38bdf8;">vichu0703@gmail.com</a></li>
                     <li>📞 Phone: <a href="tel:+919778720176" style="color: #38bdf8;">+91 9778720176</a></li>
                     <li>📍 Location: Palakkad, Kerala, India</li>
