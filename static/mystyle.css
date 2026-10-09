@@ -3655,7 +3655,7 @@ img, iframe, svg, video {
 /* 3. Floating AI Assistant Button */
 .ai-assistant-floating-btn {
     position: fixed;
-    bottom: 25px;
+    bottom: 90px;
     right: 25px;
     background: linear-gradient(135deg, #38bdf8, #8b5cf6);
     color: #ffffff;
@@ -4005,6 +4005,65 @@ img, iframe, svg, video {
         height: 100%;
         max-height: 100%;
         border-radius: 0;
+    }
+}
+
+/* 6. Custom Smooth Interactive Animated Mouse Cursor & Particle Trail */
+@media (pointer: fine) {
+    .cursor-dot {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 8px;
+        height: 8px;
+        background: #38bdf8;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 999999;
+        transform: translate(-50%, -50%);
+        transition: opacity 0.3s ease, transform 0.1s ease;
+        box-shadow: 0 0 10px #38bdf8, 0 0 18px #52dc3d;
+    }
+
+    .cursor-follower {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 38px;
+        height: 38px;
+        border: 1.5px solid rgba(56, 189, 248, 0.6);
+        background: rgba(56, 189, 248, 0.05);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 999998;
+        transform: translate(-50%, -50%);
+        transition: transform 0.15s cubic-bezier(0.1, 0.8, 0.2, 1), border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 0 15px rgba(56, 189, 248, 0.25);
+    }
+
+    .cursor-follower.cursor-hover {
+        transform: translate(-50%, -50%) scale(1.6);
+        border-color: #52dc3d;
+        background: rgba(82, 220, 61, 0.12);
+        box-shadow: 0 0 25px rgba(82, 220, 61, 0.4);
+    }
+
+    .cursor-follower.cursor-active {
+        transform: translate(-50%, -50%) scale(0.85);
+        border-color: #a855f7;
+    }
+
+    .cursor-particle {
+        position: fixed;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: radial-gradient(circle, #38bdf8 0%, #52dc3d 100%);
+        pointer-events: none;
+        z-index: 999997;
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(1);
+        transition: transform 0.5s ease-out, opacity 0.5s ease-out;
     }
 }
 

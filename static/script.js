@@ -555,6 +555,7 @@ function initAllScrollAnimations() {
     initScrollReveal();
     init3DTilt();
     updateScrollProgress();
+    initCustomCursor();
 }
 
 if (document.readyState === 'loading') {
@@ -668,6 +669,79 @@ function generatePortfolioAiResponse(query) {
         return `<p>💡 Vishnu is an <strong>AI-Powered Full Stack Developer & UI/UX Designer</strong> specializing in Python Django, AI Agent workflows, OpenAI/Gemini integrations, and responsive Figma designs.</p>
                 <p>Feel free to ask about his <strong>AI skills</strong>, <strong>Jakso/Lumina projects</strong>, or <strong>contact info</strong>!</p>`;
     }
+}
+
+// ==========================================================================
+// CUSTOM SMOOTH INTERACTIVE CURSOR & TRAILING PARTICLES SYSTEM
+// ==========================================================================
+
+function initCustomCursor() {
+    const dot = document.getElementById('cursorDot');
+    const follower = document.getElementById('cursorFollower');
+    if (!dot || !follower || window.matchMedia('(pointer: coarse)').matches) return;
+
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let followerX = mouseX;
+    let followerY = mouseY;
+    let lastParticleTime = 0;
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        dot.style.left = `${mouseX}px`;
+        dot.style.top = `${mouseY}px`;
+
+        const now = Date.now();
+        if (now - lastParticleTime > 45) {
+            spawnCursorParticle(mouseX, mouseY);
+            lastParticleTime = now;
+        }
+    });
+
+    function animateFollower() {
+        followerX += (mouseX - followerX) * 0.18;
+        followerY += (mouseY - followerY) * 0.18;
+
+        follower.style.left = `${followerX}px`;
+        follower.style.top = `${followerY}px`;
+
+        requestAnimationFrame(animateFollower);
+    }
+    animateFollower();
+
+    const hoverables = document.querySelectorAll('a, button, .project-card, .csk-card, .service-card, input, textarea, .ai-chip');
+    hoverables.forEach(el => {
+        el.addEventListener('mouseenter', () => follower.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => follower.classList.remove('cursor-hover'));
+    });
+
+    document.addEventListener('mousedown', () => follower.classList.add('cursor-active'));
+    document.addEventListener('mouseup', () => follower.classList.remove('cursor-active'));
+}
+
+function spawnCursorParticle(x, y) {
+    const particle = document.createElement('div');
+    particle.className = 'cursor-particle';
+    particle.style.left = `${x}px`;
+    particle.style.top = `${y}px`;
+
+    const angle = Math.random() * Math.PI * 2;
+    const distance = 10 + Math.random() * 16;
+    const destX = x + Math.cos(angle) * distance;
+    const destY = y + Math.sin(angle) * distance;
+
+    document.body.appendChild(particle);
+
+    requestAnimationFrame(() => {
+        particle.style.left = `${destX}px`;
+        particle.style.top = `${destY}px`;
+        particle.style.transform = `translate(-50%, -50%) scale(0)`;
+        particle.style.opacity = `0`;
+    });
+
+    setTimeout(() => particle.remove(), 550);
 }
 
 
